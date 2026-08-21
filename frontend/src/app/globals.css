@@ -1,0 +1,677 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Design system variables - Dark mode (default) */
+  --bg: #0b0b0d;
+  --surface: #1a1a1f;
+  --text: #f5f1e8;
+  --text-muted: rgba(245, 241, 232, 0.6);
+  --border: rgba(212, 160, 23, 0.2);
+  --accent: #d4a017;
+  --accent-contrast: #0b0b0d;
+  --verified: #4c9a6e;
+  --flagged: #c0392b;
+  --uncertain: #d4a017;
+
+  /* Legacy support */
+  --background: var(--bg);
+  --foreground: var(--text);
+}
+
+:root.light {
+  /* Light mode */
+  --bg: #ffffff;
+  --surface: #f8f9fa;
+  --text: #000000 !important;
+  --text-muted: rgba(0, 0, 0, 0.7) !important;
+  --border: rgba(0, 0, 0, 0.2);
+  --accent: #b8860b;
+  --accent-contrast: #ffffff;
+  --verified: #228B22;
+  --flagged: #DC143C;
+  --uncertain: #FF8C00;
+}
+
+body {
+  color: var(--text);
+  background: var(--bg);
+  font-family: var(--font-inter), sans-serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 50;
+}
+
+.script-text {
+  font-family: var(--font-jetbrains), monospace;
+  line-height: 1.7;
+}
+
+.script-panel {
+  max-height: 70vh;
+  min-height: 500px;
+  position: relative;
+}
+
+/* Claim highlighting styles - script supervisor annotations */
+.claim-highlight {
+  position: relative;
+  cursor: pointer;
+  padding: 1px 2px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+}
+
+.claim-highlight:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Verified claims - soft green underline with subtle background */
+.claim-highlight-verified {
+  background: rgba(76, 154, 110, 0.15);
+  border-bottom-color: #4C9A6E;
+  color: var(--text);
+}
+
+.claim-highlight-verified:hover {
+  background: rgba(76, 154, 110, 0.25);
+  border-bottom-color: #5BAF7F;
+}
+
+/* Flagged claims - red underline with warning background */
+.claim-highlight-flagged {
+  background: rgba(192, 57, 43, 0.15);
+  border-bottom-color: #C0392B;
+  color: var(--text);
+}
+
+.claim-highlight-flagged:hover {
+  background: rgba(192, 57, 43, 0.25);
+  border-bottom-color: #DC4C64;
+}
+
+/* Uncertain claims - amber underline */
+.claim-highlight-uncertain {
+  background: rgba(212, 160, 23, 0.15);
+  border-bottom-color: #D4A017;
+  color: var(--text);
+}
+
+.claim-highlight-uncertain:hover {
+  background: rgba(212, 160, 23, 0.25);
+  border-bottom-color: #E6B429;
+}
+
+/* Active/selected claim highlighting */
+.claim-highlight-active {
+  background: rgba(212, 160, 23, 0.3) !important;
+  border-bottom-width: 3px;
+  border-bottom-color: #D4A017 !important;
+  box-shadow: 0 0 0 2px rgba(212, 160, 23, 0.2);
+  animation: pulse-claim 1.5s ease-in-out;
+}
+
+@keyframes pulse-claim {
+  0%, 100% { 
+    box-shadow: 0 0 0 2px rgba(212, 160, 23, 0.2);
+  }
+  50% { 
+    box-shadow: 0 0 0 4px rgba(212, 160, 23, 0.4);
+  }
+}
+
+/* Script supervisor style borders and annotations */
+.script-panel::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 8px,
+    rgba(212, 160, 23, 0.3) 8px,
+    rgba(212, 160, 23, 0.3) 10px
+  );
+  z-index: 1;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Enhanced Cinematic Elements for Phase 7 */
+
+/* Film reel spinning animation */
+@keyframes film-reel-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Typewriter effect for loading text */
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* Film frame bounce */
+@keyframes film-frame-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-4px) rotate(1deg); }
+  50% { transform: translateY(-2px) rotate(-1deg); }
+  75% { transform: translateY(-6px) rotate(0.5deg); }
+}
+
+/* Clapperboard clap animation */
+@keyframes clapperboard-clap {
+  0% { transform: rotateX(0deg); }
+  50% { transform: rotateX(-15deg); }
+  100% { transform: rotateX(0deg); }
+}
+
+/* Film strip border animation */
+@keyframes film-strip-scroll {
+  0% { background-position: 0px 0px; }
+  100% { background-position: 20px 0px; }
+}
+
+/* Enhanced film grain that's more subtle but present */
+.film-grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.06;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(212, 160, 23, 0.1) 1px, transparent 1px),
+    radial-gradient(circle at 80% 20%, rgba(245, 241, 232, 0.05) 1px, transparent 1px),
+    radial-gradient(circle at 40% 40%, rgba(212, 160, 23, 0.08) 1px, transparent 1px);
+  background-size: 50px 50px, 30px 30px, 70px 70px;
+  animation: film-grain-move 8s linear infinite;
+  z-index: 1;
+}
+
+@keyframes film-grain-move {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Film sprocket holes utility class */
+.film-sprockets {
+  position: relative;
+}
+
+.film-sprockets::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  background: 
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 12px,
+      rgba(212, 160, 23, 0.4) 12px,
+      rgba(212, 160, 23, 0.4) 16px
+    );
+  border-right: 1px solid rgba(212, 160, 23, 0.2);
+}
+
+.film-sprockets::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+  background: 
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 12px,
+      rgba(212, 160, 23, 0.4) 12px,
+      rgba(212, 160, 23, 0.4) 16px
+    );
+  border-left: 1px solid rgba(212, 160, 23, 0.2);
+}
+
+/* Enhanced claim cards with film motifs */
+.claim-card {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.claim-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  opacity: 0.5;
+}
+
+.claim-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 25px rgba(0, 0, 0, 0.4),
+    0 0 0 1px var(--accent);
+  border-color: var(--accent);
+}
+
+/* Script editor enhancements */
+.script-editor {
+  position: relative;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+}
+
+.script-editor::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, var(--accent), transparent, var(--accent));
+  opacity: 0.1;
+  border-radius: 10px;
+  z-index: -1;
+}
+
+/* Report sidebar with film strip styling */
+.report-sidebar {
+  background: linear-gradient(180deg, rgba(11, 11, 13, 0.95), rgba(26, 26, 31, 0.9));
+  border-left: 3px solid rgba(212, 160, 23, 0.3);
+  position: relative;
+}
+
+.report-sidebar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, rgba(212, 160, 23, 0.6), rgba(212, 160, 23, 0.2), rgba(212, 160, 23, 0.6));
+  animation: film-strip-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes film-strip-glow {
+  0% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+/* Marquee text effect for titles */
+.marquee-text {
+  background: linear-gradient(90deg, 
+    rgba(245, 241, 232, 0.8),
+    rgba(212, 160, 23, 1),
+    rgba(245, 241, 232, 0.8)
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: marquee-shine 3s ease-in-out infinite;
+}
+
+@keyframes marquee-shine {
+  0% { background-position: -200% 0; }
+  50% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Film countdown style numbers */
+.countdown-number {
+  font-family: var(--font-jetbrains), monospace;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  position: relative;
+}
+
+.countdown-number::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 2px solid rgba(212, 160, 23, 0.3);
+  border-radius: 50%;
+  animation: countdown-pulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes countdown-pulse {
+  0% { transform: scale(0.9); opacity: 0.5; }
+  100% { transform: scale(1.1); opacity: 0.8; }
+}/*
+ Additional Cinematic Enhancements */
+
+/* Film leader countdown overlay */
+.film-leader {
+  position: relative;
+  background: radial-gradient(circle at center, rgba(245, 241, 232, 0.1), rgba(11, 11, 13, 0.8));
+}
+
+.film-leader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    radial-gradient(circle at 50% 50%, transparent 30%, rgba(212, 160, 23, 0.1) 31%, rgba(212, 160, 23, 0.1) 32%, transparent 33%),
+    linear-gradient(0deg, transparent 49%, rgba(212, 160, 23, 0.2) 50%, transparent 51%),
+    linear-gradient(90deg, transparent 49%, rgba(212, 160, 23, 0.2) 50%, transparent 51%);
+  pointer-events: none;
+}
+
+/* Enhanced button animations */
+.cta-button {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(45deg, #D4A017, #E8B84A, #D4A017);
+  background-size: 300% 300%;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Vintage film border effect */
+.vintage-border {
+  position: relative;
+  border: 3px solid rgba(212, 160, 23, 0.3);
+  border-radius: 8px;
+}
+
+.vintage-border::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  background: linear-gradient(45deg, rgba(212, 160, 23, 0.2), transparent, rgba(212, 160, 23, 0.2));
+  border-radius: 12px;
+  z-index: -1;
+  animation: vintage-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes vintage-glow {
+  0% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 1; transform: scale(1.02); }
+}
+
+/* Script supervisor annotation marks */
+.annotation-mark {
+  position: relative;
+}
+
+.annotation-mark::before {
+  content: "✓";
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  background: #4C9A6E;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: white;
+  font-weight: bold;
+}
+
+.annotation-mark.flagged::before {
+  content: "!";
+  background: #C0392B;
+}
+
+.annotation-mark.uncertain::before {
+  content: "?";
+  background: #D4A017;
+}
+
+/* Film roll effect for scrollable areas */
+.film-scroll {
+  background: 
+    linear-gradient(to right, rgba(212, 160, 23, 0.1) 0px, transparent 20px),
+    linear-gradient(to left, rgba(212, 160, 23, 0.1) 0px, transparent 20px);
+  background-size: 20px 100%, 20px 100%;
+  background-repeat: no-repeat;
+  background-position: left, right;
+}
+
+/* Production notes styling */
+.production-notes {
+  font-family: var(--font-jetbrains), monospace;
+  background: rgba(26, 26, 31, 0.6);
+  border: 1px solid rgba(212, 160, 23, 0.3);
+  border-left: 4px solid rgba(212, 160, 23, 0.6);
+  position: relative;
+}
+
+.production-notes::before {
+  content: "PRODUCTION NOTES";
+  position: absolute;
+  top: -8px;
+  left: 16px;
+  background: rgba(11, 11, 13, 0.9);
+  color: rgba(212, 160, 23, 0.8);
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 8px;
+  letter-spacing: 1px;
+}
+
+/* Confidence meter styling */
+.confidence-meter {
+  height: 4px;
+  background: rgba(26, 26, 31, 0.8);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.confidence-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #C0392B, #D4A017, #4C9A6E);
+  border-radius: 2px;
+  position: relative;
+  transition: width 0.8s ease-out;
+}
+
+.confidence-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -2px;
+  width: 2px;
+  height: 100%;
+  background: rgba(245, 241, 232, 0.8);
+  border-radius: 1px;
+  animation: confidence-blink 1.5s ease-in-out infinite;
+}
+
+@keyframes confidence-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0.3; }
+}
+
+/* Source link styling with film theme */
+.source-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 6px;
+  background: rgba(212, 160, 23, 0.1);
+  border: 1px solid rgba(212, 160, 23, 0.2);
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 11px;
+  transition: all 0.2s ease;
+}
+
+.source-link:hover {
+  background: rgba(212, 160, 23, 0.2);
+  border-color: rgba(212, 160, 23, 0.4);
+  transform: translateY(-1px);
+}
+
+.source-link::before {
+  content: "🔗";
+  font-size: 10px;
+}
+
+/* Enhanced loading states */
+.loading-shimmer {
+  background: linear-gradient(90deg, 
+    rgba(26, 26, 31, 0.4) 25%, 
+    rgba(212, 160, 23, 0.1) 50%, 
+    rgba(26, 26, 31, 0.4) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Film damage/scratch effects (subtle) */
+.film-damage::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(45deg, transparent 40%, rgba(245, 241, 232, 0.02) 41%, rgba(245, 241, 232, 0.02) 42%, transparent 43%),
+    linear-gradient(-45deg, transparent 60%, rgba(245, 241, 232, 0.01) 61%, transparent 62%);
+  pointer-events: none;
+  opacity: 0.3;
+}
+/* Light
+ mode specific overrides for better visibility */
+:root.light .claim-card {
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+:root.light .claim-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent);
+}
+
+:root.light .script-editor {
+  background: #ffffff;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+:root.light .script-panel::before {
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 8px,
+    rgba(184, 134, 11, 0.3) 8px,
+    rgba(184, 134, 11, 0.3) 10px
+  );
+}
+
+:root.light .report-sidebar {
+  background: linear-gradient(180deg, rgba(248, 249, 250, 0.95), rgba(255, 255, 255, 0.9));
+  border-left: 3px solid rgba(184, 134, 11, 0.3);
+}
+
+:root.light .production-notes {
+  background: rgba(248, 249, 250, 0.8);
+  border: 1px solid rgba(184, 134, 11, 0.3);
+  border-left: 4px solid rgba(184, 134, 11, 0.6);
+  color: var(--text);
+}
+
+:root.light .production-notes::before {
+  background: rgba(255, 255, 255, 0.9);
+  color: rgba(184, 134, 11, 0.8);
+}
+
+/* Ensure text visibility in light mode */
+:root.light .text-muted {
+  color: rgba(26, 26, 26, 0.7);
+}
+
+:root.light .bg-surface {
+  background-color: #f8f9fa;
+}
+
+:root.light .border-default {
+  border-color: rgba(26, 26, 26, 0.15);
+}
+/* Force 
+dark text in light mode */
+:root.light * {
+  color: #000000 !important;
+}
+
+:root.light .script-text {
+  color: #000000 !important;
+}
+
+:root.light .claim-highlight {
+  color: #000000 !important;
+}
+
+:root.light h1,
+:root.light h2, 
+:root.light h3,
+:root.light h4,
+:root.light h5,
+:root.light h6,
+:root.light p,
+:root.light span,
+:root.light div,
+:root.light textarea,
+:root.light input {
+  color: #000000 !important;
+}
+
+/* Specific overrides for components */
+:root.light .text-gray-500 {
+  color: #666666 !important;
+}
+
+:root.light .text-gray-600 {
+  color: #444444 !important;
+}
+
+:root.light .text-muted {
+  color: #666666 !important;
+}
