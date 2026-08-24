@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { SAMPLE_SCRIPTS } from '@/lib/sampleData';
 import Link from 'next/link';
-import ClaimCard from '@/components/ClaimCard';
+import { ClaimCard } from '@/components/ClaimCard';
 
 export default function SampleActionThrillerReport() {
   const [sampleData, setSampleData] = useState(null);
