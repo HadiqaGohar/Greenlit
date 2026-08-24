@@ -1,0 +1,212 @@
+{
+  "report_id": "ced24562-290b-4537-a71b-5eca15bb80d0",
+  "timestamp": "2026-08-21T15:38:25.468593",
+  "processing_time": 3.147019,
+  "risk_assessment": {
+    "overall_risk_score": 40.0,
+    "risk_level": "medium"
+  },
+  "agent_results": {
+    "director": {
+      "success": false,
+      "confidence": 0.0,
+      "processing_time": 1.0262737274169922,
+      "data": {},
+      "error": "Gemini API error: OpenRouter API error: 400"
+    },
+    "research": {
+      "success": true,
+      "confidence": 0.6,
+      "processing_time": 3.1180965900421143,
+      "data": {
+        "claims": [
+          {
+            "id": "noun_ae40e8f1",
+            "text": "Information about EXT",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about EXT. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          },
+          {
+            "id": "noun_e758f0ed",
+            "text": "Information about PYRAMID",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about PYRAMID. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          },
+          {
+            "id": "noun_5b00db1a",
+            "text": "Information about GREAT",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about GREAT. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          }
+        ],
+        "claims_researched": 3,
+        "verified_claims": [],
+        "flagged_claims": [],
+        "uncertain_claims": [
+          {
+            "id": "noun_ae40e8f1",
+            "text": "Information about EXT",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about EXT. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          },
+          {
+            "id": "noun_e758f0ed",
+            "text": "Information about PYRAMID",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about PYRAMID. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          },
+          {
+            "id": "noun_5b00db1a",
+            "text": "Information about GREAT",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about GREAT. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          }
+        ],
+        "sources": [
+          {
+            "title": "General Reference",
+            "url": "https://www.example.com/reference",
+            "credibility": 0.7,
+            "used_for": "noun_ae40e8f1"
+          },
+          {
+            "title": "Research Database",
+            "url": "https://www.example.com/database",
+            "credibility": 0.65,
+            "used_for": "noun_ae40e8f1"
+          }
+        ],
+        "research_summary": {
+          "verified_count": 0,
+          "flagged_count": 0,
+          "uncertain_count": 3,
+          "overall_accuracy": 0.0
+        }
+      },
+      "error": null
+    },
+    "legal": {
+      "success": false,
+      "confidence": 0.0,
+      "processing_time": 0.0011556148529052734,
+      "data": {},
+      "error": "'callable_iterator' object is not subscriptable"
+    },
+    "continuity": {
+      "success": true,
+      "confidence": 0.9,
+      "processing_time": 0.0008974075317382812,
+      "data": {
+        "character_inconsistencies": [],
+        "timeline_issues": [],
+        "location_continuity": [],
+        "prop_tracking": [],
+        "dialogue_consistency": [],
+        "continuity_recommendations": [
+          "\u2705 No significant continuity issues detected"
+        ],
+        "continuity_summary": {
+          "total_issues": 0,
+          "character_count": 0,
+          "location_count": 0,
+          "severity_breakdown": {
+            "high": 0,
+            "medium": 0,
+            "low": 0
+          }
+        }
+      },
+      "error": null
+    }
+  }
+}

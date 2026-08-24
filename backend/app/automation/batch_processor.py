@@ -6,7 +6,7 @@ Manages queued analysis and progress tracking
 import asyncio
 import logging
 from typing import Dict, List, Any, Optional
-from datetime import datetime
+from datetime import datetime, timezone
 from uuid import uuid4
 
 from ..models.agent_schemas import BatchProcessRequest, AgentTask
@@ -47,7 +47,7 @@ class BatchProcessor:
             "agents_to_run": request.agents_to_run,
             "notification_webhook": request.notification_webhook,
             "auto_export": request.auto_export,
-            "created_at": datetime.utcnow(),
+            "created_at": datetime.now(timezone.utc),
             "status": "queued",
             "progress": 0,
             "scene_results": [],
@@ -71,7 +71,7 @@ class BatchProcessor:
         
         try:
             batch_job["status"] = "processing"
-            batch_job["started_at"] = datetime.utcnow()
+            batch_job["started_at"] = datetime.now(timezone.utc)
             
             logger.info(f"Starting batch processing: {batch_id}")
             
@@ -115,12 +115,23 @@ class BatchProcessor:
             
             # Mark batch as completed
             batch_job["status"] = "completed"
-            batch_job["completed_at"] = datetime.utcnow()
+            batch_job["completed_at"] = datetime.now(timezone.utc)
             batch_job["progress"] = 100
             
-            # Move to completed jobs
+            # Move to completed jobs with eviction
             self.completed_jobs[batch_id] = batch_job
-            del self.active_jobs[batch_id]
+            if batch_id in self.active_jobs:
+                del self.active_jobs[batch_id]
+            
+            # Evict old completed jobs (keep last 50)
+            if len(self.completed_jobs) > 50:
+                oldest_id = min(self.completed_jobs.keys())
+                del self.completed_jobs[oldest_id]
+            
+            # Clean processing queue
+            self.processing_queue = [
+                j for j in self.processing_queue if j["batch_id"] != batch_id
+            ]
             
             logger.info(f"Batch processing completed: {batch_id}")
             
@@ -185,7 +196,7 @@ class BatchProcessor:
                 "processing_time": (
                     batch_job["completed_at"] - batch_job["started_at"]
                 ).total_seconds() if "completed_at" in batch_job else None,
-                "timestamp": datetime.utcnow().isoformat()
+                "timestamp": datetime.now(timezone.utc).isoformat()
             }
             
             async with aiohttp.ClientSession() as session:

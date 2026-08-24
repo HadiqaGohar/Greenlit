@@ -6,7 +6,7 @@ Auto-triggers multi-agent analysis when new scripts are detected
 import asyncio
 import logging
 from typing import Dict, List, Any, Optional, Callable
-from datetime import datetime
+from datetime import datetime, timezone
 import hashlib
 import os
 from pathlib import Path
@@ -69,7 +69,7 @@ class FileWatcher:
             watch_id: Unique identifier for this watch configuration
         """
         
-        watch_id = hashlib.md5(f"{folder_path}_{datetime.utcnow()}".encode()).hexdigest()[:12]
+        watch_id = hashlib.md5(f"{folder_path}_{datetime.now(timezone.utc)}".encode()).hexdigest()[:12]
         
         watch_config = {
             "watch_id": watch_id,
@@ -77,7 +77,7 @@ class FileWatcher:
             "folder_type": folder_type,
             "auto_analyze": auto_analyze,
             "notification_webhook": notification_webhook,
-            "created_at": datetime.utcnow(),
+            "created_at": datetime.now(timezone.utc),
             "last_checked": None,
             "files_processed": 0
         }
@@ -115,7 +115,7 @@ class FileWatcher:
                 elif config["folder_type"] == "google_drive":
                     await self._check_drive_folder(watch_id, config)
                     
-                config["last_checked"] = datetime.utcnow()
+                config["last_checked"] = datetime.now(timezone.utc)
                 
             except Exception as e:
                 logger.error(f"Error checking folder {watch_id}: {str(e)}")
@@ -260,13 +260,13 @@ class FileWatcher:
         """Read content from file (local or Google Drive)"""
         
         if file_path.startswith("http"):
-            # Google Drive file - would need to download via Drive API
             return await self._download_drive_file(file_path)
         else:
-            # Local file
             try:
-                with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
-                    return f.read()
+                def _sync_read():
+                    with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                        return f.read()
+                return await asyncio.to_thread(_sync_read)
             except Exception as e:
                 logger.error(f"Failed to read file {file_path}: {str(e)}")
                 return ""
@@ -275,11 +275,13 @@ class FileWatcher:
         """Calculate MD5 hash of file for change detection"""
         
         try:
-            hash_md5 = hashlib.md5()
-            with open(file_path, "rb") as f:
-                for chunk in iter(lambda: f.read(4096), b""):
-                    hash_md5.update(chunk)
-            return hash_md5.hexdigest()
+            def _sync_hash():
+                hash_md5 = hashlib.md5()
+                with open(file_path, "rb") as f:
+                    for chunk in iter(lambda: f.read(4096), b""):
+                        hash_md5.update(chunk)
+                return hash_md5.hexdigest()
+            return await asyncio.to_thread(_sync_hash)
         except Exception as e:
             logger.error(f"Failed to calculate hash for {file_path}: {str(e)}")
             return ""
@@ -352,7 +354,7 @@ class FileWatcher:
             "risk_score": report.risk_assessment.overall_risk_score,
             "processing_time": report.processing_time,
             "watch_config": config["watch_id"],
-            "timestamp": datetime.utcnow().isoformat()
+            "timestamp": datetime.now(timezone.utc).isoformat()
         }
         
         try:

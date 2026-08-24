@@ -1,0 +1,212 @@
+{
+  "report_id": "dbb513f5-de27-4de7-abf7-09b417bf267a",
+  "timestamp": "2026-08-21T11:07:32.953376",
+  "processing_time": 3.220554,
+  "risk_assessment": {
+    "overall_risk_score": 40.0,
+    "risk_level": "medium"
+  },
+  "agent_results": {
+    "director": {
+      "success": false,
+      "confidence": 0.0,
+      "processing_time": 0.9733412265777588,
+      "data": {},
+      "error": "Gemini API error: OpenRouter API error: 400"
+    },
+    "research": {
+      "success": true,
+      "confidence": 0.6,
+      "processing_time": 3.1883060932159424,
+      "data": {
+        "claims": [
+          {
+            "id": "noun_1207dbb2",
+            "text": "Information about CIA",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about CIA. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          },
+          {
+            "id": "noun_4e8bd871",
+            "text": "Information about INT",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about INT. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          },
+          {
+            "id": "noun_2151afaf",
+            "text": "Information about SAFE",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about SAFE. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          }
+        ],
+        "claims_researched": 3,
+        "verified_claims": [],
+        "flagged_claims": [],
+        "uncertain_claims": [
+          {
+            "id": "noun_1207dbb2",
+            "text": "Information about CIA",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about CIA. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          },
+          {
+            "id": "noun_4e8bd871",
+            "text": "Information about INT",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about INT. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          },
+          {
+            "id": "noun_2151afaf",
+            "text": "Information about SAFE",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about SAFE. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          }
+        ],
+        "sources": [
+          {
+            "title": "General Reference",
+            "url": "https://www.example.com/reference",
+            "credibility": 0.7,
+            "used_for": "noun_1207dbb2"
+          },
+          {
+            "title": "Research Database",
+            "url": "https://www.example.com/database",
+            "credibility": 0.65,
+            "used_for": "noun_1207dbb2"
+          }
+        ],
+        "research_summary": {
+          "verified_count": 0,
+          "flagged_count": 0,
+          "uncertain_count": 3,
+          "overall_accuracy": 0.0
+        }
+      },
+      "error": null
+    },
+    "legal": {
+      "success": false,
+      "confidence": 0.0,
+      "processing_time": 0.0036592483520507812,
+      "data": {},
+      "error": "'callable_iterator' object is not subscriptable"
+    },
+    "continuity": {
+      "success": true,
+      "confidence": 0.9,
+      "processing_time": 0.0025839805603027344,
+      "data": {
+        "character_inconsistencies": [],
+        "timeline_issues": [],
+        "location_continuity": [],
+        "prop_tracking": [],
+        "dialogue_consistency": [],
+        "continuity_recommendations": [
+          "\u2705 No significant continuity issues detected"
+        ],
+        "continuity_summary": {
+          "total_issues": 0,
+          "character_count": 0,
+          "location_count": 0,
+          "severity_breakdown": {
+            "high": 0,
+            "medium": 0,
+            "low": 0
+          }
+        }
+      },
+      "error": null
+    }
+  }
+}

@@ -4,6 +4,7 @@ Loads environment variables and provides application configuration
 """
 
 import os
+import warnings
 from typing import List, Optional
 from pydantic_settings import BaseSettings
 
@@ -11,19 +12,15 @@ from pydantic_settings import BaseSettings
 class Settings(BaseSettings):
     """Application settings loaded from environment variables"""
     
-    # OpenRouter / Gemini Configuration
-    OPENROUTER_API_KEY: Optional[str] = None
-    GEMINI_MODEL: str = "google/gemini-flash-1.5"
-    OPENROUTER_BASE_URL: str = "https://openrouter.ai/api/v1"
-    GEMINI_API_KEY: Optional[str] = None  # Fallback for direct Gemini access
+    # Gemini Configuration (Google Cloud Gen AI SDK)
+    GEMINI_API_KEY: Optional[str] = None
+    GEMINI_MODEL: str = "gemini-2.5-flash"
+    GOOGLE_CLOUD_PROJECT: Optional[str] = None
+    GOOGLE_CLOUD_LOCATION: str = "global"
+    USE_ENTERPRISE_GEMINI: bool = False  # Set True for Agent Platform
     
     # Parallel API Configuration
     PARALLEL_API_KEY: Optional[str] = None
-    PARALLEL_API_URL: str = "https://api.parallelapi.com/v1"
-    
-    # Google Cloud Configuration
-    GOOGLE_CLOUD_PROJECT: Optional[str] = None
-    GOOGLE_APPLICATION_CREDENTIALS: Optional[str] = None
     
     # FastAPI Configuration
     DEBUG: bool = True
@@ -35,7 +32,7 @@ class Settings(BaseSettings):
     CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]
     
     # Security
-    SECRET_KEY: str = "dev-secret-key-change-in-production"
+    SECRET_KEY: str = os.environ.get("SECRET_KEY", "dev-secret-key-change-in-production")
     
     # File Watcher Configuration
     WATCH_FOLDER_ENABLED: bool = True
@@ -65,6 +62,16 @@ class Settings(BaseSettings):
 
 # Create global settings instance
 settings = Settings()
+
+# Check for default SECRET_KEY and warn
+if settings.SECRET_KEY == "dev-secret-key-change-in-production":
+    warnings.warn("⚠️ Using default SECRET_KEY - set SECRET_KEY environment variable for production", UserWarning)
+
+# Validate required API keys
+if not settings.GEMINI_API_KEY:
+    warnings.warn("⚠️ GEMINI_API_KEY not set - Gemini agents will fail", UserWarning)
+if not settings.PARALLEL_API_KEY:
+    warnings.warn("⚠️ PARALLEL_API_KEY not set - Research agent will use fallback mode", UserWarning)
 
 
 def get_settings() -> Settings:

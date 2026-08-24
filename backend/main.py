@@ -67,16 +67,15 @@ async def lifespan(app: FastAPI):
     if file_watcher:
         file_watcher.stop_watching()
     
-    # Close any async resources
-    if orchestrator:
-        # Close agent clients if they have cleanup methods
-        try:
-            if hasattr(orchestrator.director, 'gemini_client'):
-                await orchestrator.director.gemini_client.close()
-            if hasattr(orchestrator.researcher, 'parallel_client'):
-                await orchestrator.researcher.parallel_client.close()
-        except Exception as e:
-            logger.warning(f"Cleanup warning: {str(e)}")
+    # Close API clients properly
+    try:
+        from app.agent.gemini_client import close_gemini_client
+        from app.research.parallel_client import close_parallel_client
+        await close_gemini_client()
+        await close_parallel_client()
+        logger.info("✅ API clients closed")
+    except Exception as e:
+        logger.warning(f"Cleanup warning: {str(e)}")
     
     logger.info("✅ Shutdown complete")
 
@@ -105,6 +104,55 @@ app.include_router(health.router, prefix="/health", tags=["Health"])
 app.include_router(analyze.router, prefix="/api", tags=["Analysis"]) 
 app.include_router(automation.router, prefix="/automation", tags=["Automation"])
 app.include_router(webhooks.router, prefix="/webhooks", tags=["Webhooks"])
+
+# Add dashboard router
+try:
+    from app.routers import dashboard
+    app.include_router(dashboard.router, prefix="/api/dashboard", tags=["Dashboard"])
+except ImportError:
+    logger.warning("Dashboard router not available yet")
+
+# Add enhanced analysis router
+try:
+    from app.routers import enhanced_analysis
+    app.include_router(enhanced_analysis.router, prefix="/api", tags=["Enhanced Analysis"])
+except ImportError:
+    logger.warning("Enhanced analysis router not available yet")
+
+# Add collaboration router (WebSocket + REST)
+try:
+    from app.routers import collaboration
+    app.include_router(collaboration.router, prefix="/api", tags=["Collaboration"])
+except ImportError:
+    logger.warning("Collaboration router not available yet")
+
+# Add export and sharing router
+try:
+    from app.routers import export
+    app.include_router(export.router, prefix="/api", tags=["Export"])
+except ImportError:
+    logger.warning("Export router not available yet")
+
+# Add analytics router
+try:
+    from app.routers import analytics
+    app.include_router(analytics.router, prefix="/api/analytics", tags=["Analytics"])
+except ImportError:
+    logger.warning("Analytics router not available yet")
+
+# Add version control router
+try:
+    from app.routers import version_control
+    app.include_router(version_control.router, prefix="/api", tags=["Version Control"])
+except ImportError:
+    logger.warning("Version control router not available yet")
+
+# Add monitoring router
+try:
+    from app.routers import monitoring
+    app.include_router(monitoring.router, prefix="/api", tags=["Monitoring"])
+except ImportError:
+    logger.warning("Monitoring router not available yet")
 
 
 # Root endpoint

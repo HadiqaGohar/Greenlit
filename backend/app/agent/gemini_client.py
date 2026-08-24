@@ -1,15 +1,15 @@
 """
-Gemini Client - Updated to use Gemini 3.1 Flash Lite via OpenRouter
+Gemini Client - Uses official Google Gen AI SDK
 Handles AI interactions for all Gemini-powered agents
 """
 
 import asyncio
 import logging
-from typing import Dict, List, Any, Optional
-import os
-import json
+from typing import Optional
 
-import aiohttp
+from google import genai
+from google.genai import types
+
 from ..config import settings
 
 logger = logging.getLogger(__name__)
@@ -17,30 +17,30 @@ logger = logging.getLogger(__name__)
 
 class GeminiClient:
     """
-    OpenRouter-based Gemini client for multi-agent system
-    Uses Gemini 3.1 Flash Lite via OpenRouter API
+    Google Gen AI SDK-based client for multi-agent system
+    Uses Gemini models via the official google-genai package
     """
     
     def __init__(self):
-        self.api_key = settings.OPENROUTER_API_KEY
-        self.base_url = settings.OPENROUTER_BASE_URL
+        self.api_key = settings.GEMINI_API_KEY
         self.model_name = settings.GEMINI_MODEL
-        self.session = None
+        self._client = None
+        self._async_client = None
         
         if not self.api_key:
-            raise ValueError("OPENROUTER_API_KEY not found in environment variables")
+            raise ValueError("GEMINI_API_KEY not found in environment variables")
     
-    async def _get_session(self) -> aiohttp.ClientSession:
-        """Get or create aiohttp session"""
-        if self.session is None or self.session.closed:
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json",
-                "HTTP-Referer": "https://greenlit-ai.com",  # Required by OpenRouter
-                "X-Title": "Greenlit AI - Production Research"  # Optional app name
-            }
-            self.session = aiohttp.ClientSession(headers=headers)
-        return self.session
+    def _get_client(self) -> genai.Client:
+        """Get or create sync client"""
+        if self._client is None:
+            self._client = genai.Client(api_key=self.api_key)
+        return self._client
+    
+    def _get_async_client(self) -> genai.Client:
+        """Get or create async client"""
+        if self._async_client is None:
+            self._async_client = genai.Client(api_key=self.api_key)
+        return self._async_client
     
     async def generate_content(
         self, 
@@ -50,7 +50,7 @@ class GeminiClient:
         max_tokens: int = 2000
     ) -> str:
         """
-        Generate content using Gemini 3.1 Flash Lite via OpenRouter
+        Generate content using Gemini model
         
         Args:
             prompt: User prompt for the AI
@@ -63,76 +63,39 @@ class GeminiClient:
         """
         
         try:
-            session = await self._get_session()
+            client = self._get_async_client()
             
-            # Format messages for OpenRouter API
-            messages = []
+            config = types.GenerateContentConfig(
+                temperature=temperature,
+                max_output_tokens=max_tokens,
+                top_p=0.9,
+            )
             
             if system_prompt:
-                messages.append({
-                    "role": "system",
-                    "content": system_prompt
-                })
+                config.system_instruction = system_prompt
             
-            messages.append({
-                "role": "user", 
-                "content": prompt
-            })
+            response = await client.aio.models.generate_content(
+                model=self.model_name,
+                contents=prompt,
+                config=config
+            )
             
-            # OpenRouter API request payload
-            payload = {
-                "model": self.model_name,
-                "messages": messages,
-                "temperature": temperature,
-                "max_tokens": max_tokens,
-                "top_p": 0.9,
-                "frequency_penalty": 0.0,
-                "presence_penalty": 0.0
-            }
-            
-            # Make API request
-            async with session.post(
-                f"{self.base_url}/chat/completions",
-                json=payload,
-                timeout=aiohttp.ClientTimeout(total=60)
-            ) as response:
-                
-                if response.status != 200:
-                    error_text = await response.text()
-                    logger.error(f"OpenRouter API error {response.status}: {error_text}")
-                    raise Exception(f"OpenRouter API error: {response.status}")
-                
-                result = await response.json()
-                
-                # Extract content from OpenRouter response
-                if "choices" in result and len(result["choices"]) > 0:
-                    content = result["choices"][0]["message"]["content"]
-                    
-                    # Log usage statistics if available
-                    if "usage" in result:
-                        usage = result["usage"]
-                        logger.info(
-                            f"OpenRouter usage - Input: {usage.get('prompt_tokens', 0)} tokens, "
-                            f"Output: {usage.get('completion_tokens', 0)} tokens"
-                        )
-                    
-                    return content.strip()
-                else:
-                    logger.error(f"Unexpected OpenRouter response format: {result}")
-                    raise Exception("Invalid response format from OpenRouter")
-        
-        except asyncio.TimeoutError:
-            logger.error("OpenRouter API request timed out")
-            raise Exception("Gemini API request timed out")
+            if response.text:
+                logger.info(f"Gemini response generated ({len(response.text)} chars)")
+                return response.text.strip()
+            else:
+                logger.error("Gemini returned empty response")
+                raise Exception("Empty response from Gemini")
         
         except Exception as e:
             logger.error(f"Gemini content generation failed: {str(e)}")
             raise Exception(f"Gemini API error: {str(e)}")
     
     async def close(self):
-        """Close the aiohttp session"""
-        if self.session and not self.session.closed:
-            await self.session.close()
+        """Clean up client resources"""
+        # google-genai clients don't require explicit cleanup
+        self._client = None
+        self._async_client = None
 
 
 # Singleton instance for reuse across agents
@@ -146,3 +109,11 @@ async def get_gemini_client() -> GeminiClient:
         _gemini_client_instance = GeminiClient()
     
     return _gemini_client_instance
+
+
+async def close_gemini_client():
+    """Close the shared Gemini client"""
+    global _gemini_client_instance
+    if _gemini_client_instance:
+        await _gemini_client_instance.close()
+        _gemini_client_instance = None

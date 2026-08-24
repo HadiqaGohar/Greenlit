@@ -1,0 +1,243 @@
+{
+  "report_id": "2ef203fc-c31d-4cc3-81a5-089ba0dc5bc1",
+  "timestamp": "2026-08-21T16:09:24.103424",
+  "processing_time": 3.607586,
+  "risk_assessment": {
+    "overall_risk_score": 20.0,
+    "risk_level": "low"
+  },
+  "agent_results": {
+    "director": {
+      "success": false,
+      "confidence": 0.0,
+      "processing_time": 1.138521432876587,
+      "data": {},
+      "error": "Gemini API error: OpenRouter API error: 400"
+    },
+    "research": {
+      "success": true,
+      "confidence": 0.6,
+      "processing_time": 3.5744922161102295,
+      "data": {
+        "claims": [
+          {
+            "id": "noun_858615b4",
+            "text": "Information about GREAT",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about GREAT. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          },
+          {
+            "id": "noun_38f7f88f",
+            "text": "Information about EXT",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about EXT. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          },
+          {
+            "id": "noun_2dc2b39a",
+            "text": "Information about PYRAMID",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about PYRAMID. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          }
+        ],
+        "claims_researched": 3,
+        "verified_claims": [],
+        "flagged_claims": [],
+        "uncertain_claims": [
+          {
+            "id": "noun_858615b4",
+            "text": "Information about GREAT",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about GREAT. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          },
+          {
+            "id": "noun_38f7f88f",
+            "text": "Information about EXT",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about EXT. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          },
+          {
+            "id": "noun_2dc2b39a",
+            "text": "Information about PYRAMID",
+            "type": "factual",
+            "confidence": 0.6,
+            "verdict": "uncertain",
+            "sources": [
+              {
+                "title": "General Reference",
+                "url": "https://www.example.com/reference",
+                "credibility": 0.7
+              },
+              {
+                "title": "Research Database",
+                "url": "https://www.example.com/database",
+                "credibility": 0.65
+              }
+            ],
+            "research_summary": "Research completed for query: Fact check: Information about PYRAMID. This is a mock response for development purposes.",
+            "note": "Research provides mixed or unclear results"
+          }
+        ],
+        "sources": [
+          {
+            "title": "General Reference",
+            "url": "https://www.example.com/reference",
+            "credibility": 0.7,
+            "used_for": "noun_858615b4"
+          },
+          {
+            "title": "Research Database",
+            "url": "https://www.example.com/database",
+            "credibility": 0.65,
+            "used_for": "noun_858615b4"
+          }
+        ],
+        "research_summary": {
+          "verified_count": 0,
+          "flagged_count": 0,
+          "uncertain_count": 3,
+          "overall_accuracy": 0.0
+        }
+      },
+      "error": null
+    },
+    "legal": {
+      "success": true,
+      "confidence": 0.6,
+      "processing_time": 0.0045244693756103516,
+      "data": {
+        "copyright_risks": [],
+        "trademark_issues": [],
+        "clearance_required": [
+          {
+            "type": "location",
+            "item": "GREAT PYRAMID OF GIZA - DAWN",
+            "description": "Location clearance needed: GREAT PYRAMID OF GIZA - DAWN",
+            "priority": "medium",
+            "estimated_cost": "$100-1000",
+            "clearance_action": "Contact location owner/manager"
+          },
+          {
+            "type": "product_placement",
+            "item": "Product usage: holds",
+            "description": "Potential product placement: holds",
+            "priority": "low",
+            "estimated_cost": "$50-500",
+            "clearance_action": "Review for brand visibility"
+          }
+        ],
+        "privacy_concerns": [],
+        "estimated_clearance_cost": "$500-2,000",
+        "legal_recommendations": [
+          "\ud83d\udccd Secure location and product placement clearances"
+        ],
+        "risk_summary": {
+          "total_risks": 2,
+          "high_priority": 0,
+          "clearance_items": 2
+        }
+      },
+      "error": null
+    },
+    "continuity": {
+      "success": true,
+      "confidence": 0.9,
+      "processing_time": 0.0020418167114257812,
+      "data": {
+        "character_inconsistencies": [],
+        "timeline_issues": [],
+        "location_continuity": [],
+        "prop_tracking": [],
+        "dialogue_consistency": [],
+        "continuity_recommendations": [
+          "\u2705 No significant continuity issues detected"
+        ],
+        "continuity_summary": {
+          "total_issues": 0,
+          "character_count": 0,
+          "location_count": 0,
+          "severity_breakdown": {
+            "high": 0,
+            "medium": 0,
+            "low": 0
+          }
+        }
+      },
+      "error": null
+    }
+  }
+}

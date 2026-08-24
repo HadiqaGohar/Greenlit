@@ -6,7 +6,7 @@ Sends alerts via Slack, email, webhooks for high-risk production issues
 import asyncio
 import logging
 from typing import Dict, List, Any, Optional
-from datetime import datetime
+from datetime import datetime, timezone
 import aiohttp
 
 from ..config import settings
@@ -205,7 +205,7 @@ class NotificationService:
                 "recipient": request.recipient,
                 "priority": request.priority,
                 "data": request.data or {},
-                "timestamp": datetime.utcnow().isoformat(),
+                "timestamp": datetime.now(timezone.utc).isoformat(),
                 "source": "greenlit_ai"
             }
             

@@ -4,14 +4,30 @@ import { useAuth } from '@/contexts/AuthContext';
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Sun, Moon, Bell, User } from 'lucide-react';
-import { useState } from 'react';
+import { Sun, Moon, Bell, User, Settings } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { getNotifications } from '@/lib/api';
 
 export default function Navbar() {
   const { user, signOut } = useAuth();
   const { theme, setTheme } = useTheme();
   const router = useRouter();
   const [showUserMenu, setShowUserMenu] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(0);
+
+  useEffect(() => {
+    if (!user) return;
+    const fetchNotifications = async () => {
+      try {
+        const data = await getNotifications(user.uid, true);
+        setUnreadCount(data.unread_count);
+      } catch {}
+    };
+    fetchNotifications();
+    // Poll every 30 seconds
+    const interval = setInterval(fetchNotifications, 30000);
+    return () => clearInterval(interval);
+  }, [user]);
 
   const handleSignOut = async () => {
     await signOut();
@@ -30,37 +46,26 @@ export default function Navbar() {
             </span>
           </Link>
 
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center gap-6">
-            <Link 
-              href="/" 
-              className="text-sm font-medium transition-colors hover:opacity-80"
-              style={{ color: 'var(--text)' }}
-            >
-              Home
-            </Link>
-            {user && (
-              <>
-                <Link 
-                  href="/dashboard" 
-                  className="text-sm font-medium transition-colors hover:opacity-80"
-                  style={{ color: 'var(--text)' }}
-                >
-                  Dashboard
-                </Link>
-                <Link 
-                  href="/analyze" 
-                  className="text-sm font-medium transition-colors hover:opacity-80"
-                  style={{ color: 'var(--text)' }}
-                >
-                  Analyze
-                </Link>
-              </>
-            )}
-          </div>
+          {/* Center spacer - navigation moved to Sidebar */}
 
           {/* Right side - Theme toggle, notifications, user menu */}
           <div className="flex items-center gap-3">
+            {/* Keyboard shortcuts hint */}
+            <button
+              onClick={() => {
+                // Dispatch a custom event that the layout listens to
+                window.dispatchEvent(new KeyboardEvent("keydown", { key: "?" }));
+              }}
+              className="hidden sm:flex items-center gap-1 p-1.5 rounded-lg text-xs transition-colors"
+              style={{ 
+                backgroundColor: 'var(--bg)',
+                color: 'var(--text-muted, var(--text))'
+              }}
+              title="Keyboard shortcuts (?)"
+            >
+              <kbd className="rounded border border-gray-300 px-1 py-0.5 text-[10px] font-mono dark:border-gray-600">?</kbd>
+            </button>
+
             {/* Theme Toggle */}
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -76,14 +81,33 @@ export default function Navbar() {
             {user && (
               <>
                 {/* Notifications */}
-                <button className="p-2 rounded-lg transition-colors relative"
-                        style={{ 
-                          backgroundColor: 'var(--bg)',
-                          color: 'var(--text)'
-                        }}>
+                <Link
+                  href="/settings"
+                  className="p-2 rounded-lg transition-colors relative"
+                  style={{ 
+                    backgroundColor: 'var(--bg)',
+                    color: 'var(--text)'
+                  }}
+                >
                   <Bell size={16} />
-                  {/* Notification badge - will be implemented later */}
-                </button>
+                  {unreadCount > 0 && (
+                    <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[9px] font-bold text-white">
+                      {unreadCount > 9 ? "9+" : unreadCount}
+                    </span>
+                  )}
+                </Link>
+
+                {/* Settings */}
+                <Link
+                  href="/settings"
+                  className="p-2 rounded-lg transition-colors"
+                  style={{ 
+                    backgroundColor: 'var(--bg)',
+                    color: 'var(--text)'
+                  }}
+                >
+                  <Settings size={16} />
+                </Link>
 
                 {/* User Menu */}
                 <div className="relative">

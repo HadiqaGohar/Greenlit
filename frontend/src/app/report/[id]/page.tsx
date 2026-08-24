@@ -6,10 +6,21 @@ import { useEffect, useState } from "react";
 import { ClaimHighlight } from "@/components/ClaimHighlight";
 import { ReportSidebar } from "@/components/ReportSidebar";
 import { LoadingReel } from "@/components/LoadingReel";
+import { RiskGauge } from "@/components/report/RiskGauge";
+import { AgentResultsTabs } from "@/components/report/AgentResultsTabs";
+import { ExportModal } from "@/components/report/ExportModal";
+import { AgentReplay } from "@/components/report/AgentReplay";
+import { ReadinessRadar } from "@/components/report/ReadinessRadar";
+import { SuggestionCard } from "@/components/report/SuggestionCard";
+import { AgentFlowDiagram } from "@/components/report/AgentFlowDiagram";
+import { SceneBreakdownDashboard } from "@/components/report/SceneBreakdownDashboard";
+import { CharacterBible } from "@/components/report/CharacterBible";
+import { LegalClearanceChecklist } from "@/components/report/LegalClearanceChecklist";
 import { getReport, ApiError } from "@/lib/api";
-import type { AnalyzeResponse, Verdict } from "@/lib/types";
+import type { AnalyzeResponse, Verdict, AgentType } from "@/lib/types";
 
 type FilterVerdict = Verdict | "all";
+type ExtraTab = "replay" | "readiness" | "suggestions" | "flow" | "scenes" | "characters" | "legal-checklist";
 
 interface ReportPageProps {
   params: { id: string };
@@ -22,13 +33,13 @@ export default function ReportPage({ params }: ReportPageProps) {
   const [selectedClaimId, setSelectedClaimId] = useState<string | null>(null);
   const [filter, setFilter] = useState<FilterVerdict>("all");
   const [scriptText, setScriptText] = useState<string>("");
+  const [showExportModal, setShowExportModal] = useState(false);
+  const [activeExtra, setActiveExtra] = useState<ExtraTab | null>(null);
 
   useEffect(() => {
     getReport(params.id)
       .then((reportData) => {
         setReport(reportData);
-        // For now, we'll generate mock script text since the backend doesn't return it yet
-        // In a real implementation, the backend would return the original script text
         setScriptText(generateMockScript());
       })
       .catch((err) => {
@@ -65,6 +76,17 @@ export default function ReportPage({ params }: ReportPageProps) {
   const flagged = report.claims.filter((c) => c.verdict === "flagged").length;
   const uncertain = report.claims.filter((c) => c.verdict === "uncertain").length;
 
+  const riskAssessment = report.risk_assessment;
+  const agentResults = report.agent_results;
+  const hasMultiAgentData = riskAssessment && agentResults;
+  const hasTimeline = report.agent_timeline && report.agent_timeline.length > 0;
+  const hasReadiness = report.readiness_scores && report.readiness_scores.overall > 0;
+  const hasSuggestions = report.suggestions && report.suggestions.length > 0;
+  const hasFlow = report.agent_flow && report.agent_flow.length > 0;
+  const hasScenes = (report as any).scenes && (report as any).scenes.length > 0;
+  const hasCharacters = (report as any).characters && (report as any).characters.length > 0;
+  const hasLegalIssues = report.claims.some((c) => c.type === "licensing");
+
   return (
     <div className="mx-auto max-w-7xl px-6 py-8">
       {/* Header */}
@@ -81,6 +103,9 @@ export default function ReportPage({ params }: ReportPageProps) {
         <p className="mt-2 text-sm text-parchment/50">
           Report {report.report_id.slice(0, 8)}… · {report.claims.length} claim
           {report.claims.length !== 1 ? "s" : ""} found
+          {report.processing_time && (
+            <> · Processed in {report.processing_time.toFixed(1)}s</>
+          )}
         </p>
 
         {report.claims.length > 0 && (
@@ -90,8 +115,200 @@ export default function ReportPage({ params }: ReportPageProps) {
             <span className="text-amber">{uncertain} uncertain</span>
           </div>
         )}
+
+        {/* Export & Share buttons */}
+        <div className="mt-4 flex gap-3">
+          <button
+            onClick={() => setShowExportModal(true)}
+            className="inline-flex items-center gap-2 rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700"
+          >
+            <span>📥</span> Export Report
+          </button>
+        </div>
       </div>
 
+      {/* New feature tabs */}
+      {(hasTimeline || hasReadiness || hasSuggestions || hasFlow) && (
+        <div className="mb-6">
+          <div className="flex flex-wrap gap-2">
+            {hasReadiness && (
+              <button
+                onClick={() => setActiveExtra(activeExtra === "readiness" ? null : "readiness")}
+                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                  activeExtra === "readiness"
+                    ? "bg-blue-600 text-white"
+                    : "border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+                }`}
+              >
+                📊 Readiness Score
+              </button>
+            )}
+            {hasTimeline && (
+              <button
+                onClick={() => setActiveExtra(activeExtra === "replay" ? null : "replay")}
+                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                  activeExtra === "replay"
+                    ? "bg-blue-600 text-white"
+                    : "border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+                }`}
+              >
+                ▶ Agent Replay
+              </button>
+            )}
+            {hasFlow && (
+              <button
+                onClick={() => setActiveExtra(activeExtra === "flow" ? null : "flow")}
+                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                  activeExtra === "flow"
+                    ? "bg-blue-600 text-white"
+                    : "border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+                }`}
+              >
+                🔗 Agent Pipeline
+              </button>
+            )}
+            {hasSuggestions && (
+              <button
+                onClick={() => setActiveExtra(activeExtra === "suggestions" ? null : "suggestions")}
+                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                  activeExtra === "suggestions"
+                    ? "bg-blue-600 text-white"
+                    : "border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+                }`}
+              >
+                💡 Suggestions ({report.suggestions!.length})
+              </button>
+            )}
+            {hasScenes && (
+              <button
+                onClick={() => setActiveExtra(activeExtra === "scenes" ? null : "scenes")}
+                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                  activeExtra === "scenes"
+                    ? "bg-blue-600 text-white"
+                    : "border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+                }`}
+              >
+                🎬 Scenes
+              </button>
+            )}
+            {hasCharacters && (
+              <button
+                onClick={() => setActiveExtra(activeExtra === "characters" ? null : "characters")}
+                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                  activeExtra === "characters"
+                    ? "bg-blue-600 text-white"
+                    : "border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+                }`}
+              >
+                👥 Characters
+              </button>
+            )}
+            {hasLegalIssues && (
+              <button
+                onClick={() => setActiveExtra(activeExtra === "legal-checklist" ? null : "legal-checklist")}
+                className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                  activeExtra === "legal-checklist"
+                    ? "bg-blue-600 text-white"
+                    : "border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+                }`}
+              >
+                📋 Legal Checklist
+              </button>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Extra feature panels */}
+      {activeExtra === "readiness" && hasReadiness && (
+        <div className="mb-8">
+          <ReadinessRadar scores={report.readiness_scores!} />
+        </div>
+      )}
+
+      {activeExtra === "replay" && hasTimeline && (
+        <div className="mb-8">
+          <AgentReplay
+            timeline={report.agent_timeline!}
+            totalProcessingTime={report.processing_time ?? 0}
+          />
+        </div>
+      )}
+
+      {activeExtra === "flow" && hasFlow && (
+        <div className="mb-8">
+          <AgentFlowDiagram flow={report.agent_flow!} />
+        </div>
+      )}
+
+      {activeExtra === "suggestions" && hasSuggestions && (
+        <div className="mb-8">
+          <SuggestionCard suggestions={report.suggestions!} />
+        </div>
+      )}
+
+      {activeExtra === "scenes" && hasScenes && (
+        <div className="mb-8">
+          <SceneBreakdownDashboard scenes={(report as any).scenes} />
+        </div>
+      )}
+
+      {activeExtra === "characters" && hasCharacters && (
+        <div className="mb-8">
+          <CharacterBible characters={(report as any).characters} />
+        </div>
+      )}
+
+      {activeExtra === "legal-checklist" && hasLegalIssues && (
+        <div className="mb-8">
+          <LegalClearanceChecklist
+            items={report.claims
+              .filter((c) => c.type === "licensing")
+              .map((c, i) => ({
+                id: c.id || `legal-${i}`,
+                type: "copyright" as const,
+                description: c.text,
+                severity: c.confidence > 0.7 ? "high" : "medium",
+                status: "pending" as const,
+                estimated_cost: "$500-2,000",
+                action_required: c.note || "Review and obtain clearance",
+              }))}
+          />
+        </div>
+      )}
+
+      {/* Multi-agent results section */}
+      {hasMultiAgentData && (
+        <div className="mb-8">
+          <div className="mb-4 flex flex-col gap-6 sm:flex-row sm:items-start">
+            {/* Risk Gauge */}
+            <div className="flex-shrink-0">
+              <RiskGauge
+                score={riskAssessment.overall_risk_score}
+                size="md"
+                showDetails
+                riskFactors={riskAssessment.risk_factors}
+              />
+            </div>
+
+            {/* Agent Results Tabs */}
+            <div className="flex-1 min-w-0">
+              <AgentResultsTabs
+                agentResults={agentResults}
+                riskScore={riskAssessment.overall_risk_score}
+                riskLevel={riskAssessment.risk_level}
+                riskFactors={riskAssessment.risk_factors}
+                recommendedActions={riskAssessment.recommended_actions}
+                processingTime={report.processing_time ?? 0}
+                claimsCount={report.claims.length}
+                claims={report.claims}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Script + Claims view */}
       {report.claims.length === 0 ? (
         <p className="text-parchment/60">
           No factual claims were found in this script.
@@ -130,12 +347,18 @@ export default function ReportPage({ params }: ReportPageProps) {
           </div>
         </div>
       )}
+
+      {/* Export Modal */}
+      <ExportModal
+        scriptId={report.report_id}
+        userId="default-user"
+        isOpen={showExportModal}
+        onClose={() => setShowExportModal(false)}
+      />
     </div>
   );
 }
 
-// Temporary function to generate mock script text that contains the claims
-// This will be replaced when the backend returns the original script text
 function generateMockScript(): string {
   const scriptParts = [
     "FADE IN:\n\nEXT. TIMES SQUARE - NIGHT\n\nThe bustling heart of New York City pulses with neon lights and endless crowds. Steam rises from manholes as yellow taxis weave through traffic.\n\n",

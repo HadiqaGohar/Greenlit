@@ -4,9 +4,13 @@ Defines data structures for agent tasks, results, and coordination
 """
 
 from typing import Dict, List, Any, Optional, Literal
-from datetime import datetime
+from datetime import datetime, timezone
 from pydantic import BaseModel, Field
 from uuid import uuid4
+
+
+def _utcnow():
+    return datetime.now(timezone.utc)
 
 
 class AgentTask(BaseModel):
@@ -15,7 +19,7 @@ class AgentTask(BaseModel):
     agent_type: Literal["director", "research", "legal", "continuity"]
     task_data: Dict[str, Any]
     priority: Literal["low", "normal", "high"] = "normal"
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=_utcnow)
 
 
 class AgentResult(BaseModel):
@@ -24,11 +28,58 @@ class AgentResult(BaseModel):
     task_id: str
     success: bool = True
     confidence_score: float = Field(ge=0.0, le=1.0)
-    processing_time: float  # seconds
+    processing_time: float
     data: Optional[Dict[str, Any]] = None
     error_message: Optional[str] = None
     metadata: Dict[str, Any] = Field(default_factory=dict)
-    completed_at: datetime = Field(default_factory=datetime.utcnow)
+    completed_at: datetime = Field(default_factory=_utcnow)
+
+
+class AgentTimelineStep(BaseModel):
+    """Single step in the agent replay timeline"""
+    agent: str
+    status: Literal["queued", "running", "complete", "error"] = "queued"
+    start_time: Optional[datetime] = None
+    end_time: Optional[datetime] = None
+    duration_seconds: Optional[float] = None
+    summary: str = ""
+    claims_count: Optional[int] = None
+    issues_found: Optional[int] = None
+    confidence: Optional[float] = None
+    phase: Literal["sequential", "parallel"] = "sequential"
+
+
+class ReadinessScore(BaseModel):
+    """Production readiness scores across 5 dimensions"""
+    legal_clearance: float = Field(ge=0.0, le=100.0, default=0.0)
+    historical_accuracy: float = Field(ge=0.0, le=100.0, default=0.0)
+    continuity: float = Field(ge=0.0, le=100.0, default=0.0)
+    budget_feasibility: float = Field(ge=0.0, le=100.0, default=0.0)
+    overall: float = Field(ge=0.0, le=100.0, default=0.0)
+    grade: str = "F"
+
+
+class AgentFlowStep(BaseModel):
+    """Data flowing between agents for the flow diagram"""
+    agent: str
+    claims_in: int = 0
+    claims_out: int = 0
+    verified: int = 0
+    flagged: int = 0
+    uncertain: int = 0
+    issues_high: int = 0
+    issues_medium: int = 0
+    issues_low: int = 0
+
+
+class Suggestion(BaseModel):
+    """AI-generated fix suggestion for a flagged issue"""
+    issue_id: str
+    issue_type: str
+    severity: str
+    original_text: str
+    suggested_text: str
+    rationale: str
 
 
 class ProductionIssue(BaseModel):
@@ -38,7 +89,7 @@ class ProductionIssue(BaseModel):
     description: str
     location_in_script: Optional[str] = None
     suggested_action: Optional[str] = None
-    estimated_cost_impact: Optional[str] = None  # "low", "medium", "high"
+    estimated_cost_impact: Optional[str] = None
     urgency: Literal["immediate", "before_production", "nice_to_fix"] = "before_production"
 
 
@@ -71,16 +122,24 @@ class OrchestratorReport(BaseModel):
     risk_assessment: RiskAssessment
     processing_time: float
     automation_actions: Dict[str, Any]
-    
-    # Derived properties for easy access
+    agent_timeline: List[AgentTimelineStep] = Field(default_factory=list)
+    readiness_scores: ReadinessScore = Field(default_factory=ReadinessScore)
+    agent_flow: List[AgentFlowStep] = Field(default_factory=list)
+    suggestions: List[Suggestion] = Field(default_factory=list)
+    scenes: List[Dict[str, Any]] = Field(default_factory=list)
+    characters: List[Dict[str, Any]] = Field(default_factory=list)
+    scene_statistics: Dict[str, Any] = Field(default_factory=dict)
+    character_statistics: Dict[str, Any] = Field(default_factory=dict)
+    continuity_issues: List[Dict[str, Any]] = Field(default_factory=list)
+
     @property
     def successful_agents(self) -> List[str]:
         return [name for name, result in self.agent_results.items() if result.success]
-    
+
     @property
     def failed_agents(self) -> List[str]:
         return [name for name, result in self.agent_results.items() if not result.success]
-    
+
     @property
     def average_confidence(self) -> float:
         successful = [r for r in self.agent_results.values() if r.success]
@@ -136,7 +195,7 @@ class FileWatcherEvent(BaseModel):
     event_type: Literal["created", "modified", "deleted"]
     file_path: str
     file_name: str
-    timestamp: datetime = Field(default_factory=datetime.utcnow)
+    timestamp: datetime = Field(default_factory=_utcnow)
     file_size: Optional[int] = None
     trigger_analysis: bool = True
 

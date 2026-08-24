@@ -5,12 +5,14 @@ Thank you for your interest in contributing to Greenlit AI! We welcome contribut
 ## 🎯 How to Contribute
 
 ### 🐛 Bug Reports
+
 - Use the GitHub issue tracker
 - Describe the bug clearly with steps to reproduce
 - Include screenshots or screen recordings when helpful
 - Mention your browser/OS version
 
-### 💡 Feature Requests  
+### 💡 Feature Requests
+
 - Check existing issues first to avoid duplicates
 - Describe the feature and its use case
 - Explain how it benefits film/TV production workflows
@@ -19,11 +21,13 @@ Thank you for your interest in contributing to Greenlit AI! We welcome contribut
 ### 🔧 Code Contributions
 
 #### Setup Development Environment
+
 1. Fork the repository
 2. Clone your fork: `git clone https://github.com/yourusername/greenlit-ai.git`
 3. Create a branch: `git checkout -b feature/your-feature-name`
 
 #### Frontend Development
+
 ```bash
 cd frontend
 npm install
@@ -31,6 +35,7 @@ npm run dev
 ```
 
 #### Backend Development
+
 ```bash
 cd backend
 pip install -r requirements.txt
@@ -40,6 +45,7 @@ uvicorn main:app --reload
 ## 📏 Code Standards
 
 ### Frontend (Next.js/TypeScript)
+
 - Use TypeScript for type safety
 - Follow React best practices and hooks patterns
 - Maintain the cinematic design theme
@@ -47,6 +53,7 @@ uvicorn main:app --reload
 - Add proper error handling and loading states
 
 ### Backend (FastAPI/Python)
+
 - Follow PEP 8 style guidelines
 - Use type hints with Pydantic models
 - Add proper error handling and validation
@@ -54,10 +61,11 @@ uvicorn main:app --reload
 - Write tests for new endpoints
 
 ### Design Guidelines
+
 - Maintain the "script supervisor's desk" aesthetic
 - Use the established color palette:
   - Charcoal: `#0B0B0D` (backgrounds)
-  - Amber: `#D4A017` (accents)  
+  - Amber: `#D4A017` (accents)
   - Parchment: `#F5F1E8` (text)
   - Verified: `#4C9A6E` (success)
   - Flagged: `#C0392B` (errors)
@@ -67,12 +75,14 @@ uvicorn main:app --reload
 ## 🧪 Testing
 
 ### Frontend Testing
+
 ```bash
 npm run test
 npm run lint
 ```
 
 ### Backend Testing
+
 ```bash
 pytest
 black --check .
@@ -80,6 +90,7 @@ flake8
 ```
 
 ### Manual Testing
+
 - Test the complete workflow: script input → analysis → report
 - Verify mobile responsiveness
 - Check keyboard navigation and screen reader compatibility
@@ -88,6 +99,7 @@ flake8
 ## 📝 Commit Guidelines
 
 ### Commit Message Format
+
 ```
 type(scope): description
 
@@ -96,6 +108,7 @@ type(scope): description
 ```
 
 ### Types
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation changes
@@ -105,6 +118,7 @@ type(scope): description
 - `chore`: Maintenance tasks
 
 ### Examples
+
 ```
 feat(frontend): add PDF export functionality
 fix(backend): resolve Parallel API timeout issues
@@ -115,6 +129,7 @@ style(components): improve film grain texture effect
 ## 🎬 Film Industry Context
 
 When contributing, consider:
+
 - **Production Workflow**: How does this fit into pre-production processes?
 - **Industry Standards**: Follow film/TV production terminology and practices
 - **User Experience**: Production coordinators and researchers are the primary users
@@ -124,40 +139,47 @@ When contributing, consider:
 ## 🚀 Pull Request Process
 
 1. **Update Documentation**: Include relevant docs updates
-2. **Add Tests**: Ensure new features have adequate test coverage  
+2. **Add Tests**: Ensure new features have adequate test coverage
 3. **Check Design**: Maintain the cinematic theme and accessibility
 4. **Verify Functionality**: Test the full user workflow
 5. **Clean History**: Use clear, descriptive commit messages
 
 ### Pull Request Template
+
 ```markdown
 ## Description
+
 Brief description of changes
 
 ## Type of Change
+
 - [ ] Bug fix
-- [ ] New feature  
+- [ ] New feature
 - [ ] Breaking change
 - [ ] Documentation update
 
 ## Testing
+
 - [ ] Tested locally
 - [ ] Added/updated tests
 - [ ] Verified mobile responsiveness
 - [ ] Checked accessibility
 
 ## Film Industry Impact
+
 How does this improve production workflows?
 
 ## Screenshots/Demo
+
 Include visual evidence of changes
 ```
 
 ## 🏆 Recognition
 
 Contributors will be:
+
 - Listed in the README acknowledgments
-- Mentioned in release notes for significant contributions  
+- Mentioned in release notes for significant contributions
 - Invited to provide feedback on future roadmap decisions
 
 ## 📞 Getting Help
@@ -178,9 +200,10 @@ Contributors will be:
 ## 🎭 Film Industry Terminology
 
 When contributing, use proper industry terms:
+
 - **Script Supervisor**: Person who ensures continuity and accuracy
 - **Production Notes**: Detailed annotations and research findings
-- **Claims**: Factual statements requiring verification  
+- **Claims**: Factual statements requiring verification
 - **Continuity**: Consistency across scenes and shots
 - **Clearance**: Legal permission to use copyrighted material
 
@@ -188,4 +211,4 @@ When contributing, use proper industry terms:
 
 **Ready to contribute? We're excited to see what you'll build! 🎬✨**
 
-*Remember: Every great film starts with attention to detail in pre-production.*
+_Remember: Every great film starts with attention to detail in pre-production._
