@@ -36,7 +36,7 @@ interface NormalizedScene extends Scene {
 }
 
 function normalizeScenes(input: Scene[]): NormalizedScene[] {
-  return (input ?? []).map((s: any) => {
+  return (input ?? []).map((s: Scene) => {
     const risk_known = typeof s?.risk_score === "number";
     return {
       scene_number: s?.scene_number ?? 0,
