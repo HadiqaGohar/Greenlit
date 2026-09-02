@@ -7,13 +7,37 @@ interface ResearchPanelProps {
   claims: Claim[];
 }
 
+interface SourceRef {
+  title?: string;
+  name?: string;
+  url?: string;
+}
+
+interface ResearchData {
+  verified_count?: number;
+  flagged_count?: number;
+  uncertain_count?: number;
+  sources_found?: number;
+  research_summary?: string;
+  sources?: SourceRef[];
+}
+
 export function ResearchPanel({ agentResult, claims }: ResearchPanelProps) {
-  const data = agentResult?.data ?? {};
+  const data = (agentResult?.data ?? {}) as ResearchData;
+
+  const aggregatedFromClaims: SourceRef[] = claims
+    .flatMap((c) => c.sources || [])
+    .filter((s, idx, arr) => s.url && arr.findIndex((x) => x.url === s.url) === idx);
+
+  const allSources: SourceRef[] =
+    data.sources && Array.isArray(data.sources) && data.sources.length > 0
+      ? data.sources
+      : aggregatedFromClaims;
 
   const verifiedCount = data.verified_count ?? claims.filter((c) => c.verdict === "verified").length;
   const flaggedCount = data.flagged_count ?? claims.filter((c) => c.verdict === "flagged").length;
   const uncertainCount = data.uncertain_count ?? claims.filter((c) => c.verdict === "uncertain").length;
-  const sourcesFound = data.sources_found ?? 0;
+  const sourcesFound = data.sources_found ?? allSources.length;
 
   // Group claims by type
   const claimsByType = claims.reduce(
@@ -26,6 +50,17 @@ export function ResearchPanel({ agentResult, claims }: ResearchPanelProps) {
 
   return (
     <div className="space-y-6">
+      {/* Parallel Search Badge Banner */}
+      <div className="flex items-center justify-between rounded-lg border border-blue-500/30 bg-blue-500/10 px-4 py-3 text-xs text-blue-300">
+        <div className="flex items-center gap-2">
+          <span className="font-semibold text-blue-400">⚡ Live Web Grounding:</span>
+          <span>Verified via Parallel Search API & Google Cloud Agent Builder</span>
+        </div>
+        <span className="rounded bg-blue-500/20 px-2 py-0.5 font-mono text-[10px] text-blue-200">
+          Parallel SDK
+        </span>
+      </div>
+
       {/* Summary stats */}
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
         <StatBox label="Verified" value={verifiedCount} color="green" icon="✅" />
@@ -102,23 +137,25 @@ export function ResearchPanel({ agentResult, claims }: ResearchPanelProps) {
       )}
 
       {/* Sources */}
-      {data.sources && Array.isArray(data.sources) && data.sources.length > 0 && (
+      {allSources.length > 0 && (
         <div>
           <h3 className="mb-3 text-sm font-semibold text-gray-900 dark:text-gray-100">
-            Sources Used
+            Sources & Web Evidence
           </h3>
-          <ul className="space-y-1">
-            {data.sources.slice(0, 10).map((source: any, i: number) => (
-              <li key={i} className="text-xs text-gray-600 dark:text-gray-400">
-                {source.title || source.name || `Source ${i + 1}`}
+          <ul className="space-y-1.5">
+            {allSources.slice(0, 10).map((source: SourceRef, i: number) => (
+              <li key={i} className="flex items-center justify-between rounded bg-gray-50 px-3 py-1.5 text-xs dark:bg-gray-800/60">
+                <span className="text-gray-700 dark:text-gray-300">
+                  {source.title || source.name || `Source ${i + 1}`}
+                </span>
                 {source.url && (
                   <a
                     href={source.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="ml-2 text-blue-500 hover:underline"
+                    className="text-blue-500 hover:text-blue-400 underline font-mono text-[11px]"
                   >
-                    (link)
+                    Visit Source →
                   </a>
                 )}
               </li>

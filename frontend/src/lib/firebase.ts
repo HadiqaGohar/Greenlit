@@ -17,8 +17,11 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase only if not in demo mode
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let app: any = null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let auth: any = null;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 let db: any = null;
 
 if (!isDemoMode) {

@@ -16,7 +16,7 @@ interface UseWebSocketOptions {
 
 interface UseWebSocketReturn {
   isConnected: boolean;
-  sendMessage: (message: Record<string, any>) => void;
+  sendMessage: (message: Record<string, unknown>) => void;
   lastMessage: WSMessage | null;
 }
 
@@ -84,7 +84,7 @@ export function useWebSocket({
     };
   }, [connect]);
 
-  const sendMessage = useCallback((message: Record<string, any>) => {
+  const sendMessage = useCallback((message: Record<string, unknown>) => {
     if (wsRef.current?.readyState === WebSocket.OPEN) {
       wsRef.current.send(JSON.stringify(message));
     }

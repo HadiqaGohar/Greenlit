@@ -17,13 +17,6 @@ const agentLabels: Record<string, string> = {
   continuity: "Continuity Agent",
 };
 
-const agentColors: Record<string, string> = {
-  director: "from-blue-500 to-indigo-600",
-  research: "from-emerald-500 to-teal-600",
-  legal: "from-amber-500 to-orange-600",
-  continuity: "from-purple-500 to-violet-600",
-};
-
 interface AgentReplayProps {
   timeline: AgentTimelineStep[];
   totalProcessingTime: number;

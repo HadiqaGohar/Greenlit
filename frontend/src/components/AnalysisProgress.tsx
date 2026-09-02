@@ -41,6 +41,7 @@ export function AnalysisProgress({
       });
     }, 50);
     return () => clearInterval(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [progress, isAnalyzing]);
 
   if (!isAnalyzing && progress === 0) return null;

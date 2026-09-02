@@ -1,0 +1,639 @@
+{
+  "report_id": "b3a546eb-016f-4ca2-acd5-ccac0f872c31",
+  "timestamp": "2026-08-28T15:40:58.326293+00:00",
+  "processing_time": 69.131215,
+  "script_text": "INT. LUXURY APARTMENT - DAY\n\nRAY (40s, slick, overconfident) paces in front of a floor-to-\nceiling window, iPhone pressed to his ear. A McLaren 720S sits\nparked visibly on the street below.\n\n                    RAY\n          Tell Nike we want the deal by Friday.\n          If they walk, Adidas is already circling.\n\nHe hangs up, pours a drink, and grabs the remote. The TV plays\na clip that looks unmistakably like a scene from Breaking Bad --\na man in a yellow hazmat suit cooking in an RV.\n\n                    RAY (CONT'D)\n          (to himself)\n          Every empire starts with one good batch.\n\nHis assistant, DENISE (30s), enters holding a Starbucks cup with\nthe logo clearly visible.\n\n                    DENISE\n          Ray, legal called. They said the script\n          references \"the Batman voice\" one too many\n          times. Might want to cut that.\n\n                    RAY\n          Fine. Change it to \"some superhero voice.\"\n          Nobody'll notice.\n\nDenise sets a folder on the table. On top: a photo of a man who\nlooks exactly like Elon Musk, unlabeled, mid-speech.\n\n                    DENISE\n          Also -- the soundtrack list still has three\n          unlicensed Beatles songs on it.\n\n                    RAY\n          We'll deal with it in post.\n\nFADE OUT.",
+  "risk_assessment": {
+    "overall_risk_score": 60.0,
+    "risk_level": "medium"
+  },
+  "agent_results": {
+    "director": {
+      "success": true,
+      "confidence": 0.85,
+      "processing_time": 9.062246799468994,
+      "data": {
+        "claims": [
+          {
+            "id": "claim_001",
+            "text": "A McLaren 720S sits parked visibly on the street below.",
+            "type": "brand",
+            "confidence": 0.8,
+            "context": "McLaren 720S is a specific, real car model. Its appearance and presence need to be accurately depicted for production.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, first paragraph"
+          },
+          {
+            "id": "claim_002",
+            "text": "Tell Nike we want the deal by Friday.",
+            "type": "brand",
+            "confidence": 0.8,
+            "context": "Nike is a real, well-known brand. Its mention might require clearance or careful depiction, especially if implying a specific business deal.",
+            "location_in_script": "Ray's first line"
+          },
+          {
+            "id": "claim_003",
+            "text": "If they walk, Adidas is already circling.",
+            "type": "brand",
+            "confidence": 0.8,
+            "context": "Adidas is a real, well-known brand. Similar to Nike, its mention might require clearance or careful depiction.",
+            "location_in_script": "Ray's first line"
+          },
+          {
+            "id": "claim_004",
+            "text": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+            "type": "cultural",
+            "confidence": 0.8,
+            "context": "Breaking Bad is a real, copyrighted television series. Using a clip from it would require licensing and verification of the specific scene described.",
+            "location_in_script": "After Ray hangs up the phone"
+          },
+          {
+            "id": "claim_005",
+            "text": "His assistant, DENISE (30s), enters holding a Starbucks cup with the logo clearly visible.",
+            "type": "brand",
+            "confidence": 0.8,
+            "context": "Starbucks is a real, well-known brand. The clear visibility of its logo implies product placement or requires clearance for its depiction.",
+            "location_in_script": "Before Denise's first line"
+          },
+          {
+            "id": "claim_006",
+            "text": "Ray, legal called. They said the script references \"the Batman voice\" one too many times.",
+            "type": "cultural",
+            "confidence": 0.8,
+            "context": "Batman is a trademarked character owned by DC Comics/Warner Bros. Referencing 'the Batman voice' could lead to intellectual property issues, as already noted by legal.",
+            "location_in_script": "Denise's first line"
+          },
+          {
+            "id": "claim_007",
+            "text": "On top: a photo of a man who looks exactly like Elon Musk, unlabeled, mid-speech.",
+            "type": "biographical",
+            "confidence": 0.8,
+            "context": "Elon Musk is a real, living public figure. Using his likeness, even in a photo, requires rights clearance and verification of his public image.",
+            "location_in_script": "After Denise sets the folder on the table"
+          },
+          {
+            "id": "claim_008",
+            "text": "Also -- the soundtrack list still has three unlicensed Beatles songs on it.",
+            "type": "cultural",
+            "confidence": 0.8,
+            "context": "The Beatles are a real, famous musical group. Their songs are copyrighted and require licensing for use in a film's soundtrack.",
+            "location_in_script": "Denise's second line"
+          }
+        ],
+        "claims_extracted": 8,
+        "claims_by_type": {
+          "brand": [
+            {
+              "id": "claim_001",
+              "text": "A McLaren 720S sits parked visibly on the street below.",
+              "type": "brand",
+              "confidence": 0.8,
+              "context": "McLaren 720S is a specific, real car model. Its appearance and presence need to be accurately depicted for production.",
+              "location_in_script": "INT. LUXURY APARTMENT - DAY, first paragraph"
+            },
+            {
+              "id": "claim_002",
+              "text": "Tell Nike we want the deal by Friday.",
+              "type": "brand",
+              "confidence": 0.8,
+              "context": "Nike is a real, well-known brand. Its mention might require clearance or careful depiction, especially if implying a specific business deal.",
+              "location_in_script": "Ray's first line"
+            },
+            {
+              "id": "claim_003",
+              "text": "If they walk, Adidas is already circling.",
+              "type": "brand",
+              "confidence": 0.8,
+              "context": "Adidas is a real, well-known brand. Similar to Nike, its mention might require clearance or careful depiction.",
+              "location_in_script": "Ray's first line"
+            },
+            {
+              "id": "claim_005",
+              "text": "His assistant, DENISE (30s), enters holding a Starbucks cup with the logo clearly visible.",
+              "type": "brand",
+              "confidence": 0.8,
+              "context": "Starbucks is a real, well-known brand. The clear visibility of its logo implies product placement or requires clearance for its depiction.",
+              "location_in_script": "Before Denise's first line"
+            }
+          ],
+          "cultural": [
+            {
+              "id": "claim_004",
+              "text": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+              "type": "cultural",
+              "confidence": 0.8,
+              "context": "Breaking Bad is a real, copyrighted television series. Using a clip from it would require licensing and verification of the specific scene described.",
+              "location_in_script": "After Ray hangs up the phone"
+            },
+            {
+              "id": "claim_006",
+              "text": "Ray, legal called. They said the script references \"the Batman voice\" one too many times.",
+              "type": "cultural",
+              "confidence": 0.8,
+              "context": "Batman is a trademarked character owned by DC Comics/Warner Bros. Referencing 'the Batman voice' could lead to intellectual property issues, as already noted by legal.",
+              "location_in_script": "Denise's first line"
+            },
+            {
+              "id": "claim_008",
+              "text": "Also -- the soundtrack list still has three unlicensed Beatles songs on it.",
+              "type": "cultural",
+              "confidence": 0.8,
+              "context": "The Beatles are a real, famous musical group. Their songs are copyrighted and require licensing for use in a film's soundtrack.",
+              "location_in_script": "Denise's second line"
+            }
+          ],
+          "biographical": [
+            {
+              "id": "claim_007",
+              "text": "On top: a photo of a man who looks exactly like Elon Musk, unlabeled, mid-speech.",
+              "type": "biographical",
+              "confidence": 0.8,
+              "context": "Elon Musk is a real, living public figure. Using his likeness, even in a photo, requires rights clearance and verification of his public image.",
+              "location_in_script": "After Denise sets the folder on the table"
+            }
+          ]
+        },
+        "script_sections": [
+          {
+            "type": "scene_header",
+            "start_line": 0,
+            "line_count": 41,
+            "content_summary": "INT. LUXURY APARTMENT - DAY"
+          }
+        ],
+        "extraction_method": "gemini_ai",
+        "agent_version": "1.0"
+      },
+      "error": null
+    },
+    "research": {
+      "success": true,
+      "confidence": 0.7000000000000001,
+      "processing_time": 60.0489866733551,
+      "data": {
+        "claims": [
+          {
+            "id": "claim_001",
+            "text": "A McLaren 720S sits parked visibly on the street below.",
+            "type": "brand",
+            "confidence": 0.8,
+            "context": "McLaren 720S is a specific, real car model. Its appearance and presence need to be accurately depicted for production.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, first paragraph",
+            "verdict": "verified",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The cited image description explicitly identifies a \u201cMcLaren 720S supercar parked on a street,\u201d which supports the fact-check statement.', citations=[Citation(url='http://shutterstock.com/image-photo/mclaren-720s-supercar-parked-on-street-2069826884', excerpts=['(last verified: 2026-08-28) Meet Unlimited Images: As many premium images as you need and powerful AI tools to create faster. Learn more [Skip to content](https://www.shutterstock.com/image-photo/mclaren-720s-supercar-parked-on-street-2069826884?dd_referrer=) Get Unlimited Downloads Pricing AI search Standard search Photos Search AI search New Home Images Photos McLaren 720S supercar parked on a street. Orange supercar on the street of a city. Street view, travel photo, nobody, concept photo supercars. July 27,2021-Vancouver BC, Canada Save Try Photo formats 6720 \u00d7 2162 pixels \u2022 22.4 \u00d7 7.2 in \u2022 DPI 300 \u2022 JPG 1000 \u00d7 322 pixels \u2022 3.3 \u00d7 1.1 in \u2022 DPI 300 \u2022 JPG 500 \u00d7 161 pixels \u2022 1.7 \u00d7 0.5 in \u2022 DPI 300 \u2022 JPG 10 images subscription $29/month for 1 year.'], title=None)], confidence='high')], content={'output': 'Yes. The image description states that a McLaren 720S supercar is parked on a city street.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Research confirms this claim"
+          },
+          {
+            "id": "claim_002",
+            "text": "Tell Nike we want the deal by Friday.",
+            "type": "brand",
+            "confidence": 0.5,
+            "context": "Nike is a real, well-known brand. Its mention might require clearance or careful depiction, especially if implying a specific business deal.",
+            "location_in_script": "Ray's first line",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "Research timed out",
+            "note": "Research exceeded 60.0s timeout - marked as uncertain"
+          },
+          {
+            "id": "claim_003",
+            "text": "If they walk, Adidas is already circling.",
+            "type": "brand",
+            "confidence": 0.8,
+            "context": "Adidas is a real, well-known brand. Similar to Nike, its mention might require clearance or careful depiction.",
+            "location_in_script": "Ray's first line",
+            "verdict": "verified",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='Le texte indique d\u2019abord que la rupture avec Nike est intervenue le 31 juillet, puis pr\u00e9sente Adidas parmi les pr\u00e9tendants et pr\u00e9cise que la marque \u00e9quipe d\u00e9j\u00e0 le Real Madrid et avait auparavant formul\u00e9 une offre financi\u00e8re sup\u00e9rieure. Cela confirme que l\u2019affirmation selon laquelle Adidas \u00ab tourne d\u00e9j\u00e0 autour \u00bb du joueur est fond\u00e9e, m\u00eame si Adidas n\u2019est pas pr\u00e9sent\u00e9e comme l\u2019unique option.', citations=[Citation(url='http://lanouvelletribune.info/2026/08/sans-equipementier-mbappe-courtise-par-adidas-et-under-armour', excerpts=[\"La rupture intervient \u00e0 quelques semaines du Mondial nord-am\u00e9ricain, p\u00e9riode o\u00f9 le capitaine des Bleus b\u00e9n\u00e9ficie d'une exposition maximale. Selon _Le Parisien_ , les probabilit\u00e9s d'un retour de Mbapp\u00e9 chez Nike seraient _quasiment inexistantes_ . Pour limiter les d\u00e9g\u00e2ts d'image en pleine comp\u00e9tition, la marque \u00e0 la virgule et la F\u00e9d\u00e9ration fran\u00e7aise de football auraient trouv\u00e9 un arrangement temporaire, repoussant de quelques semaines l'\u00e9ch\u00e9ance initiale fix\u00e9e fin juin. ... Ce silence sur les cha\u00eenes de production est interpr\u00e9t\u00e9 par plusieurs observateurs du secteur comme un signe que la rupture \u00e9tait d\u00e9j\u00e0 act\u00e9e en interne. Adidas et Under Armour en embuscade Deux pr\u00e9tendants se positionnent pour r\u00e9cup\u00e9rer le contrat. **Adidas** , d\u00e9j\u00e0 \u00e9quipementier du Real Madrid, dispose d'un argument logistique \u00e9vident : le joueur porterait les m\u00eames couleurs \u00e0 l'entra\u00eenement comme en club. La marque allemande avait d\u00e9j\u00e0 tent\u00e9 une offensive par le pass\u00e9, avec une proposition financi\u00e8re sup\u00e9rieure \u00e0 l'accord pr\u00e9c\u00e9dent de Mbapp\u00e9, sans succ\u00e8s \u00e0 l'\u00e9poque. **Under Armour** , de son c\u00f4t\u00e9, surveille \u00e9galement le dossier de pr\u00e8s, tout comme d'autres \u00e9quipementiers non identifi\u00e9s \u00e0 ce stade. La marque am\u00e9ricaine a affirm\u00e9 une strat\u00e9gie de recrutement ax\u00e9e sur les jeunes stars mondiales pour concurrencer son rival sur le segment du football, un march\u00e9 o\u00f9 elle reste minoritaire face \u00e0 ses deux principaux concurrents.\"], title=None)], confidence='medium')], content={'output': 'Fact-check : vrai, avec nuance. Le partenariat entre Kylian Mbapp\u00e9 et Nike a pris fin le 31 juillet 2026, et Adidas fait bien partie des pr\u00e9tendants \u2014 notamment parce qu\u2019elle \u00e9quipe d\u00e9j\u00e0 le Real Madrid et lui aurait d\u00e9j\u00e0 propos\u00e9 une offre financi\u00e8re sup\u00e9rieure \u00e0 son pr\u00e9c\u00e9dent accord.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Research confirms this claim with high confidence"
+          }
+        ],
+        "claims_researched": 3,
+        "verified_claims": [
+          {
+            "id": "claim_001",
+            "text": "A McLaren 720S sits parked visibly on the street below.",
+            "type": "brand",
+            "confidence": 0.8,
+            "context": "McLaren 720S is a specific, real car model. Its appearance and presence need to be accurately depicted for production.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, first paragraph",
+            "verdict": "verified",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The cited image description explicitly identifies a \u201cMcLaren 720S supercar parked on a street,\u201d which supports the fact-check statement.', citations=[Citation(url='http://shutterstock.com/image-photo/mclaren-720s-supercar-parked-on-street-2069826884', excerpts=['(last verified: 2026-08-28) Meet Unlimited Images: As many premium images as you need and powerful AI tools to create faster. Learn more [Skip to content](https://www.shutterstock.com/image-photo/mclaren-720s-supercar-parked-on-street-2069826884?dd_referrer=) Get Unlimited Downloads Pricing AI search Standard search Photos Search AI search New Home Images Photos McLaren 720S supercar parked on a street. Orange supercar on the street of a city. Street view, travel photo, nobody, concept photo supercars. July 27,2021-Vancouver BC, Canada Save Try Photo formats 6720 \u00d7 2162 pixels \u2022 22.4 \u00d7 7.2 in \u2022 DPI 300 \u2022 JPG 1000 \u00d7 322 pixels \u2022 3.3 \u00d7 1.1 in \u2022 DPI 300 \u2022 JPG 500 \u00d7 161 pixels \u2022 1.7 \u00d7 0.5 in \u2022 DPI 300 \u2022 JPG 10 images subscription $29/month for 1 year.'], title=None)], confidence='high')], content={'output': 'Yes. The image description states that a McLaren 720S supercar is parked on a city street.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Research confirms this claim"
+          },
+          {
+            "id": "claim_003",
+            "text": "If they walk, Adidas is already circling.",
+            "type": "brand",
+            "confidence": 0.8,
+            "context": "Adidas is a real, well-known brand. Similar to Nike, its mention might require clearance or careful depiction.",
+            "location_in_script": "Ray's first line",
+            "verdict": "verified",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='Le texte indique d\u2019abord que la rupture avec Nike est intervenue le 31 juillet, puis pr\u00e9sente Adidas parmi les pr\u00e9tendants et pr\u00e9cise que la marque \u00e9quipe d\u00e9j\u00e0 le Real Madrid et avait auparavant formul\u00e9 une offre financi\u00e8re sup\u00e9rieure. Cela confirme que l\u2019affirmation selon laquelle Adidas \u00ab tourne d\u00e9j\u00e0 autour \u00bb du joueur est fond\u00e9e, m\u00eame si Adidas n\u2019est pas pr\u00e9sent\u00e9e comme l\u2019unique option.', citations=[Citation(url='http://lanouvelletribune.info/2026/08/sans-equipementier-mbappe-courtise-par-adidas-et-under-armour', excerpts=[\"La rupture intervient \u00e0 quelques semaines du Mondial nord-am\u00e9ricain, p\u00e9riode o\u00f9 le capitaine des Bleus b\u00e9n\u00e9ficie d'une exposition maximale. Selon _Le Parisien_ , les probabilit\u00e9s d'un retour de Mbapp\u00e9 chez Nike seraient _quasiment inexistantes_ . Pour limiter les d\u00e9g\u00e2ts d'image en pleine comp\u00e9tition, la marque \u00e0 la virgule et la F\u00e9d\u00e9ration fran\u00e7aise de football auraient trouv\u00e9 un arrangement temporaire, repoussant de quelques semaines l'\u00e9ch\u00e9ance initiale fix\u00e9e fin juin. ... Ce silence sur les cha\u00eenes de production est interpr\u00e9t\u00e9 par plusieurs observateurs du secteur comme un signe que la rupture \u00e9tait d\u00e9j\u00e0 act\u00e9e en interne. Adidas et Under Armour en embuscade Deux pr\u00e9tendants se positionnent pour r\u00e9cup\u00e9rer le contrat. **Adidas** , d\u00e9j\u00e0 \u00e9quipementier du Real Madrid, dispose d'un argument logistique \u00e9vident : le joueur porterait les m\u00eames couleurs \u00e0 l'entra\u00eenement comme en club. La marque allemande avait d\u00e9j\u00e0 tent\u00e9 une offensive par le pass\u00e9, avec une proposition financi\u00e8re sup\u00e9rieure \u00e0 l'accord pr\u00e9c\u00e9dent de Mbapp\u00e9, sans succ\u00e8s \u00e0 l'\u00e9poque. **Under Armour** , de son c\u00f4t\u00e9, surveille \u00e9galement le dossier de pr\u00e8s, tout comme d'autres \u00e9quipementiers non identifi\u00e9s \u00e0 ce stade. La marque am\u00e9ricaine a affirm\u00e9 une strat\u00e9gie de recrutement ax\u00e9e sur les jeunes stars mondiales pour concurrencer son rival sur le segment du football, un march\u00e9 o\u00f9 elle reste minoritaire face \u00e0 ses deux principaux concurrents.\"], title=None)], confidence='medium')], content={'output': 'Fact-check : vrai, avec nuance. Le partenariat entre Kylian Mbapp\u00e9 et Nike a pris fin le 31 juillet 2026, et Adidas fait bien partie des pr\u00e9tendants \u2014 notamment parce qu\u2019elle \u00e9quipe d\u00e9j\u00e0 le Real Madrid et lui aurait d\u00e9j\u00e0 propos\u00e9 une offre financi\u00e8re sup\u00e9rieure \u00e0 son pr\u00e9c\u00e9dent accord.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Research confirms this claim with high confidence"
+          }
+        ],
+        "flagged_claims": [],
+        "uncertain_claims": [
+          {
+            "id": "claim_002",
+            "text": "Tell Nike we want the deal by Friday.",
+            "type": "brand",
+            "confidence": 0.5,
+            "context": "Nike is a real, well-known brand. Its mention might require clearance or careful depiction, especially if implying a specific business deal.",
+            "location_in_script": "Ray's first line",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "Research timed out",
+            "note": "Research exceeded 60.0s timeout - marked as uncertain"
+          }
+        ],
+        "sources": [],
+        "research_summary": {
+          "verified_count": 2,
+          "flagged_count": 0,
+          "uncertain_count": 1,
+          "overall_accuracy": 0.6666666666666666
+        }
+      },
+      "error": null
+    },
+    "legal": {
+      "success": true,
+      "confidence": 0.82,
+      "processing_time": 13.37893533706665,
+      "data": {
+        "copyright_risks": [
+          {
+            "type": "copyright",
+            "content": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+            "severity": "high",
+            "description": "Showing a clip from a copyrighted television series, even a short one, constitutes using copyrighted material and requires a license from the copyright holder (AMC/Sony Pictures Television). The description 'unmistakably like' confirms it's not a generic scene but a direct reference.",
+            "suggested_fix": "License the specific clip from the copyright holder, or create original 'generic' footage that evokes the theme without directly copying 'Breaking Bad,' or change the TV content to something generic/p",
+            "estimated_cost": "$10,000 - $100,000+ (for a short clip, depending on usage and prominence)",
+            "clearance_action": "Contact AMC Networks and Sony Pictures Television to inquire about licensing fees and terms for using a clip from 'Breaking Bad.' If licensing is too costly, replace the footage with original content."
+          },
+          {
+            "type": "copyright",
+            "content": "Also -- the soundtrack list still has three unlicensed Beatles songs on it.",
+            "severity": "high",
+            "description": "Using unlicensed music, especially from a high-profile artist like The Beatles, is a direct copyright infringement. The script explicitly states they are 'unlicensed,' indicating a known legal risk that has not been addressed.",
+            "suggested_fix": "Obtain synchronization and master use licenses for each of the three Beatles songs from the respective copyright holders (e.g., Sony Music Publishing for publishing rights, Apple Corps Ltd./Universal ",
+            "estimated_cost": "$50,000 - $500,000+ per song (Beatles songs are notoriously expensive to license, often in the hundreds of thousands for film/TV use), potentially millions for three.",
+            "clearance_action": "Contact the music publishers and master recording owners for The Beatles' songs to negotiate licensing fees and terms. If licenses cannot be secured or are cost-prohibitive, work with the music superv"
+          }
+        ],
+        "trademark_issues": [
+          {
+            "type": "trademark",
+            "content": "A McLaren 720S sits parked visibly on the street below.",
+            "severity": "medium",
+            "description": "Visually featuring a specific, high-end, trademarked product like a McLaren 720S prominently could imply endorsement or require a product placement agreement, especially if it's more than incidental background dressing. While incidental use is generally permissible, 'visibly parked' suggests it's me",
+            "suggested_fix": "Obtain a prop release from McLaren, or obscure the branding/model number, or change the car to a generic luxury vehicle (e.g., 'a sleek sports car'). If the specific brand is crucial to the story, pur",
+            "estimated_cost": "$0 (obscure/generic) to $5,000+ (prop release/placement)",
+            "clearance_action": "Contact McLaren's legal/marketing department for a prop release or permission to feature the vehicle. Alternatively, instruct the art department to obscure branding or use a different vehicle."
+          },
+          {
+            "type": "trademark",
+            "content": "His assistant, DENISE (30s), enters holding a Starbucks cup with the logo clearly visible.",
+            "severity": "medium",
+            "description": "Featuring a prominent brand logo like Starbucks 'clearly visible' could be interpreted as product placement or endorsement. While incidental background use is generally acceptable, 'clearly visible' suggests intentional display, which could lead to a claim if not cleared.",
+            "suggested_fix": "Obscure the logo (e.g., with a sleeve or by turning the cup), use a generic coffee cup, or obtain a prop release from Starbucks. If the brand is essential for character or plot, pursue a product place",
+            "estimated_cost": "$0 (obscure/generic) to $2,000+ (prop release/placement)",
+            "clearance_action": "Instruct the art department to use a generic cup or obscure the Starbucks logo. Alternatively, contact Starbucks' legal/marketing department for a prop release."
+          },
+          {
+            "type": "trademark",
+            "content": "They said the script references 'the Batman voice' one too many times.",
+            "severity": "medium",
+            "description": "Batman is a highly protected trademark and copyrighted character of DC Comics/Warner Bros. Referencing a distinctive characteristic like 'the Batman voice' could be seen as infringing on their intellectual property, especially if it's used repeatedly or in a way that evokes the character too strongl",
+            "suggested_fix": "As suggested in the script, change the reference to a generic term like 'some superhero voice' or 'a gravelly voice' to avoid specific association with the character.",
+            "estimated_cost": "$0",
+            "clearance_action": "Revise the script to remove direct references to 'the Batman voice' and replace with generic descriptions."
+          }
+        ],
+        "clearance_required": [],
+        "privacy_concerns": [
+          {
+            "type": "privacy",
+            "content": "On top: a photo of a man who looks exactly like Elon Musk, unlabeled, mid-speech.",
+            "severity": "high",
+            "description": "Using the likeness of a real, identifiable person, especially a public figure like Elon Musk, without their consent, can violate their right of publicity (or misappropriation of likeness). This right protects individuals from unauthorized commercial use of their name, image, or likeness. Even if unl",
+            "suggested_fix": "Obtain a likeness release from Elon Musk, or use a photo of a generic person, or create a fictional character's photo that does not resemble any real person.",
+            "estimated_cost": "$10,000 - $1,000,000+ (for a public figure, if they agree to a release), or $0 (if using a generic photo)",
+            "clearance_action": "Replace the photo with one of a generic person or a stock photo model with a signed release. If the specific reference to Elon Musk is critical, contact his representatives to inquire about a likeness"
+          }
+        ],
+        "estimated_clearance_cost": "$2,000-10,000",
+        "legal_recommendations": [
+          "Review all music and copyrighted content references",
+          "Obtain necessary licensing agreements before production",
+          "Clear all brand mentions with respective trademark holders",
+          "Obtain life rights for any real person references"
+        ],
+        "risk_summary": {
+          "total_risks": 6,
+          "high_priority": 3,
+          "clearance_items": 0
+        },
+        "analysis_method": "gemini_ai"
+      },
+      "error": null
+    },
+    "continuity": {
+      "success": true,
+      "confidence": 0.75,
+      "processing_time": 13.258225440979004,
+      "data": {
+        "character_inconsistencies": [],
+        "timeline_issues": [],
+        "location_continuity": [],
+        "prop_tracking": [
+          {
+            "type": "prop",
+            "severity": "low",
+            "description": "Ray pours a drink, but its subsequent action (drinking, setting down) is not mentioned. This leaves the prop's status ambiguous.",
+            "location": "Scene 1, after 'He hangs up, pours a drink, and grabs the remote.'",
+            "suggested_fix": "Add a beat for Ray to interact with the drink, e.g., 'He takes a sip, then sets the glass on the coffee table.'"
+          },
+          {
+            "type": "prop",
+            "severity": "low",
+            "description": "Ray grabs the remote and uses it, but it's not mentioned again. It's unclear where he puts it down.",
+            "location": "Scene 1, after 'and grabs the remote.'",
+            "suggested_fix": "Add a beat for Ray to put the remote down, e.g., 'He tosses the remote onto the sofa.'"
+          },
+          {
+            "type": "prop",
+            "severity": "low",
+            "description": "Denise enters holding a Starbucks cup. After she sets the folder down, the cup's fate is unmentioned. Is she still holding it? Did she put it down?",
+            "location": "Scene 1, after 'Denise sets a folder on the table.'",
+            "suggested_fix": "Clarify what Denise does with the cup, e.g., 'She places the Starbucks cup next to the folder,' or 'She takes a sip from her Starbucks cup, still holding it.'"
+          }
+        ],
+        "continuity_recommendations": [
+          "Track prop continuity throughout scenes"
+        ],
+        "continuity_summary": {
+          "total_issues": 3,
+          "character_count": 0,
+          "location_count": 0,
+          "severity_breakdown": {
+            "high": 0,
+            "medium": 0,
+            "low": 3
+          }
+        },
+        "analysis_method": "gemini_ai"
+      },
+      "error": null
+    }
+  },
+  "scenes": [
+    {
+      "scene_number": 1,
+      "title": "INT. LUXURY APARTMENT - DAY",
+      "location": "LUXURY APARTMENT",
+      "time_of_day": "DAY",
+      "description": "RAY (40s, slick, overconfident) paces in front of a floor-to- Tell Nike we want the deal by Friday. If they walk, Adidas is already circling. He hangs up, pours a drink, and grabs the remote. The TV plays",
+      "characters_present": [
+        "RAY",
+        "DENISE"
+      ],
+      "page_start": 1,
+      "page_end": 1,
+      "dialogue_count": 10,
+      "action_lines": [
+        "RAY (40s, slick, overconfident) paces in front of a floor-to-",
+        "Tell Nike we want the deal by Friday.",
+        "If they walk, Adidas is already circling.",
+        "He hangs up, pours a drink, and grabs the remote. The TV plays",
+        "RAY (CONT'D)",
+        "Every empire starts with one good batch.",
+        "His assistant, DENISE (30s), enters holding a Starbucks cup with",
+        "Ray, legal called. They said the script",
+        "Fine. Change it to \"some superhero voice.\"",
+        "Nobody'll notice.",
+        "Denise sets a folder on the table. On top: a photo of a man who",
+        "Also -- the soundtrack list still has three",
+        "We'll deal with it in post."
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "name": "RAY",
+      "descriptions": [
+        "RAY (40s, slick, overconfident) paces in front of a floor-to-",
+        "Ray, legal called. They said the script"
+      ],
+      "first_appearance": 1,
+      "total_scenes": 1,
+      "character_type": "lead",
+      "age_references": [],
+      "physical_descriptions": [],
+      "personality_traits": [
+        "confident"
+      ],
+      "relationships": {},
+      "dialogue_count": 5,
+      "scene_appearances": [
+        1
+      ]
+    },
+    {
+      "name": "DENISE",
+      "descriptions": [
+        "His assistant, DENISE (30s), enters holding a Starbucks cup with",
+        "Denise sets a folder on the table. On top: a photo of a man who"
+      ],
+      "first_appearance": 1,
+      "total_scenes": 1,
+      "character_type": "lead",
+      "age_references": [],
+      "physical_descriptions": [],
+      "personality_traits": [
+        "is assistant",
+        "ise",
+        "ise",
+        "ise",
+        "ise"
+      ],
+      "relationships": {},
+      "dialogue_count": 5,
+      "scene_appearances": [
+        1
+      ]
+    }
+  ],
+  "scene_statistics": {
+    "total_scenes": 1,
+    "day_scenes": 1,
+    "night_scenes": 0,
+    "interior_scenes": 1,
+    "exterior_scenes": 0,
+    "total_characters": 2,
+    "average_characters_per_scene": 2.0,
+    "total_dialogue_lines": 10,
+    "locations": 1
+  },
+  "character_statistics": {
+    "total_characters": 2,
+    "character_types": {
+      "lead": 2
+    },
+    "average_scenes_per_character": 1.0,
+    "most_connected_character": "RAY",
+    "characters_with_descriptions": 2,
+    "characters_with_relationships": 0
+  },
+  "continuity_issues": [],
+  "agent_timeline": [
+    {
+      "agent": "director",
+      "status": "complete",
+      "start_time": "2026-08-28 15:40:58.344903+00:00",
+      "end_time": "2026-08-28 15:41:07.407258+00:00",
+      "duration_seconds": 9.062355,
+      "summary": "Extracted 8 factual claims for verification",
+      "claims_count": 8,
+      "issues_found": null,
+      "confidence": 0.85,
+      "phase": "sequential"
+    },
+    {
+      "agent": "research",
+      "status": "complete",
+      "start_time": "2026-08-28 15:41:07.407454+00:00",
+      "end_time": "2026-08-28 15:42:07.456895+00:00",
+      "duration_seconds": 60.049441,
+      "summary": "Verified 3 claims via Parallel API",
+      "claims_count": 3,
+      "issues_found": 0,
+      "confidence": 0.7000000000000001,
+      "phase": "parallel"
+    },
+    {
+      "agent": "legal",
+      "status": "complete",
+      "start_time": "2026-08-28 15:41:07.407454+00:00",
+      "end_time": "2026-08-28 15:42:07.456895+00:00",
+      "duration_seconds": 60.049441,
+      "summary": "Found 5 legal issues",
+      "claims_count": null,
+      "issues_found": 5,
+      "confidence": 0.82,
+      "phase": "parallel"
+    },
+    {
+      "agent": "continuity",
+      "status": "complete",
+      "start_time": "2026-08-28 15:41:07.407454+00:00",
+      "end_time": "2026-08-28 15:42:07.456895+00:00",
+      "duration_seconds": 60.049441,
+      "summary": "Found 0 continuity issues",
+      "claims_count": null,
+      "issues_found": 0,
+      "confidence": 0.75,
+      "phase": "parallel"
+    }
+  ],
+  "readiness_scores": {
+    "legal_clearance": 15.0,
+    "historical_accuracy": 66.7,
+    "continuity": 85.0,
+    "budget_feasibility": 76.0,
+    "overall": 57.6,
+    "grade": "F"
+  },
+  "agent_flow": [
+    {
+      "agent": "director",
+      "claims_in": 0,
+      "claims_out": 8,
+      "verified": 0,
+      "flagged": 0,
+      "uncertain": 0,
+      "issues_high": 0,
+      "issues_medium": 0,
+      "issues_low": 0
+    },
+    {
+      "agent": "research",
+      "claims_in": 8,
+      "claims_out": 3,
+      "verified": 2,
+      "flagged": 0,
+      "uncertain": 1,
+      "issues_high": 0,
+      "issues_medium": 0,
+      "issues_low": 0
+    },
+    {
+      "agent": "legal",
+      "claims_in": 0,
+      "claims_out": 5,
+      "verified": 0,
+      "flagged": 0,
+      "uncertain": 0,
+      "issues_high": 2,
+      "issues_medium": 3,
+      "issues_low": 0
+    },
+    {
+      "agent": "continuity",
+      "claims_in": 0,
+      "claims_out": 3,
+      "verified": 0,
+      "flagged": 0,
+      "uncertain": 0,
+      "issues_high": 0,
+      "issues_medium": 0,
+      "issues_low": 3
+    }
+  ],
+  "suggestions": [
+    {
+      "issue_id": "sug_1",
+      "issue_type": "legal",
+      "severity": "high",
+      "original_text": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+      "suggested_text": "License the specific clip from the copyright holder, or create original 'generic' footage that evokes the theme without directly copying 'Breaking Bad,' or change the TV content to something generic/p",
+      "rationale": "Copyright risk identified: copyright. Clearance required before distribution."
+    },
+    {
+      "issue_id": "sug_2",
+      "issue_type": "legal",
+      "severity": "high",
+      "original_text": "Also -- the soundtrack list still has three unlicensed Beatles songs on it.",
+      "suggested_text": "Obtain synchronization and master use licenses for each of the three Beatles songs from the respective copyright holders (e.g., Sony Music Publishing for publishing rights, Apple Corps Ltd./Universal ",
+      "rationale": "Copyright risk identified: copyright. Clearance required before distribution."
+    },
+    {
+      "issue_id": "sug_3",
+      "issue_type": "trademark",
+      "severity": "medium",
+      "original_text": "A McLaren 720S sits parked visibly on the street below.",
+      "suggested_text": "Obtain a prop release from McLaren, or obscure the branding/model number, or change the car to a generic luxury vehicle (e.g., 'a sleek sports car'). If the specific brand is crucial to the story, pur",
+      "rationale": "Trademark issue: unknown. Use generic alternatives."
+    },
+    {
+      "issue_id": "sug_4",
+      "issue_type": "trademark",
+      "severity": "medium",
+      "original_text": "His assistant, DENISE (30s), enters holding a Starbucks cup with the logo clearly visible.",
+      "suggested_text": "Obscure the logo (e.g., with a sleeve or by turning the cup), use a generic coffee cup, or obtain a prop release from Starbucks. If the brand is essential for character or plot, pursue a product place",
+      "rationale": "Trademark issue: unknown. Use generic alternatives."
+    },
+    {
+      "issue_id": "sug_5",
+      "issue_type": "trademark",
+      "severity": "medium",
+      "original_text": "They said the script references 'the Batman voice' one too many times.",
+      "suggested_text": "As suggested in the script, change the reference to a generic term like 'some superhero voice' or 'a gravelly voice' to avoid specific association with the character.",
+      "rationale": "Trademark issue: unknown. Use generic alternatives."
+    }
+  ]
+}

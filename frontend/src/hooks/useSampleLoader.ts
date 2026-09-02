@@ -39,7 +39,7 @@ export function useSampleLoader(): UseSampleLoaderReturn {
       
       // Store the sample data in localStorage for immediate access
       const existingSamples = JSON.parse(localStorage.getItem(`user_${user.uid}_samples`) || '[]');
-      const updatedSamples = [...existingSamples.filter((s: any) => s.id !== sampleId), sample];
+      const updatedSamples = [...existingSamples.filter((s: { id: string }) => s.id !== sampleId), sample];
       localStorage.setItem(`user_${user.uid}_samples`, JSON.stringify(updatedSamples));
       
       // Mark this sample as loaded for the user

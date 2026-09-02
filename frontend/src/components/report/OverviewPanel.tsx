@@ -12,11 +12,16 @@ interface OverviewPanelProps {
   claimsCount: number;
 }
 
-const agentLabels: Record<AgentType, { name: string; icon: string; description: string }> = {
+const agentLabels: Record<string, { name: string; icon: string; description: string }> = {
   director: { name: "Director", icon: "🎬", description: "Script analysis & claim extraction" },
   research: { name: "Research", icon: "🔍", description: "Fact verification & source finding" },
   legal: { name: "Legal", icon: "⚖️", description: "Clearance & rights analysis" },
   continuity: { name: "Continuity", icon: "🔗", description: "Timeline & consistency checking" },
+  storyboard: { name: "Storyboard", icon: "🖼️", description: "Visual storyboard generation" },
+  tts: { name: "Table Read", icon: "🎙️", description: "Multi-voice audio table read" },
+  schedule: { name: "Schedule", icon: "📅", description: "Production shooting schedule" },
+  stakeholder: { name: "Stakeholders", icon: "🏢", description: "Multi-stakeholder analysis" },
+  "risk-dashboard": { name: "Risk Dashboard", icon: "📊", description: "Real-time risk monitoring" },
 };
 
 export function OverviewPanel({
@@ -43,7 +48,7 @@ export function OverviewPanel({
     <div className="space-y-6">
       {/* Summary stats */}
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <StatCard label="Claims Found" value={claimsCount} icon="📋" />
+        <StatCard label="Claims Found" value={String(claimsCount)} icon="📋" />
         <StatCard label="Risk Score" value={`${Math.round(riskScore)}`} icon="🎯" color={riskLevel} />
         <StatCard label="Avg Confidence" value={`${Math.round(avgConfidence * 100)}%`} icon="📊" />
         <StatCard label="Processing Time" value={`${processingTime.toFixed(1)}s`} icon="⏱️" />
@@ -90,9 +95,9 @@ export function OverviewPanel({
                   <span>Confidence: {Math.round(getConfidence(result) * 100)}%</span>
                   <span>Time: {Number.isFinite(result.processing_time) ? result.processing_time.toFixed(1) : "0.0"}s</span>
                 </div>
-                {!result.success && (result as any).error && (
+                {!result.success && (result as unknown as { error?: string }).error && (
                   <div className="mt-2 p-2 rounded bg-red-100 dark:bg-red-900/30 text-xs text-red-700 dark:text-red-300">
-                    {(result as any).error}
+                    {(result as unknown as { error?: string }).error}
                   </div>
                 )}
                 {/* Confidence bar */}
@@ -157,7 +162,6 @@ function StatCard({
   label,
   value,
   icon,
-  color,
 }: {
   label: string;
   value: string;

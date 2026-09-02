@@ -1,0 +1,11 @@
+Section,Category,Status,Details
+Overview,Risk Score,medium,60.0%
+Claim,Fact Check,unknown,Reference to year 1989
+Claim,Fact Check,unknown,Reference to year 1987
+Claim,Fact Check,unknown,Reference to While
+Claim,Fact Check,unknown,Reference to Berlin Wall
+Claim,Fact Check,unknown,Reference to This
+Agent,director,Success,0% confidence
+Agent,research,Failed,0% confidence
+Agent,legal,Failed,0% confidence
+Agent,continuity,Failed,0% confidence

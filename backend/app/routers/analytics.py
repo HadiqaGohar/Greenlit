@@ -94,7 +94,7 @@ async def get_analytics_overview():
 
 @router.get("/trends", response_model=List[TrendData])
 async def get_analytics_trends(
-    timeframe: str = Query("month", regex="^(week|month|quarter|year)$")
+    timeframe: str = Query("month", pattern="^(week|month|quarter|year)$")
 ):
     """
     Get trend data for analytics charts
@@ -128,7 +128,7 @@ async def get_analytics_trends(
 
 @router.get("/comparative", response_model=ComparativeAnalysis)
 async def get_comparative_analysis(
-    timeframe: str = Query("month", regex="^(week|month|year)$")
+    timeframe: str = Query("month", pattern="^(week|month|year)$")
 ):
     """
     Get comparative analysis between current and previous period
@@ -172,7 +172,7 @@ async def get_comparative_analysis(
 @router.get("/projects", response_model=List[ProjectComparison])
 async def get_project_comparison(
     limit: int = Query(10, ge=1, le=50),
-    sort_by: str = Query("risk_score", regex="^(risk_score|claims_count|flagged_count)$")
+    sort_by: str = Query("risk_score", pattern="^(risk_score|claims_count|flagged_count)$")
 ):
     """
     Get project comparison data for analytics
@@ -237,7 +237,7 @@ async def get_project_comparison(
 
 @router.get("/report", response_model=AnalyticsReport)
 async def generate_analytics_report(
-    timeframe: str = Query("month", regex="^(week|month|quarter|year)$")
+    timeframe: str = Query("month", pattern="^(week|month|quarter|year)$")
 ):
     """
     Generate a comprehensive analytics report with insights

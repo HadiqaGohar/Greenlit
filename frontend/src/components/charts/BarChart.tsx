@@ -1,9 +1,8 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-interface BarChartData {
+export interface BarChartData {
   labels: string[];
   datasets: {
     label: string;
@@ -12,7 +11,7 @@ interface BarChartData {
   }[];
 }
 
-interface BarChartProps {
+export interface BarChartProps {
   data: BarChartData;
   height?: number;
   showLegend?: boolean;
@@ -20,7 +19,6 @@ interface BarChartProps {
 }
 
 export function BarChart({ data, height = 300, showLegend = true, title }: BarChartProps) {
-  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);

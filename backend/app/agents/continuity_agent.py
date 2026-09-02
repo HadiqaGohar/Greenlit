@@ -150,28 +150,69 @@ Only flag genuine continuity problems, not creative choices."""
     def _parse_continuity_response(self, response: str) -> List[Dict[str, Any]]:
         """Parse Gemini response for continuity issues"""
         
+        # Log raw response for debugging
+        logger.info(f"Raw continuity response ({len(response)} chars): {response[:500]}...")
+        
+        # Step 1: Strip markdown code fences if present
+        cleaned_response = response.strip()
+        if cleaned_response.startswith("```json"):
+            cleaned_response = cleaned_response[7:]  # Remove ```json
+        if cleaned_response.startswith("```"):
+            cleaned_response = cleaned_response[3:]  # Remove ```
+        if cleaned_response.endswith("```"):
+            cleaned_response = cleaned_response[:-3]  # Remove trailing ```
+        cleaned_response = cleaned_response.strip()
+        
+        # Step 2: Try to extract JSON array
+        json_match = re.search(r'\[.*\]', cleaned_response, re.DOTALL)
+        
+        # If no complete array found, try to handle truncated JSON
+        if not json_match:
+            logger.warning(f"No complete JSON array found. Attempting to fix truncated JSON...")
+            
+            # Check if response starts with [ but is truncated
+            if cleaned_response.startswith('['):
+                # Try to fix truncated JSON by closing brackets
+                truncated = cleaned_response
+                # Count open vs close brackets
+                open_braces = truncated.count('{') - truncated.count('}')
+                open_brackets = truncated.count('[') - truncated.count(']')
+                
+                # Add missing closing brackets/braces
+                truncated += '}' * open_braces + ']' * open_brackets
+                
+                # Remove trailing incomplete objects (common in truncation)
+                last_complete = truncated.rfind('},')
+                if last_complete > 0:
+                    truncated = truncated[:last_complete + 1] + ']'
+                    json_match = re.search(r'\[.*\]', truncated, re.DOTALL)
+                    if json_match:
+                        logger.info("Successfully repaired truncated JSON response")
+        
+        if not json_match:
+            logger.error(f"No JSON array found in continuity response. Preview: {cleaned_response[:300]}")
+            return []
+        
         try:
-            json_match = re.search(r'\[.*\]', response, re.DOTALL)
-            if json_match:
-                issues = json.loads(json_match.group(0))
-                
-                cleaned = []
-                for issue in issues:
-                    if isinstance(issue, dict) and "type" in issue and "description" in issue:
-                        cleaned.append({
-                            "type": issue.get("type", "unknown"),
-                            "severity": issue.get("severity", "low"),
-                            "description": str(issue.get("description", ""))[:300],
-                            "location": str(issue.get("location", "unknown")),
-                            "suggested_fix": str(issue.get("suggested_fix", ""))[:200]
-                        })
-                
-                return cleaned[:10]
+            issues = json.loads(json_match.group(0))
+            
+            cleaned = []
+            for issue in issues:
+                if isinstance(issue, dict) and "type" in issue and "description" in issue:
+                    cleaned.append({
+                        "type": issue.get("type", "unknown"),
+                        "severity": issue.get("severity", "low"),
+                        "description": str(issue.get("description", ""))[:300],
+                        "location": str(issue.get("location", "unknown")),
+                        "suggested_fix": str(issue.get("suggested_fix", ""))[:200]
+                    })
+            
+            logger.info(f"Successfully parsed {len(cleaned)} continuity issues")
+            return cleaned[:10]
         
-        except Exception as e:
-            logger.warning(f"Failed to parse continuity response JSON: {str(e)}")
-        
-        return []
+        except json.JSONDecodeError as e:
+            logger.error(f"Continuity JSON parsing failed: {e}. Preview: {json_match.group(0)[:300]}")
+            return []
     
     def _count_by_severity(self, issues: List[Dict[str, Any]]) -> Dict[str, int]:
         """Count issues by severity level"""

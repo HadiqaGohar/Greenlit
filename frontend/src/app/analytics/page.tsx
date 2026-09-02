@@ -7,10 +7,6 @@ import { TrendLine } from "@/components/charts/TrendLine";
 import { StatCard } from "@/components/charts/StatCard";
 import {
   AnalyticsReport,
-  getAnalyticsOverview,
-  getAnalyticsTrends,
-  getComparativeAnalysis,
-  getProjectComparison,
   generateAnalyticsReport,
 } from "@/lib/analytics";
 import {
@@ -19,7 +15,6 @@ import {
   CheckCircle,
   TrendingUp,
   TrendingDown,
-  Clock,
   Zap,
 } from "lucide-react";
 
@@ -33,6 +28,7 @@ export default function AnalyticsPage() {
 
   useEffect(() => {
     loadAnalytics();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeframe]);
 
   const loadAnalytics = async () => {
@@ -101,7 +97,26 @@ export default function AnalyticsPage() {
     );
   }
 
-  if (!report) return null;
+  if (!report) {
+    return (
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        <div
+          className="rounded-lg p-8 text-center"
+          style={{
+            border: "1px solid var(--border)",
+            backgroundColor: "var(--bg)",
+          }}
+        >
+          <h2 className="text-xl font-semibold mb-2" style={{ color: "var(--text)" }}>
+            No Analytics Data
+          </h2>
+          <p className="mb-4" style={{ color: "var(--text-muted)" }}>
+            No analytics data available. Analyze some scripts first.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   const { overview, risk_trend, scripts_trend, comparative, top_projects, insights } = report;
 

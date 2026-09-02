@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import type { Comment as CommentType } from "@/lib/types";
 
 interface CommentFormProps {
   onSubmit: (content: string) => Promise<void>;

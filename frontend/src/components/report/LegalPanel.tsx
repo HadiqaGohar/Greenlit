@@ -6,8 +6,20 @@ interface LegalPanelProps {
   agentResult: AgentResult | null;
 }
 
+type LegalRef = { title?: string; description?: string; details?: string; estimated_cost?: number };
+
+interface LegalData {
+  copyright_risks?: LegalRef[];
+  trademark_issues?: LegalRef[];
+  clearance_required?: Array<string | { title?: string; description?: string }>;
+  privacy_concerns?: LegalRef[];
+  estimated_clearance_cost?: number;
+  legal_recommendations?: string[];
+  risk_summary?: string;
+}
+
 export function LegalPanel({ agentResult }: LegalPanelProps) {
-  const data = agentResult?.data ?? {};
+  const data = (agentResult?.data ?? {}) as LegalData;
 
   const copyrightRisks = data.copyright_risks ?? [];
   const trademarkIssues = data.trademark_issues ?? [];
@@ -62,7 +74,7 @@ export function LegalPanel({ agentResult }: LegalPanelProps) {
             <span>©️</span> Copyright Risks ({copyrightRisks.length})
           </h3>
           <div className="space-y-2">
-            {copyrightRisks.map((risk: any, i: number) => (
+            {copyrightRisks.map((risk: { title?: string; description?: string; details?: string; estimated_cost?: number }, i: number) => (
               <div
                 key={i}
                 className="rounded-lg border border-red-200 bg-red-50 p-3 dark:border-red-800 dark:bg-red-900/20"
@@ -91,7 +103,7 @@ export function LegalPanel({ agentResult }: LegalPanelProps) {
             <span>™️</span> Trademark Issues ({trademarkIssues.length})
           </h3>
           <div className="space-y-2">
-            {trademarkIssues.map((issue: any, i: number) => (
+            {trademarkIssues.map((issue: { title?: string; description?: string; details?: string }, i: number) => (
               <div
                 key={i}
                 className="rounded-lg border border-orange-200 bg-orange-50 p-3 dark:border-orange-800 dark:bg-orange-900/20"
@@ -117,7 +129,7 @@ export function LegalPanel({ agentResult }: LegalPanelProps) {
             <span>🔒</span> Privacy Concerns ({privacyConcerns.length})
           </h3>
           <div className="space-y-2">
-            {privacyConcerns.map((concern: any, i: number) => (
+            {privacyConcerns.map((concern: { title?: string; description?: string; details?: string }, i: number) => (
               <div
                 key={i}
                 className="rounded-lg border border-purple-200 bg-purple-50 p-3 dark:border-purple-800 dark:bg-purple-900/20"
@@ -143,7 +155,7 @@ export function LegalPanel({ agentResult }: LegalPanelProps) {
             <span>📋</span> Clearance Required ({clearanceRequired.length})
           </h3>
           <ul className="space-y-1">
-            {clearanceRequired.map((item: any, i: number) => (
+            {clearanceRequired.map((item: string | { title?: string; description?: string }, i: number) => (
               <li
                 key={i}
                 className="flex items-center gap-2 rounded-lg bg-gray-50 px-3 py-2 text-sm text-gray-700 dark:bg-gray-800/50 dark:text-gray-300"

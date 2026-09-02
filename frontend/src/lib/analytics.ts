@@ -69,11 +69,29 @@ export interface PerformanceMetrics {
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 async function fetchAnalytics<T>(endpoint: string): Promise<T> {
-  const response = await fetch(`${API_BASE}/api/analytics${endpoint}`);
-  if (!response.ok) {
-    throw new Error(`Analytics request failed: ${response.statusText}`);
+  try {
+    const response = await fetch(`${API_BASE}/api/analytics${endpoint}`);
+    
+    if (!response.ok) {
+      let detail = response.statusText;
+      try {
+        const body = await response.json();
+        detail = body.detail ?? detail;
+      } catch {
+        // use statusText
+      }
+      throw new Error(`Analytics request failed: ${detail}`);
+    }
+    
+    return response.json();
+  } catch (error) {
+    // Handle network errors (backend down)
+    if (error instanceof TypeError && error.message.includes("fetch")) {
+      throw new Error("Cannot connect to analytics server. Please ensure the backend is running.");
+    }
+    // Re-throw other errors
+    throw error;
   }
-  return response.json();
 }
 
 export async function getAnalyticsOverview(): Promise<AnalyticsOverview> {

@@ -112,7 +112,7 @@ function FloatingCard({
   color,
   delay,
 }: {
-  icon: any;
+  icon: React.ComponentType<{ size?: string | number; style?: React.CSSProperties; fill?: string }>;
   title: string;
   value: string;
   color: string;
@@ -156,7 +156,7 @@ function FeatureCard({
   color,
   index,
 }: {
-  icon: any;
+  icon: React.ComponentType<{ size?: string | number; style?: React.CSSProperties; fill?: string }>;
   title: string;
   description: string;
   color: string;
@@ -273,6 +273,7 @@ export default function HomePage() {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
     }, 5000);
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

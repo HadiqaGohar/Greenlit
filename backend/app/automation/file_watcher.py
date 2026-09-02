@@ -372,6 +372,7 @@ class FileWatcher:
         
         return {
             "running": self.running,
+            "file_watching": self.running,
             "watched_folders": len(self.watched_folders),
             "total_files_tracked": len(self.file_hashes),
             "folders": [

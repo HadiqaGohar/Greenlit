@@ -16,17 +16,23 @@ import { AgentFlowDiagram } from "@/components/report/AgentFlowDiagram";
 import { SceneBreakdownDashboard } from "@/components/report/SceneBreakdownDashboard";
 import { CharacterBible } from "@/components/report/CharacterBible";
 import { LegalClearanceChecklist } from "@/components/report/LegalClearanceChecklist";
+import { ScriptChat } from "@/components/ScriptChat";
+import { RiskHeatmap } from "@/components/RiskHeatmap";
+import { BudgetEstimator } from "@/components/report/BudgetEstimator";
+import { CulturalSensitivityScanner } from "@/components/report/CulturalSensitivityScanner";
 import { getReport, ApiError } from "@/lib/api";
-import type { AnalyzeResponse, Verdict, AgentType } from "@/lib/types";
+import { useAuth } from "@/contexts/AuthContext";
+import type { AnalyzeResponse, Verdict } from "@/lib/types";
 
 type FilterVerdict = Verdict | "all";
-type ExtraTab = "replay" | "readiness" | "suggestions" | "flow" | "scenes" | "characters" | "legal-checklist";
+type ExtraTab = "replay" | "readiness" | "suggestions" | "flow" | "scenes" | "characters" | "legal-checklist" | "chat" | "heatmap" | "budget" | "cultural";
 
 interface ReportPageProps {
   params: { id: string };
 }
 
 export default function ReportPage({ params }: ReportPageProps) {
+  const { user } = useAuth();
   const [report, setReport] = useState<AnalyzeResponse | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -40,7 +46,13 @@ export default function ReportPage({ params }: ReportPageProps) {
     getReport(params.id)
       .then((reportData) => {
         setReport(reportData);
-        setScriptText(generateMockScript());
+        // Use actual script text from report, fallback to mock if not available
+        const actualScript = (reportData as unknown as Record<string, unknown>).script_text;
+        setScriptText(
+          typeof actualScript === "string" && actualScript.length > 0
+            ? actualScript
+            : generateMockScript()
+        );
       })
       .catch((err) => {
         const message =
@@ -63,10 +75,10 @@ export default function ReportPage({ params }: ReportPageProps) {
       <div className="mx-auto max-w-6xl px-6 py-12 text-center">
         <p className="text-flagged">{error ?? "Report not found."}</p>
         <Link
-          href="/"
+          href="/dashboard"
           className="mt-4 inline-block text-sm text-amber hover:text-amber-light"
         >
-          ← Back to script input
+          ← Back to Dashboard
         </Link>
       </div>
     );
@@ -83,8 +95,8 @@ export default function ReportPage({ params }: ReportPageProps) {
   const hasReadiness = report.readiness_scores && report.readiness_scores.overall > 0;
   const hasSuggestions = report.suggestions && report.suggestions.length > 0;
   const hasFlow = report.agent_flow && report.agent_flow.length > 0;
-  const hasScenes = (report as any).scenes && (report as any).scenes.length > 0;
-  const hasCharacters = (report as any).characters && (report as any).characters.length > 0;
+  const hasScenes = Array.isArray((report as unknown as Record<string, unknown>).scenes);
+  const hasCharacters = Array.isArray((report as unknown as Record<string, unknown>).characters);
   const hasLegalIssues = report.claims.some((c) => c.type === "licensing");
 
   return (
@@ -92,10 +104,10 @@ export default function ReportPage({ params }: ReportPageProps) {
       {/* Header */}
       <div className="mb-8">
         <Link
-          href="/"
+          href="/dashboard"
           className="text-sm text-amber hover:text-amber-light transition-colors"
         >
-          ← Analyze another script
+          ← Back to Dashboard
         </Link>
         <h1 className="mt-4 font-display text-3xl font-semibold text-parchment">
           Production Notes
@@ -215,6 +227,46 @@ export default function ReportPage({ params }: ReportPageProps) {
                 📋 Legal Checklist
               </button>
             )}
+            <button
+              onClick={() => setActiveExtra(activeExtra === "chat" ? null : "chat")}
+              className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                activeExtra === "chat"
+                  ? "bg-blue-600 text-white"
+                  : "border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+              }`}
+            >
+              💬 Ask the Script
+            </button>
+            <button
+              onClick={() => setActiveExtra(activeExtra === "heatmap" ? null : "heatmap")}
+              className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                activeExtra === "heatmap"
+                  ? "bg-blue-600 text-white"
+                  : "border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+              }`}
+            >
+              🗺️ Risk Heatmap
+            </button>
+            <button
+              onClick={() => setActiveExtra(activeExtra === "budget" ? null : "budget")}
+              className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                activeExtra === "budget"
+                  ? "bg-blue-600 text-white"
+                  : "border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+              }`}
+            >
+              💰 Budget Estimate
+            </button>
+            <button
+              onClick={() => setActiveExtra(activeExtra === "cultural" ? null : "cultural")}
+              className={`rounded-lg px-4 py-2 text-sm font-medium transition-colors ${
+                activeExtra === "cultural"
+                  ? "bg-blue-600 text-white"
+                  : "border border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+              }`}
+            >
+              🌍 Cultural Sensitivity
+            </button>
           </div>
         </div>
       )}
@@ -249,12 +301,14 @@ export default function ReportPage({ params }: ReportPageProps) {
 
       {activeExtra === "scenes" && hasScenes && (
         <div className="mb-8">
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           <SceneBreakdownDashboard scenes={(report as any).scenes} />
         </div>
       )}
 
       {activeExtra === "characters" && hasCharacters && (
         <div className="mb-8">
+          {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
           <CharacterBible characters={(report as any).characters} />
         </div>
       )}
@@ -274,6 +328,30 @@ export default function ReportPage({ params }: ReportPageProps) {
                 action_required: c.note || "Review and obtain clearance",
               }))}
           />
+        </div>
+      )}
+
+      {activeExtra === "chat" && (
+        <div className="mb-8">
+          <ScriptChat reportId={report.report_id} scriptText={scriptText} />
+        </div>
+      )}
+
+      {activeExtra === "heatmap" && (
+        <div className="mb-8">
+          <RiskHeatmap reportId={report.report_id} scriptText={scriptText} />
+        </div>
+      )}
+
+      {activeExtra === "budget" && (
+        <div className="mb-8">
+          <BudgetEstimator scriptText={scriptText} />
+        </div>
+      )}
+
+      {activeExtra === "cultural" && (
+        <div className="mb-8">
+          <CulturalSensitivityScanner scriptText={scriptText} />
         </div>
       )}
 
@@ -302,6 +380,7 @@ export default function ReportPage({ params }: ReportPageProps) {
                 processingTime={report.processing_time ?? 0}
                 claimsCount={report.claims.length}
                 claims={report.claims}
+                reportId={report.report_id}
               />
             </div>
           </div>
@@ -351,9 +430,10 @@ export default function ReportPage({ params }: ReportPageProps) {
       {/* Export Modal */}
       <ExportModal
         scriptId={report.report_id}
-        userId="default-user"
+        userId={user?.uid || ""}
         isOpen={showExportModal}
         onClose={() => setShowExportModal(false)}
+        report={report}
       />
     </div>
   );

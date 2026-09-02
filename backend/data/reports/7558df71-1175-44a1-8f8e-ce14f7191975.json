@@ -1,0 +1,315 @@
+{
+  "report_id": "7558df71-1175-44a1-8f8e-ce14f7191975",
+  "timestamp": "2026-08-25T19:08:18.373104+00:00",
+  "processing_time": 309.812172,
+  "risk_assessment": {
+    "overall_risk_score": 85.0,
+    "risk_level": "high"
+  },
+  "agent_results": {
+    "director": {
+      "success": true,
+      "confidence": 0.85,
+      "processing_time": 9.787563800811768,
+      "data": {
+        "claims": [
+          {
+            "id": "claim_1",
+            "text": "A McLaren 720S sits parked visibly on the street below.",
+            "type": "brand",
+            "confidence": 0.8,
+            "context": "Verification of the specific car model (McLaren 720S) for visual accuracy and potential product placement considerations.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, line 2"
+          },
+          {
+            "id": "claim_2",
+            "text": "Tell Nike we want the deal by Friday.",
+            "type": "brand",
+            "confidence": 0.8,
+            "context": "Nike is a real company. Its mention requires verification for potential brand clearance or accuracy if the context implies a real-world deal.",
+            "location_in_script": "Ray's dialogue, line 1"
+          },
+          {
+            "id": "claim_3",
+            "text": "If they walk, Adidas is already circling.",
+            "type": "brand",
+            "confidence": 0.8,
+            "context": "Adidas is a real company. Its mention requires verification for potential brand clearance or accuracy if the context implies a real-world deal.",
+            "location_in_script": "Ray's dialogue, line 2"
+          },
+          {
+            "id": "claim_4",
+            "text": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+            "type": "cultural",
+            "confidence": 0.8,
+            "context": "Breaking Bad is a real TV show. The description of the scene needs to be accurate if it's meant to be 'unmistakably' from the show, and potential rights clearance for showing clips.",
+            "location_in_script": "After Ray hangs up, line 1"
+          },
+          {
+            "id": "claim_5",
+            "text": "Denise (30s), enters holding a Starbucks cup with the logo clearly visible.",
+            "type": "brand",
+            "confidence": 0.8,
+            "context": "Starbucks is a real company with a distinct logo. Its visible presence requires verification for product placement, brand clearance, and visual accuracy.",
+            "location_in_script": "After Ray's 'Every empire...' line"
+          },
+          {
+            "id": "claim_6",
+            "text": "They said the script references \"the Batman voice\" one too many times.",
+            "type": "cultural",
+            "confidence": 0.8,
+            "context": "Batman is a trademarked character. Referencing 'the Batman voice' requires verification for potential copyright/trademark infringement or clearance.",
+            "location_in_script": "Denise's dialogue, line 1"
+          },
+          {
+            "id": "claim_7",
+            "text": "On top: a photo of a man who looks exactly like Elon Musk, unlabeled, mid-speech.",
+            "type": "biographical",
+            "confidence": 0.8,
+            "context": "Elon Musk is a real person. Using his likeness, even if unlabeled, requires verification for rights, permissions, and accuracy of depiction.",
+            "location_in_script": "After Denise sets the folder"
+          },
+          {
+            "id": "claim_8",
+            "text": "Also -- the soundtrack list still has three unlicensed Beatles songs on it.",
+            "type": "biographical",
+            "confidence": 0.8,
+            "context": "The Beatles are a real musical group. Referencing their songs and their licensing status requires verification for music rights and clearance.",
+            "location_in_script": "Denise's dialogue, line 2"
+          }
+        ],
+        "claims_extracted": 8,
+        "claims_by_type": {
+          "brand": [
+            {
+              "id": "claim_1",
+              "text": "A McLaren 720S sits parked visibly on the street below.",
+              "type": "brand",
+              "confidence": 0.8,
+              "context": "Verification of the specific car model (McLaren 720S) for visual accuracy and potential product placement considerations.",
+              "location_in_script": "INT. LUXURY APARTMENT - DAY, line 2"
+            },
+            {
+              "id": "claim_2",
+              "text": "Tell Nike we want the deal by Friday.",
+              "type": "brand",
+              "confidence": 0.8,
+              "context": "Nike is a real company. Its mention requires verification for potential brand clearance or accuracy if the context implies a real-world deal.",
+              "location_in_script": "Ray's dialogue, line 1"
+            },
+            {
+              "id": "claim_3",
+              "text": "If they walk, Adidas is already circling.",
+              "type": "brand",
+              "confidence": 0.8,
+              "context": "Adidas is a real company. Its mention requires verification for potential brand clearance or accuracy if the context implies a real-world deal.",
+              "location_in_script": "Ray's dialogue, line 2"
+            },
+            {
+              "id": "claim_5",
+              "text": "Denise (30s), enters holding a Starbucks cup with the logo clearly visible.",
+              "type": "brand",
+              "confidence": 0.8,
+              "context": "Starbucks is a real company with a distinct logo. Its visible presence requires verification for product placement, brand clearance, and visual accuracy.",
+              "location_in_script": "After Ray's 'Every empire...' line"
+            }
+          ],
+          "cultural": [
+            {
+              "id": "claim_4",
+              "text": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+              "type": "cultural",
+              "confidence": 0.8,
+              "context": "Breaking Bad is a real TV show. The description of the scene needs to be accurate if it's meant to be 'unmistakably' from the show, and potential rights clearance for showing clips.",
+              "location_in_script": "After Ray hangs up, line 1"
+            },
+            {
+              "id": "claim_6",
+              "text": "They said the script references \"the Batman voice\" one too many times.",
+              "type": "cultural",
+              "confidence": 0.8,
+              "context": "Batman is a trademarked character. Referencing 'the Batman voice' requires verification for potential copyright/trademark infringement or clearance.",
+              "location_in_script": "Denise's dialogue, line 1"
+            }
+          ],
+          "biographical": [
+            {
+              "id": "claim_7",
+              "text": "On top: a photo of a man who looks exactly like Elon Musk, unlabeled, mid-speech.",
+              "type": "biographical",
+              "confidence": 0.8,
+              "context": "Elon Musk is a real person. Using his likeness, even if unlabeled, requires verification for rights, permissions, and accuracy of depiction.",
+              "location_in_script": "After Denise sets the folder"
+            },
+            {
+              "id": "claim_8",
+              "text": "Also -- the soundtrack list still has three unlicensed Beatles songs on it.",
+              "type": "biographical",
+              "confidence": 0.8,
+              "context": "The Beatles are a real musical group. Referencing their songs and their licensing status requires verification for music rights and clearance.",
+              "location_in_script": "Denise's dialogue, line 2"
+            }
+          ]
+        },
+        "script_sections": [
+          {
+            "type": "scene_header",
+            "start_line": 0,
+            "line_count": 41,
+            "content_summary": "INT. LUXURY APARTMENT - DAY"
+          }
+        ],
+        "extraction_method": "gemini_ai",
+        "agent_version": "1.0"
+      },
+      "error": null
+    },
+    "research": {
+      "success": false,
+      "confidence": 0.0,
+      "processing_time": 300.0,
+      "data": {},
+      "error": "Agent timed out after 300.0s"
+    },
+    "legal": {
+      "success": true,
+      "confidence": 0.84,
+      "processing_time": 14.127101182937622,
+      "data": {
+        "copyright_risks": [
+          {
+            "type": "copyright",
+            "content": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+            "severity": "high",
+            "description": "This is a direct and unmistakable visual reference to copyrighted content (a specific scene from the TV series 'Breaking Bad'). Using a clip from a copyrighted film or TV show requires a synchronization and master use license.",
+            "suggested_fix": "Obtain a license for the specific clip from the rights holders. Alternatively, create a generic 'TV show' clip that is similar in theme but not identifiable as 'Breaking Bad', or change the dialogue t",
+            "estimated_cost": "$10,000 - $100,000+ (for a clip from a major, popular TV series)",
+            "clearance_action": "Contact AMC Networks (or Sony Pictures Television, the distributor) for licensing the specific 'Breaking Bad' clip."
+          },
+          {
+            "type": "copyright",
+            "content": "the soundtrack list still has three unlicensed Beatles songs on it.",
+            "severity": "high",
+            "description": "Using copyrighted music without obtaining both synchronization and master use licenses is a direct and serious copyright infringement. Beatles songs are notoriously expensive and difficult to license.",
+            "suggested_fix": "Obtain synchronization and master use licenses for each specific Beatles song. Alternatively, replace the songs with licensed library music, original compositions, or public domain music.",
+            "estimated_cost": "$100,000 - $1,000,000+ per song (Beatles songs are among the most expensive to license, and often require significant negotiation).",
+            "clearance_action": "Contact Sony Music Publishing (for publishing rights) and Apple Corps/UMG (for master recording rights) for each specific Beatles song, or identify alternative music."
+          }
+        ],
+        "trademark_issues": [
+          {
+            "type": "trademark",
+            "content": "A McLaren 720S sits parked visibly on the street below.",
+            "severity": "medium",
+            "description": "Prominent visual use of a specific, recognizable luxury car brand and model could imply endorsement or association. While incidental background use is generally permissible, 'visibly' suggests it's meant to be noticed, increasing risk.",
+            "suggested_fix": "Ensure the car is truly incidental background detail and not prominently featured. If it's meant to be a key visual element, seek a product placement agreement or obscure/blur the brand logo. Alternat",
+            "estimated_cost": "$0 (if incidental) to $5,000+ (for blurring/obscuring or seeking agreement)",
+            "clearance_action": "Assess on-screen prominence during production. If prominent, contact McLaren's marketing/legal department for permission or plan to obscure logos in post-production."
+          },
+          {
+            "type": "trademark",
+            "content": "Tell Nike we want the deal by Friday. If they walk, Adidas is already circling.",
+            "severity": "low",
+            "description": "Using brand names in dialogue is generally permissible as long as it's not disparaging, misleading, or implying a false endorsement. This usage appears to be realistic and non-disparaging in a business context.",
+            "suggested_fix": "No fix needed, as long as the context remains non-disparaging and doesn't imply a false relationship.",
+            "estimated_cost": "$0",
+            "clearance_action": "None, unless context changes during production."
+          },
+          {
+            "type": "trademark",
+            "content": "His assistant, DENISE (30s), enters holding a Starbucks cup with the logo clearly visible.",
+            "severity": "medium",
+            "description": "Prominent visual use of a brand logo could imply endorsement or association. While incidental background use is usually acceptable, 'clearly visible' suggests it's meant to be noticed, increasing the risk.",
+            "suggested_fix": "Ensure the cup is truly incidental background detail and not prominently featured. If it's meant to be a key visual element, seek a product placement agreement or obscure/blur the logo. Alternatively,",
+            "estimated_cost": "$0 (if incidental) to $5,000+ (for blurring/obscuring or seeking agreement)",
+            "clearance_action": "Assess on-screen prominence during production. If prominent, contact Starbucks' marketing/legal department for permission or plan to obscure the logo in post-production."
+          }
+        ],
+        "clearance_required": [],
+        "privacy_concerns": [
+          {
+            "type": "privacy",
+            "content": "On top: a photo of a man who looks exactly like Elon Musk, unlabeled, mid-speech.",
+            "severity": "high",
+            "description": "Using the likeness of a real, identifiable person, especially a public figure, without their permission can violate their right of publicity. This is particularly risky if the photo is a prominent visual element and not merely incidental background.",
+            "suggested_fix": "Obtain a likeness release from Elon Musk. Alternatively, use a generic photo of a 'tech mogul' or a stock photo that does not resemble a specific identifiable person, or create a fictional character's",
+            "estimated_cost": "Potentially very high, or impossible to obtain. $10,000 - $1,000,000+ (if a public figure agrees, which is rare for non-documentary/biopic use).",
+            "clearance_action": "Contact Elon Musk's representatives for a likeness release, or replace the photo with a generic image."
+          }
+        ],
+        "estimated_clearance_cost": "$10,000+",
+        "legal_recommendations": [
+          "Review all music and copyrighted content references",
+          "Obtain necessary licensing agreements before production",
+          "Clear all brand mentions with respective trademark holders",
+          "Obtain life rights for any real person references"
+        ],
+        "risk_summary": {
+          "total_risks": 7,
+          "high_priority": 3,
+          "clearance_items": 0
+        },
+        "analysis_method": "gemini_ai"
+      },
+      "error": null
+    },
+    "continuity": {
+      "success": true,
+      "confidence": 0.7,
+      "processing_time": 15.25865125656128,
+      "data": {
+        "character_inconsistencies": [
+          {
+            "type": "character",
+            "severity": "high",
+            "description": "The characters (Ray and Denise) discuss elements of the script's production (e.g., 'the script references', 'soundtrack list', 'deal with it in post'). This breaks the fourth wall and creates a significant inconsistency in the characters' reality within the narrative, implying they are aware they ar",
+            "location": "Denise's first line ('Ray, legal called. They said the script references...'), Ray's response, Denise's second line ('Also -- the soundtrack list...'), Ray's response.",
+            "suggested_fix": "Clarify the narrative intent. If this is intended as meta-fiction, no change is needed. If the story is meant to be a standard narrative, these lines should be rewritten to remove the meta-references "
+          }
+        ],
+        "timeline_issues": [],
+        "location_continuity": [],
+        "prop_tracking": [
+          {
+            "type": "prop",
+            "severity": "low",
+            "description": "Denise enters holding a Starbucks cup, but its disposition is not mentioned after she sets a folder on the table. It's unclear if she puts it down, continues holding it, or where it ends up.",
+            "location": "Denise enters holding a Starbucks cup... Denise sets a folder on the table.",
+            "suggested_fix": "Add a line of action indicating what Denise does with the Starbucks cup (e.g., 'Denise sets her Starbucks cup on the table, then places a folder on top of it.')"
+          },
+          {
+            "type": "prop",
+            "severity": "low",
+            "description": "Ray pours a drink, but its location or whether he continues holding it is not specified after this action.",
+            "location": "He hangs up, pours a drink, and grabs the remote.",
+            "suggested_fix": "Add a line of action indicating where Ray places the drink (e.g., 'He pours a drink, sets it on the coffee table, and grabs the remote.')"
+          },
+          {
+            "type": "prop",
+            "severity": "low",
+            "description": "Ray grabs the remote, but its location or whether he continues holding it is not specified after he turns on the TV.",
+            "location": "He hangs up, pours a drink, and grabs the remote. The TV plays a clip...",
+            "suggested_fix": "Add a line of action indicating what Ray does with the remote after using it (e.g., 'He grabs the remote, turns on the TV, then tosses the remote onto the couch.')"
+          }
+        ],
+        "continuity_recommendations": [
+          "Review character voice and naming consistency",
+          "Priority: Resolve character naming conflicts",
+          "Track prop continuity throughout scenes"
+        ],
+        "continuity_summary": {
+          "total_issues": 4,
+          "character_count": 1,
+          "location_count": 0,
+          "severity_breakdown": {
+            "high": 1,
+            "medium": 0,
+            "low": 3
+          }
+        },
+        "analysis_method": "gemini_ai"
+      },
+      "error": null
+    }
+  }
+}

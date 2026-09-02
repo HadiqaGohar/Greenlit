@@ -1,0 +1,442 @@
+{
+  "report_id": "5988bc2d-f186-476e-8114-6cdbc004f475",
+  "user_id": "user_as4lkc",
+  "timestamp": "2026-09-01T17:34:11.198988+00:00",
+  "processing_time": 70.491432,
+  "script_text": "INT. LUXURY APARTMENT - DAY\n\nRAY (40s, slick, overconfident) paces in front of a floor-to-\nceiling window, smartphone pressed to his ear. A sleek sports car\nsits parked visibly on the street below.\n\n                    RAY\n          Tell the sponsors we want the deal by Friday.\n          If they walk, another brand is already circling.\n\nHe hangs up, pours a drink, and grabs the remote. The TV plays\na clip of a man in a yellow hazmat suit cooking in an RV --\nclearly an homage, not a direct copy.\n\n                    RAY (CONT'D)\n          (to himself)\n          Every empire starts with one good batch.\n\nHis assistant, DENISE (30s), enters holding a plain coffee cup,\nno branding visible.\n\n                    DENISE\n          Ray, legal called. They said the script\n          references \"that superhero's voice\" one too\n          many times. Might want to cut that.\n\n                    RAY\n          Fine. Change it to \"some deep, gravelly voice.\"\n          Nobody'll notice.\n\nDenise sets a folder on the table. On top: a sketch of a\nfictional tech CEO, clearly stylized, not based on anyone real.\n\n                    DENISE\n          Also -- the soundtrack list now has three\n          original score tracks instead of the old ones.\n\n                    RAY\n          Good. That's one less headache.\n\nFADE OUT.",
+  "risk_assessment": {
+    "overall_risk_score": 30.0,
+    "risk_level": "medium"
+  },
+  "agent_results": {
+    "director": {
+      "success": true,
+      "confidence": 0.85,
+      "processing_time": 10.401835441589355,
+      "data": {
+        "claims": [
+          {
+            "id": "claim_001",
+            "text": "The TV plays a clip of a man in a yellow hazmat suit cooking in an RV -- clearly an homage, not a direct copy.",
+            "type": "cultural",
+            "confidence": 0.9,
+            "context": "This is a clear cultural reference to the TV show 'Breaking Bad' and its iconic imagery. While stated as an homage, verification is needed to ensure the visual representation is distinct enough to avoid intellectual property infringement, or to confirm the specific show being referenced for audience understanding.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, after Ray hangs up the phone."
+          },
+          {
+            "id": "claim_002",
+            "text": "They said the script references 'that superhero's voice' one too many times.",
+            "type": "brand",
+            "confidence": 0.95,
+            "context": "This implies a specific, recognizable voice associated with a real, trademarked superhero character. Legal counsel has already flagged this as a potential intellectual property issue. Verification is crucial to identify the specific superhero/brand being referenced and to ensure no trademark or copyright infringement occurs.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, Denise's dialogue."
+          }
+        ],
+        "claims_extracted": 2,
+        "claims_by_type": {
+          "cultural": [
+            {
+              "id": "claim_001",
+              "text": "The TV plays a clip of a man in a yellow hazmat suit cooking in an RV -- clearly an homage, not a direct copy.",
+              "type": "cultural",
+              "confidence": 0.9,
+              "context": "This is a clear cultural reference to the TV show 'Breaking Bad' and its iconic imagery. While stated as an homage, verification is needed to ensure the visual representation is distinct enough to avoid intellectual property infringement, or to confirm the specific show being referenced for audience understanding.",
+              "location_in_script": "INT. LUXURY APARTMENT - DAY, after Ray hangs up the phone."
+            }
+          ],
+          "brand": [
+            {
+              "id": "claim_002",
+              "text": "They said the script references 'that superhero's voice' one too many times.",
+              "type": "brand",
+              "confidence": 0.95,
+              "context": "This implies a specific, recognizable voice associated with a real, trademarked superhero character. Legal counsel has already flagged this as a potential intellectual property issue. Verification is crucial to identify the specific superhero/brand being referenced and to ensure no trademark or copyright infringement occurs.",
+              "location_in_script": "INT. LUXURY APARTMENT - DAY, Denise's dialogue."
+            }
+          ]
+        },
+        "script_sections": [
+          {
+            "type": "scene_header",
+            "start_line": 0,
+            "line_count": 41,
+            "content_summary": "INT. LUXURY APARTMENT - DAY"
+          }
+        ],
+        "extraction_method": "gemini_ai",
+        "agent_version": "1.0"
+      },
+      "error": null
+    },
+    "research": {
+      "success": true,
+      "confidence": 0.65,
+      "processing_time": 60.06085824966431,
+      "data": {
+        "claims": [
+          {
+            "id": "claim_001",
+            "text": "The TV plays a clip of a man in a yellow hazmat suit cooking in an RV -- clearly an homage, not a direct copy.",
+            "type": "cultural",
+            "confidence": 0.8,
+            "context": "This is a clear cultural reference to the TV show 'Breaking Bad' and its iconic imagery. While stated as an homage, verification is needed to ensure the visual representation is distinct enough to avoid intellectual property infringement, or to confirm the specific show being referenced for audience understanding.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, after Ray hangs up the phone.",
+            "verdict": "verified",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The Breaking Bad description explicitly states that Jesse obtains an RV for Walter and Jesse to cook in, establishing the RV-cooking motif. A separate description identifies bright yellow hazmat suits with Breaking Bad and its meth-cooking imagery, supporting the visual association. Together these sources support the claim that the scene evokes the show, but they do not establish the television clip\u2019s exact provenance or prove that it is not a direct copy.', citations=[Citation(url='https://en.wikipedia.org/wiki/Breaking_Bad', excerpts=['Realizing he doesn\\'t have enough money to pay for treatment, and after going on a drug bust with his brother-in-law [DEA](https://en.wikipedia.org/wiki/Drug_Enforcement_Administration \"Drug Enforcement Administration\") agent, Hank, Walt resorts to cooking crystal meth. He decides to team up with his former student, Jesse. Jesse obtains an [R.V.](https://en.wikipedia.org/wiki/Recreational_vehicle \"Recreational vehicle\") to cook in from his friend, Combo, while Walt devises a revolutionary formula using unregulated chemicals, creating a highly pure product tinted blue.'], title='Breaking Bad - Wikipedia'), Citation(url='http://filmgarb.com/breaking-bad-hazmat-suit', excerpts=['Clothes from movies n\\' shows Items Popular Actors Titles [](https://forms.gle/fNo932MizpSYxzkg9 \"Report post\") Breaking Bad Hazmat Suit Breaking Bad Hazmat Suit #accessories, #tv, #bryan-cranston, #breaking-bad These bright yellow hazmat jump suits are the perfect accessory for any Breaking Bad fan or aspiring meth cook. Whether it be for costume purposes or some backyard chemistry sessions; these suits will keep you in the zone while watching the show and keep you clean while cooking up some Blue Sky. If Walter White and Jesse Pinkman can trust \\'em, you can too. Breaking Bad Hazmat Suit These bright yellow hazmat jump suits are the perfect accessory for any Breaking Bad fan or aspiring meth cook.'], title='Breaking Bad Hazmat Suit - Filmgarb.com')], confidence='medium')], content={'output': 'Mostly true. The scene\u2019s combination of RV cooking and a yellow hazmat suit strongly evokes Breaking Bad: the series depicts Walter and Jesse cooking in an RV, and the yellow hazmat suit is an established visual associated with the show. However, the available evidence does not independently prove that the television clip is an homage rather than a direct reproduction, so that characterization remains an interpretation.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Research confirms this claim"
+          },
+          {
+            "id": "claim_002",
+            "text": "They said the script references 'that superhero's voice' one too many times.",
+            "type": "brand",
+            "confidence": 0.5,
+            "context": "This implies a specific, recognizable voice associated with a real, trademarked superhero character. Legal counsel has already flagged this as a potential intellectual property issue. Verification is crucial to identify the specific superhero/brand being referenced and to ensure no trademark or copyright infringement occurs.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, Denise's dialogue.",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "Research timed out",
+            "note": "Research exceeded 60.0s timeout - marked as uncertain"
+          }
+        ],
+        "claims_researched": 2,
+        "verified_claims": [
+          {
+            "id": "claim_001",
+            "text": "The TV plays a clip of a man in a yellow hazmat suit cooking in an RV -- clearly an homage, not a direct copy.",
+            "type": "cultural",
+            "confidence": 0.8,
+            "context": "This is a clear cultural reference to the TV show 'Breaking Bad' and its iconic imagery. While stated as an homage, verification is needed to ensure the visual representation is distinct enough to avoid intellectual property infringement, or to confirm the specific show being referenced for audience understanding.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, after Ray hangs up the phone.",
+            "verdict": "verified",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The Breaking Bad description explicitly states that Jesse obtains an RV for Walter and Jesse to cook in, establishing the RV-cooking motif. A separate description identifies bright yellow hazmat suits with Breaking Bad and its meth-cooking imagery, supporting the visual association. Together these sources support the claim that the scene evokes the show, but they do not establish the television clip\u2019s exact provenance or prove that it is not a direct copy.', citations=[Citation(url='https://en.wikipedia.org/wiki/Breaking_Bad', excerpts=['Realizing he doesn\\'t have enough money to pay for treatment, and after going on a drug bust with his brother-in-law [DEA](https://en.wikipedia.org/wiki/Drug_Enforcement_Administration \"Drug Enforcement Administration\") agent, Hank, Walt resorts to cooking crystal meth. He decides to team up with his former student, Jesse. Jesse obtains an [R.V.](https://en.wikipedia.org/wiki/Recreational_vehicle \"Recreational vehicle\") to cook in from his friend, Combo, while Walt devises a revolutionary formula using unregulated chemicals, creating a highly pure product tinted blue.'], title='Breaking Bad - Wikipedia'), Citation(url='http://filmgarb.com/breaking-bad-hazmat-suit', excerpts=['Clothes from movies n\\' shows Items Popular Actors Titles [](https://forms.gle/fNo932MizpSYxzkg9 \"Report post\") Breaking Bad Hazmat Suit Breaking Bad Hazmat Suit #accessories, #tv, #bryan-cranston, #breaking-bad These bright yellow hazmat jump suits are the perfect accessory for any Breaking Bad fan or aspiring meth cook. Whether it be for costume purposes or some backyard chemistry sessions; these suits will keep you in the zone while watching the show and keep you clean while cooking up some Blue Sky. If Walter White and Jesse Pinkman can trust \\'em, you can too. Breaking Bad Hazmat Suit These bright yellow hazmat jump suits are the perfect accessory for any Breaking Bad fan or aspiring meth cook.'], title='Breaking Bad Hazmat Suit - Filmgarb.com')], confidence='medium')], content={'output': 'Mostly true. The scene\u2019s combination of RV cooking and a yellow hazmat suit strongly evokes Breaking Bad: the series depicts Walter and Jesse cooking in an RV, and the yellow hazmat suit is an established visual associated with the show. However, the available evidence does not independently prove that the television clip is an homage rather than a direct reproduction, so that characterization remains an interpretation.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Research confirms this claim"
+          }
+        ],
+        "flagged_claims": [],
+        "uncertain_claims": [
+          {
+            "id": "claim_002",
+            "text": "They said the script references 'that superhero's voice' one too many times.",
+            "type": "brand",
+            "confidence": 0.5,
+            "context": "This implies a specific, recognizable voice associated with a real, trademarked superhero character. Legal counsel has already flagged this as a potential intellectual property issue. Verification is crucial to identify the specific superhero/brand being referenced and to ensure no trademark or copyright infringement occurs.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, Denise's dialogue.",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "Research timed out",
+            "note": "Research exceeded 60.0s timeout - marked as uncertain"
+          }
+        ],
+        "sources": [],
+        "research_summary": {
+          "verified_count": 1,
+          "flagged_count": 0,
+          "uncertain_count": 1,
+          "overall_accuracy": 0.5
+        }
+      },
+      "error": null
+    },
+    "legal": {
+      "success": true,
+      "confidence": 0.74,
+      "processing_time": 14.175915718078613,
+      "data": {
+        "copyright_risks": [
+          {
+            "type": "copyright",
+            "content": "The TV plays a clip of a man in a yellow hazmat suit cooking in an RV -- clearly an homage, not a direct copy.",
+            "severity": "high",
+            "description": "This visual description is highly iconic and directly associated with the copyrighted television series 'Breaking Bad'. Even if intended as an 'homage,' using such a specific and recognizable visual element without permission could constitute copyright infringement (e.g., unauthorized derivative wor",
+            "suggested_fix": "Option A (Preferred): Revise the visual description to be less specific and avoid direct association with 'Breaking Bad'. For example, 'a man in a lab coat mixing chemicals in a makeshift lab' or 'a c",
+            "estimated_cost": "Option A: $0 (script revision)\nOption B: $5,000 - $50,000+ (clip licensing, highly variable based on usage, duration, prominence)",
+            "clearance_action": "Option A: Revise script.\nOption B: Contact Sony Pictures Television and AMC Networks for clip licensing."
+          },
+          {
+            "type": "copyright",
+            "content": "Every empire starts with one good batch.",
+            "severity": "medium",
+            "description": "This dialogue, especially when paired with the visual reference to 'a man in a yellow hazmat suit cooking in an RV,' strongly reinforces the connection to 'Breaking Bad' and its central theme of drug manufacturing. While a generic phrase, in context, it contributes to the overall impression of an un",
+            "suggested_fix": "Option A (Preferred): Revise the dialogue to be more generic and less suggestive of drug manufacturing or the specific themes of 'Breaking Bad'. For example, 'Every great venture begins with a single ",
+            "estimated_cost": "$0 (script revision)",
+            "clearance_action": "Revise script."
+          }
+        ],
+        "trademark_issues": [],
+        "clearance_required": [],
+        "privacy_concerns": [],
+        "estimated_clearance_cost": "$500-2,000",
+        "legal_recommendations": [
+          "Review all music and copyrighted content references",
+          "Obtain necessary licensing agreements before production"
+        ],
+        "risk_summary": {
+          "total_risks": 2,
+          "high_priority": 1,
+          "clearance_items": 0
+        },
+        "analysis_method": "gemini_ai"
+      },
+      "error": null
+    },
+    "continuity": {
+      "success": true,
+      "confidence": 0.85,
+      "processing_time": 8.559289693832397,
+      "data": {
+        "character_inconsistencies": [],
+        "timeline_issues": [],
+        "location_continuity": [],
+        "prop_tracking": [
+          {
+            "type": "prop",
+            "severity": "low",
+            "description": "Denise enters holding a coffee cup. She then sets a folder on the table, but the script doesn't specify what happens to the coffee cup she was holding. It's unclear if she put it down, or is holding it in her other hand.",
+            "location": "Denise sets a folder on the table. On top: a sketch...",
+            "suggested_fix": "Add a line clarifying the coffee cup's disposition. For example: 'Denise sets her coffee cup down, then places a folder on the table.' or 'Denise, still holding her coffee cup, sets a folder on the ta"
+          }
+        ],
+        "continuity_recommendations": [
+          "Track prop continuity throughout scenes"
+        ],
+        "continuity_summary": {
+          "total_issues": 1,
+          "character_count": 0,
+          "location_count": 0,
+          "severity_breakdown": {
+            "high": 0,
+            "medium": 0,
+            "low": 1
+          }
+        },
+        "analysis_method": "gemini_ai"
+      },
+      "error": null
+    }
+  },
+  "scenes": [
+    {
+      "scene_number": 1,
+      "title": "INT. LUXURY APARTMENT - DAY",
+      "location": "LUXURY APARTMENT",
+      "time_of_day": "DAY",
+      "description": "RAY (40s, slick, overconfident) paces in front of a floor-to- Tell the sponsors we want the deal by Friday. If they walk, another brand is already circling. He hangs up, pours a drink, and grabs the remote. The TV plays",
+      "characters_present": [
+        "RAY",
+        "DENISE"
+      ],
+      "page_start": 1,
+      "page_end": 1,
+      "dialogue_count": 10,
+      "action_lines": [
+        "RAY (40s, slick, overconfident) paces in front of a floor-to-",
+        "Tell the sponsors we want the deal by Friday.",
+        "If they walk, another brand is already circling.",
+        "He hangs up, pours a drink, and grabs the remote. The TV plays",
+        "RAY (CONT'D)",
+        "Every empire starts with one good batch.",
+        "His assistant, DENISE (30s), enters holding a plain coffee cup,",
+        "Ray, legal called. They said the script",
+        "Fine. Change it to \"some deep, gravelly voice.\"",
+        "Nobody'll notice.",
+        "Denise sets a folder on the table. On top: a sketch of a",
+        "Also -- the soundtrack list now has three",
+        "Good. That's one less headache."
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "name": "RAY",
+      "descriptions": [
+        "RAY (40s, slick, overconfident) paces in front of a floor-to-",
+        "Ray, legal called. They said the script"
+      ],
+      "first_appearance": 1,
+      "total_scenes": 1,
+      "character_type": "lead",
+      "age_references": [],
+      "physical_descriptions": [],
+      "personality_traits": [
+        "confident"
+      ],
+      "relationships": {},
+      "dialogue_count": 5,
+      "scene_appearances": [
+        1
+      ]
+    },
+    {
+      "name": "DENISE",
+      "descriptions": [
+        "His assistant, DENISE (30s), enters holding a plain coffee cup,",
+        "Denise sets a folder on the table. On top: a sketch of a"
+      ],
+      "first_appearance": 1,
+      "total_scenes": 1,
+      "character_type": "lead",
+      "age_references": [],
+      "physical_descriptions": [
+        "plain"
+      ],
+      "personality_traits": [
+        "is assistant",
+        "ise",
+        "ise",
+        "ise",
+        "ise"
+      ],
+      "relationships": {},
+      "dialogue_count": 5,
+      "scene_appearances": [
+        1
+      ]
+    }
+  ],
+  "scene_statistics": {
+    "total_scenes": 1,
+    "day_scenes": 1,
+    "night_scenes": 0,
+    "interior_scenes": 1,
+    "exterior_scenes": 0,
+    "total_characters": 2,
+    "average_characters_per_scene": 2.0,
+    "total_dialogue_lines": 10,
+    "locations": 1
+  },
+  "character_statistics": {
+    "total_characters": 2,
+    "character_types": {
+      "lead": 2
+    },
+    "average_scenes_per_character": 1.0,
+    "most_connected_character": "RAY",
+    "characters_with_descriptions": 2,
+    "characters_with_relationships": 0
+  },
+  "continuity_issues": [],
+  "agent_timeline": [
+    {
+      "agent": "director",
+      "status": "complete",
+      "start_time": "2026-09-01 17:34:11.225493+00:00",
+      "end_time": "2026-09-01 17:34:21.628238+00:00",
+      "duration_seconds": 10.402745,
+      "summary": "Extracted 2 factual claims for verification",
+      "claims_count": 2,
+      "issues_found": null,
+      "confidence": 0.85,
+      "phase": "sequential"
+    },
+    {
+      "agent": "research",
+      "status": "complete",
+      "start_time": "2026-09-01 17:34:21.628524+00:00",
+      "end_time": "2026-09-01 17:35:21.690068+00:00",
+      "duration_seconds": 60.061544,
+      "summary": "Verified 2 claims via Parallel API",
+      "claims_count": 2,
+      "issues_found": 0,
+      "confidence": 0.65,
+      "phase": "parallel"
+    },
+    {
+      "agent": "legal",
+      "status": "complete",
+      "start_time": "2026-09-01 17:34:21.628524+00:00",
+      "end_time": "2026-09-01 17:35:21.690068+00:00",
+      "duration_seconds": 60.061544,
+      "summary": "Found 2 legal issues",
+      "claims_count": null,
+      "issues_found": 2,
+      "confidence": 0.74,
+      "phase": "parallel"
+    },
+    {
+      "agent": "continuity",
+      "status": "complete",
+      "start_time": "2026-09-01 17:34:21.628524+00:00",
+      "end_time": "2026-09-01 17:35:21.690068+00:00",
+      "duration_seconds": 60.061544,
+      "summary": "Found 0 continuity issues",
+      "claims_count": null,
+      "issues_found": 0,
+      "confidence": 0.85,
+      "phase": "parallel"
+    }
+  ],
+  "readiness_scores": {
+    "legal_clearance": 60.0,
+    "historical_accuracy": 50.0,
+    "continuity": 95.0,
+    "budget_feasibility": 94.0,
+    "overall": 73.0,
+    "grade": "C"
+  },
+  "agent_flow": [
+    {
+      "agent": "director",
+      "claims_in": 0,
+      "claims_out": 2,
+      "verified": 0,
+      "flagged": 0,
+      "uncertain": 0,
+      "issues_high": 0,
+      "issues_medium": 0,
+      "issues_low": 0
+    },
+    {
+      "agent": "research",
+      "claims_in": 2,
+      "claims_out": 2,
+      "verified": 1,
+      "flagged": 0,
+      "uncertain": 1,
+      "issues_high": 0,
+      "issues_medium": 0,
+      "issues_low": 0
+    },
+    {
+      "agent": "legal",
+      "claims_in": 0,
+      "claims_out": 2,
+      "verified": 0,
+      "flagged": 0,
+      "uncertain": 0,
+      "issues_high": 1,
+      "issues_medium": 1,
+      "issues_low": 0
+    },
+    {
+      "agent": "continuity",
+      "claims_in": 0,
+      "claims_out": 1,
+      "verified": 0,
+      "flagged": 0,
+      "uncertain": 0,
+      "issues_high": 0,
+      "issues_medium": 0,
+      "issues_low": 1
+    }
+  ],
+  "suggestions": [
+    {
+      "issue_id": "sug_1",
+      "issue_type": "legal",
+      "severity": "high",
+      "original_text": "The TV plays a clip of a man in a yellow hazmat suit cooking in an RV -- clearly an homage, not a direct copy.",
+      "suggested_text": "Option A (Preferred): Revise the visual description to be less specific and avoid direct association with 'Breaking Bad'. For example, 'a man in a lab coat mixing chemicals in a makeshift lab' or 'a c",
+      "rationale": "Copyright risk identified: copyright. Clearance required before distribution."
+    },
+    {
+      "issue_id": "sug_2",
+      "issue_type": "legal",
+      "severity": "medium",
+      "original_text": "Every empire starts with one good batch.",
+      "suggested_text": "Option A (Preferred): Revise the dialogue to be more generic and less suggestive of drug manufacturing or the specific themes of 'Breaking Bad'. For example, 'Every great venture begins with a single ",
+      "rationale": "Copyright risk identified: copyright. Clearance required before distribution."
+    }
+  ]
+}

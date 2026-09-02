@@ -8,6 +8,7 @@ interface ExportModalProps {
   userId: string;
   isOpen: boolean;
   onClose: () => void;
+  report?: any;
 }
 
 type ExportFormat = "pdf" | "json" | "csv";
@@ -22,16 +23,14 @@ const sectionOptions = [
 
 const formatOptions: { id: ExportFormat; label: string; icon: string; desc: string }[] = [
   { id: "pdf", label: "PDF", icon: "📄", desc: "Professional report document" },
-  { id: "json", label: "JSON", icon: "📋", desc: "Structured data for integrations" },
-  { id: "csv", label: "CSV", icon: "📊", desc: "Spreadsheet-compatible data" },
 ];
 
-export function ExportModal({ scriptId, userId, isOpen, onClose }: ExportModalProps) {
+export function ExportModal({ scriptId, userId, isOpen, onClose, report }: ExportModalProps) {
   const [tab, setTab] = useState<Tab>("export");
   const [format, setFormat] = useState<ExportFormat>("pdf");
   const [selectedSections, setSelectedSections] = useState<string[]>(sectionOptions.map((s) => s.id));
   const [isExporting, setIsExporting] = useState(false);
-  const [exportResult, setExportResult] = useState<any>(null);
+  const [exportResult, setExportResult] = useState<{ download_url?: string } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const [shareLink, setShareLink] = useState<string | null>(null);
@@ -50,10 +49,13 @@ export function ExportModal({ scriptId, userId, isOpen, onClose }: ExportModalPr
     setError(null);
     setExportResult(null);
     try {
-      const res = await createExport({ script_id: scriptId, format, sections: selectedSections }, userId);
+      const res = await createExport(
+        { script_id: scriptId, format, sections: selectedSections, report_data: report },
+        userId,
+      );
       setExportResult(res);
-    } catch (err: any) {
-      setError(err.message || "Export failed");
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Export failed");
     } finally {
       setIsExporting(false);
     }
@@ -118,7 +120,7 @@ export function ExportModal({ scriptId, userId, isOpen, onClose }: ExportModalPr
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Format
               </label>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="grid grid-cols-1 gap-2">
                 {formatOptions.map((opt) => (
                   <button
                     key={opt.id}
@@ -176,7 +178,12 @@ export function ExportModal({ scriptId, userId, isOpen, onClose }: ExportModalPr
                     const filename = exportResult.download_url?.split("/").pop();
                     if (filename) {
                       const apiBase = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-                      window.open(`${apiBase}/api/export/download/${filename}`, "_blank");
+                      const link = document.createElement("a");
+                      link.href = `${apiBase}/api/export/download/${filename}`;
+                      link.download = filename;
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
                     }
                   }}
                   className="mt-2 rounded-md bg-green-600 px-3 py-1.5 text-sm font-medium text-white hover:bg-green-700"

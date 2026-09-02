@@ -21,7 +21,7 @@ interface UseAnalysisState {
   estimatedTimeRemaining: number | null;
 }
 
-export function useAnalysis() {
+export function useAnalysis(userId?: string) {
   const [state, setState] = useState<UseAnalysisState>({
     isLoading: false,
     error: null,
@@ -129,7 +129,7 @@ export function useAnalysis() {
       simulateProgress();
 
       try {
-        const report = await analyzeScript({ script_text: scriptText });
+        const report = await analyzeScript({ script_text: scriptText }, userId);
         if (progressIntervalRef.current) clearInterval(progressIntervalRef.current);
         setState({
           isLoading: false,
@@ -138,7 +138,7 @@ export function useAnalysis() {
           progress: 100,
           status: "Analysis complete!",
           agentStatus: Object.fromEntries(
-            Object.entries(report.agent_results ?? {}).map(([name, r]: [string, any]) => [
+            Object.entries(report.agent_results ?? {}).map(([name, r]: [string, { success: boolean }]) => [
               name,
               {
                 name,
@@ -166,7 +166,7 @@ export function useAnalysis() {
         return null;
       }
     },
-    [simulateProgress],
+    [simulateProgress, userId],
   );
 
   const reset = useCallback(() => {

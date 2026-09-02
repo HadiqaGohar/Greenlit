@@ -379,7 +379,7 @@ export const getInitialOnboardingState = (): OnboardingState => ({
   lastVisit: new Date()
 });
 
-export const isNewUser = (user: any): boolean => {
+export const isNewUser = (user: { uid: string } | null): boolean => {
   if (!user) return false;
   
   const onboardingData = localStorage.getItem(`onboarding_${user.uid}`);
@@ -393,7 +393,7 @@ export const isNewUser = (user: any): boolean => {
   }
 };
 
-export const getOnboardingState = (user: any): OnboardingState => {
+export const getOnboardingState = (user: { uid: string } | null): OnboardingState => {
   if (!user) return getInitialOnboardingState();
   
   const onboardingData = localStorage.getItem(`onboarding_${user.uid}`);
@@ -406,7 +406,7 @@ export const getOnboardingState = (user: any): OnboardingState => {
   }
 };
 
-export const saveOnboardingState = (user: any, state: OnboardingState): void => {
+export const saveOnboardingState = (user: { uid: string } | null, state: OnboardingState): void => {
   if (!user) return;
   
   localStorage.setItem(`onboarding_${user.uid}`, JSON.stringify({

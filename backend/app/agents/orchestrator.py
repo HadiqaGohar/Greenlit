@@ -220,6 +220,7 @@ class AgentOrchestrator:
                 report_id=report_id,
                 timestamp=start_time,
                 script_length=len(script_text),
+                script_text=script_text,
                 agent_results=agent_results,
                 risk_assessment=risk_assessment,
                 processing_time=processing_time,
@@ -436,17 +437,44 @@ class AgentOrchestrator:
         return suggestions
 
     async def _execute_agents_parallel(self, tasks: List[AgentTask]) -> Dict[str, AgentResult]:
+        # Individual agent timeouts: Research gets more time (Parallel API), others get less
+        AGENT_TIMEOUTS = {
+            "research": 300.0,   # 5 min for Parallel API deep research
+            "legal": 90.0,       # Legal agent uses Gemini (fast)
+            "continuity": 90.0,  # Continuity agent uses Gemini (fast)
+        }
+        
         async def run_agent(task: AgentTask) -> tuple:
+            agent_timeout = AGENT_TIMEOUTS.get(task.agent_type, 90.0)
             try:
                 if task.agent_type == "research":
-                    result = await self.researcher.process_task(task)
+                    result = await asyncio.wait_for(
+                        self.researcher.process_task(task),
+                        timeout=agent_timeout
+                    )
                 elif task.agent_type == "legal":
-                    result = await self.legal.process_task(task)
+                    result = await asyncio.wait_for(
+                        self.legal.process_task(task),
+                        timeout=agent_timeout
+                    )
                 elif task.agent_type == "continuity":
-                    result = await self.continuity.process_task(task)
+                    result = await asyncio.wait_for(
+                        self.continuity.process_task(task),
+                        timeout=agent_timeout
+                    )
                 else:
                     raise ValueError(f"Unknown agent type: {task.agent_type}")
                 return task.agent_type, result
+            except asyncio.TimeoutError:
+                logger.warning(f"Agent {task.agent_type} timed out after {agent_timeout}s")
+                return task.agent_type, AgentResult(
+                    agent_type=task.agent_type,
+                    task_id=task.task_id,
+                    success=False,
+                    error_message=f"Agent timed out after {agent_timeout}s",
+                    processing_time=agent_timeout,
+                    confidence_score=0.0
+                )
             except Exception as e:
                 logger.error(f"Agent {task.agent_type} failed: {str(e)}")
                 return task.agent_type, AgentResult(
@@ -458,23 +486,8 @@ class AgentOrchestrator:
                     confidence_score=0.0
                 )
 
-        try:
-            results = await asyncio.wait_for(
-                asyncio.gather(*[run_agent(task) for task in tasks]),
-                timeout=120.0
-            )
-        except asyncio.TimeoutError:
-            logger.error("Agent execution timed out")
-            results = []
-            for task in tasks:
-                results.append((task.agent_type, AgentResult(
-                    agent_type=task.agent_type,
-                    task_id=task.task_id,
-                    success=False,
-                    error_message="Agent execution timed out",
-                    processing_time=120.0,
-                    confidence_score=0.0
-                )))
+        # Run all agents in parallel - each has its own timeout
+        results = await asyncio.gather(*[run_agent(task) for task in tasks])
 
         return {agent_type: result for agent_type, result in results}
 

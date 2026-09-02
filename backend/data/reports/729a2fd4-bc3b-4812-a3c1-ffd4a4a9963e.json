@@ -1,0 +1,444 @@
+{
+  "report_id": "729a2fd4-bc3b-4812-a3c1-ffd4a4a9963e",
+  "timestamp": "2026-08-27T19:03:25.998223+00:00",
+  "processing_time": 197.837183,
+  "risk_assessment": {
+    "overall_risk_score": 85.0,
+    "risk_level": "high"
+  },
+  "agent_results": {
+    "director": {
+      "success": true,
+      "confidence": 0.85,
+      "processing_time": 11.932343482971191,
+      "data": {
+        "claims": [
+          {
+            "id": "claim_001",
+            "text": "A McLaren 720S sits parked visibly on the street below.",
+            "type": "brand",
+            "confidence": 0.9,
+            "context": "The McLaren 720S is a specific, real car model. Its presence needs to be accurately depicted visually for production (e.g., set dressing, VFX) and may involve product placement considerations.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, line 2"
+          },
+          {
+            "id": "claim_002",
+            "text": "Tell Nike we want the deal by Friday.",
+            "type": "brand",
+            "confidence": 0.9,
+            "context": "Nike is a real, globally recognized brand. Mentioning it implies a real-world business context and may require legal clearance or careful portrayal to avoid misrepresentation or trademark issues.",
+            "location_in_script": "Ray's dialogue, line 1"
+          },
+          {
+            "id": "claim_003",
+            "text": "If they walk, Adidas is already circling.",
+            "type": "brand",
+            "confidence": 0.9,
+            "context": "Adidas is a real, globally recognized brand. Similar to Nike, its mention implies a real-world business context and may require legal clearance or careful portrayal.",
+            "location_in_script": "Ray's dialogue, line 2"
+          },
+          {
+            "id": "claim_004",
+            "text": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+            "type": "cultural",
+            "confidence": 0.9,
+            "context": "Breaking Bad is a real, copyrighted television series. Using a clip from the show requires licensing and rights clearance. The description of the scene should also be fact-checked against the actual show for accuracy.",
+            "location_in_script": "Ray's action, line 3"
+          },
+          {
+            "id": "claim_005",
+            "text": "His assistant, DENISE (30s), enters holding a Starbucks cup with the logo clearly visible.",
+            "type": "brand",
+            "confidence": 0.9,
+            "context": "Starbucks is a real, globally recognized brand. The clear visibility of its logo implies product placement or incidental use, which may require clearance or agreement with the company.",
+            "location_in_script": "Denise's entrance"
+          },
+          {
+            "id": "claim_006",
+            "text": "They said the script references \"the Batman voice\" one too many times.",
+            "type": "cultural",
+            "confidence": 0.9,
+            "context": "Batman is a trademarked character and franchise owned by DC Comics/Warner Bros. Referencing 'the Batman voice' could potentially infringe on intellectual property rights, as indicated by the 'legal called' context within the script.",
+            "location_in_script": "Denise's dialogue, line 1"
+          },
+          {
+            "id": "claim_007",
+            "text": "On top: a photo of a man who looks exactly like Elon Musk, unlabeled, mid-speech.",
+            "type": "biographical",
+            "confidence": 0.9,
+            "context": "Elon Musk is a real, prominent public figure. Using his likeness, even in a photo, requires careful consideration regarding rights, portrayal, and potential legal issues related to publicity rights or defamation.",
+            "location_in_script": "Denise's action, line 2"
+          },
+          {
+            "id": "claim_008",
+            "text": "Also -- the soundtrack list still has three unlicensed Beatles songs on it.",
+            "type": "cultural",
+            "confidence": 0.9,
+            "context": "The Beatles are a real, iconic band whose music is highly copyrighted and requires significant licensing for use in any production. The script explicitly highlights the 'unlicensed' status, indicating a factual and legal requirement for verification and acquisition of rights.",
+            "location_in_script": "Denise's dialogue, line 3"
+          }
+        ],
+        "claims_extracted": 8,
+        "claims_by_type": {
+          "brand": [
+            {
+              "id": "claim_001",
+              "text": "A McLaren 720S sits parked visibly on the street below.",
+              "type": "brand",
+              "confidence": 0.9,
+              "context": "The McLaren 720S is a specific, real car model. Its presence needs to be accurately depicted visually for production (e.g., set dressing, VFX) and may involve product placement considerations.",
+              "location_in_script": "INT. LUXURY APARTMENT - DAY, line 2"
+            },
+            {
+              "id": "claim_002",
+              "text": "Tell Nike we want the deal by Friday.",
+              "type": "brand",
+              "confidence": 0.9,
+              "context": "Nike is a real, globally recognized brand. Mentioning it implies a real-world business context and may require legal clearance or careful portrayal to avoid misrepresentation or trademark issues.",
+              "location_in_script": "Ray's dialogue, line 1"
+            },
+            {
+              "id": "claim_003",
+              "text": "If they walk, Adidas is already circling.",
+              "type": "brand",
+              "confidence": 0.9,
+              "context": "Adidas is a real, globally recognized brand. Similar to Nike, its mention implies a real-world business context and may require legal clearance or careful portrayal.",
+              "location_in_script": "Ray's dialogue, line 2"
+            },
+            {
+              "id": "claim_005",
+              "text": "His assistant, DENISE (30s), enters holding a Starbucks cup with the logo clearly visible.",
+              "type": "brand",
+              "confidence": 0.9,
+              "context": "Starbucks is a real, globally recognized brand. The clear visibility of its logo implies product placement or incidental use, which may require clearance or agreement with the company.",
+              "location_in_script": "Denise's entrance"
+            }
+          ],
+          "cultural": [
+            {
+              "id": "claim_004",
+              "text": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+              "type": "cultural",
+              "confidence": 0.9,
+              "context": "Breaking Bad is a real, copyrighted television series. Using a clip from the show requires licensing and rights clearance. The description of the scene should also be fact-checked against the actual show for accuracy.",
+              "location_in_script": "Ray's action, line 3"
+            },
+            {
+              "id": "claim_006",
+              "text": "They said the script references \"the Batman voice\" one too many times.",
+              "type": "cultural",
+              "confidence": 0.9,
+              "context": "Batman is a trademarked character and franchise owned by DC Comics/Warner Bros. Referencing 'the Batman voice' could potentially infringe on intellectual property rights, as indicated by the 'legal called' context within the script.",
+              "location_in_script": "Denise's dialogue, line 1"
+            },
+            {
+              "id": "claim_008",
+              "text": "Also -- the soundtrack list still has three unlicensed Beatles songs on it.",
+              "type": "cultural",
+              "confidence": 0.9,
+              "context": "The Beatles are a real, iconic band whose music is highly copyrighted and requires significant licensing for use in any production. The script explicitly highlights the 'unlicensed' status, indicating a factual and legal requirement for verification and acquisition of rights.",
+              "location_in_script": "Denise's dialogue, line 3"
+            }
+          ],
+          "biographical": [
+            {
+              "id": "claim_007",
+              "text": "On top: a photo of a man who looks exactly like Elon Musk, unlabeled, mid-speech.",
+              "type": "biographical",
+              "confidence": 0.9,
+              "context": "Elon Musk is a real, prominent public figure. Using his likeness, even in a photo, requires careful consideration regarding rights, portrayal, and potential legal issues related to publicity rights or defamation.",
+              "location_in_script": "Denise's action, line 2"
+            }
+          ]
+        },
+        "script_sections": [
+          {
+            "type": "scene_header",
+            "start_line": 0,
+            "line_count": 41,
+            "content_summary": "INT. LUXURY APARTMENT - DAY"
+          }
+        ],
+        "extraction_method": "gemini_ai",
+        "agent_version": "1.0"
+      },
+      "error": null
+    },
+    "research": {
+      "success": true,
+      "confidence": 0.58,
+      "processing_time": 185.88260889053345,
+      "data": {
+        "claims": [
+          {
+            "id": "claim_001",
+            "text": "A McLaren 720S sits parked visibly on the street below.",
+            "type": "brand",
+            "confidence": 0.5,
+            "context": "The McLaren 720S is a specific, real car model. Its presence needs to be accurately depicted visually for production (e.g., set dressing, VFX) and may involve product placement considerations.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, line 2",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The cited caption explicitly describes street parking a McLaren 720S in the neighborhood, supporting the fact-check statement.', citations=[Citation(url='http://reddit.com/r/spotted/comments/rhv7dw/street_parking_the_mclaren_720s_in_my_neighborhood', excerpts=['Street parking the [McLaren 720s] in my neighborhood'], title=None)], confidence='medium')], content={'output': 'True \u2014 a McLaren 720S is visibly parked on the street below.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Insufficient research data to verify"
+          },
+          {
+            "id": "claim_002",
+            "text": "Tell Nike we want the deal by Friday.",
+            "type": "brand",
+            "confidence": 0.4,
+            "context": "Nike is a real, globally recognized brand. Mentioning it implies a real-world business context and may require legal clearance or careful portrayal to avoid misrepresentation or trademark issues.",
+            "location_in_script": "Ray's dialogue, line 1",
+            "verdict": "flagged",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The cited guidance distinguishes verifiable facts from subjective statements and explains that fact-checking begins by identifying claims that can be objectively verified. The input is an imperative instruction, not a verifiable factual assertion, so it cannot be rated true or false as written.', citations=[Citation(url='https://www.ebsco.com/research-starters/communication-and-mass-media/critical-skills-fact-checking', excerpts=['Critical Skills: Fact-checking | Communication and Mass Media Facts are verifiable pieces of information, while opinions are subjective beliefs that cannot be objectively proven. An effective fact-checking process begins'], title='Critical Skills: Fact-checking | Communication and Mass Media')], confidence='medium')], content={'output': 'Not a fact-checkable claim. It is an instruction expressing a desire to reach a deal with Nike by Friday.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Research indicates potential inaccuracy"
+          },
+          {
+            "id": "claim_003",
+            "text": "If they walk, Adidas is already circling.",
+            "type": "brand",
+            "confidence": 0.75,
+            "context": "Adidas is a real, globally recognized brand. Similar to Nike, its mention implies a real-world business context and may require legal clearance or careful portrayal.",
+            "location_in_script": "Ray's dialogue, line 2",
+            "verdict": "verified",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The Parisien identifies Kylian Mbapp\u00e9 as the athlete whose Nike contract was ending and says a change was plausible but not finalized. Reporting dated August 1 says Mbapp\u00e9 had no personal sponsor after July 31 and that Adidas and Under Armour were pursuing the opportunity. Later reporting says his next sponsor was expected to be an unexpected, undisclosed brand rather than Adidas, so \u201cAdidas is already circling\u201d is supported as reported interest, not as a confirmed deal.', citations=[Citation(url='https://lanouvelletribune.info/2026/08/sans-equipementier-mbappe-courtise-par-adidas-et-under-armour/', excerpts=['Sans \u00e9quipementier, Mbapp\u00e9 courtis\u00e9 par Adidas et Under Armour 01/08/2026 par [Saturnin Bossa](https://lanouvelletribune.info/author/sbossa/ \"Afficher tous les articles de Saturnin Bossa\") [Facebook](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flanouvelletribune.info%2F2026%2F08%2Fsans-equipementier-mbappe-courtise-par-adidas-et-under-armour%2F) ... **Kylian Mbapp\u00e9** n\u2019a plus de sponsor personnel depuis le 31 juillet. L\u2019attaquant du **Real Madrid** portait les couleurs de **Nike** depuis son enfance, un lien commercial qui remonte \u00e0 l\u2019ann\u00e9e de ses huit ans. Une \u00e9ch\u00e9ance cal\u00e9e sur la Coupe du monde Le timing n\u2019est pas neutre. La rupture intervient \u00e0 quelques semaines du Mondial nord-am\u00e9ricain, p\u00e9riode o\u00f9 le capitaine des Bleus b\u00e9n\u00e9ficie d\u2019une exposition maximale. Selon _Le Parisien_ , les probabilit\u00e9s d\u2019un retour de Mbapp\u00e9 chez Nike seraient _quasiment inexistantes_ . Pour limiter les d\u00e9g\u00e2ts d\u2019image en pleine comp\u00e9tition, la marque \u00e0 la virgule et la F\u00e9d\u00e9ration fran\u00e7aise de football auraient trouv\u00e9 un arrangement temporaire, repoussant de quelques semaines l\u2019\u00e9ch\u00e9ance initiale fix\u00e9e fin juin. ... Ce silence sur les cha\u00eenes de production est interpr\u00e9t\u00e9 par plusieurs observateurs du secteur comme un signe que la rupture \u00e9tait d\u00e9j\u00e0 act\u00e9e en interne. Adidas et Under Armour en embuscade Deux pr\u00e9tendants se positionnent pour r\u00e9cup\u00e9rer le contrat. **Adidas** , d\u00e9j\u00e0 \u00e9quipementier du Real Madrid, dispose d\u2019un argument logistique \u00e9vident : le joueur porterait les m\u00eames couleurs \u00e0 l\u2019entra\u00eenement comme en club. La marque allemande avait d\u00e9j\u00e0 tent\u00e9 une offensive par le pass\u00e9, avec une proposition financi\u00e8re sup\u00e9rieure \u00e0 l\u2019accord pr\u00e9c\u00e9dent de Mbapp\u00e9, sans succ\u00e8s \u00e0 l\u2019\u00e9poque. **Under Armour** , de son c\u00f4t\u00e9, surveille \u00e9galement le dossier de pr\u00e8s, tout comme d\u2019autres \u00e9quipementiers non identifi\u00e9s \u00e0 ce stade. La marque am\u00e9ricaine a affirm\u00e9 une strat\u00e9gie de recrutement ax\u00e9e sur les jeunes stars mondiales pour concurrencer son rival sur le segment du football, un march\u00e9 o\u00f9 elle reste minoritaire face \u00e0 ses deux principaux concurrents. Une bifurcation vers le lifestyle envisag\u00e9e Une troisi\u00e8me hypoth\u00e8se circule : celle d\u2019un partenariat avec une marque de mode plut\u00f4t qu\u2019un \u00e9quipementier sportif traditionnel.'], title='Sans \u00e9quipementier, Mbapp\u00e9 courtis\u00e9 par Adidas et Under Armour \u2013 La Nouvelle Tribune'), Citation(url='https://www.chosun.com/english/sports-en/2026/08/10/QAPZSOE33BG2BF3WOL6IDL6WBQ/', excerpts=['Mbapp\u00e9 Ends Nike Partnership, Eyes Unexpected Brand Deal French star\\'s new sponsor may mark high-end brand\\'s football market entry with lucrative contract By OSEN Published 2026.08.10. 16:35 [OSEN=Jeong Seung-woo Reporter] Kylian Mbapp\u00e9, 28 years old, Real Madrid, has reportedly ended his long-standing partnership with Nike, which began when he was 8 years old. It has been suggested that his next destination could be an \"unexpected brand\" rather than existing major brands like Adidas or Puma. Spanish outlet \\'Mundo Deportivo\\' cited a report by French Ligue 1 specialist journalist Thibaut Vezirian on the 10th (Korean time), stating, \"Mbapp\u00e9 ended his relationship with Nike on July 31. He is expected to sign a new contract with a brand that will bring significant profits in the near future.\" ... The reason for the heightened attention to this change lies in his next sponsor. According to Vezirian, the brand Mbapp\u00e9 is expected to partner with is unlikely to be a well-known entity in the football market, such as Adidas, Puma, or Under Armour. He explained, \"A brand that was not anticipated is making rapid progress to become Mbapp\u00e9\u2019s equipment supplier. The contract is currently in its final stages.\" He added, \"This is a significant change. ... There are also speculations that Mbapp\u00e9 will not merely serve as an advertising model or sponsored athlete. Vezirian claimed, \"Mbapp\u00e9 is likely to have his own brand and could benefit from a contract that includes securing shares in the company.'], title='Mbapp\u00e9 Ends Nike Partnership, Eyes Unexpected Brand Deal '), Citation(url='https://www.leparisien.fr/sports/football/equipe-de-france/et-si-kylian-mbappe-en-fin-de-contrat-avec-nike-changeait-dequipementier-cet-ete-25-03-2026-KN6TQAKSO5FA5KFEWYRKUUHLEM.php', excerpts=['Et si Kylian Mbapp\u00e9, en fin de contrat avec Nike, changeait d\u2019\u00e9quipementier cet \u00e9t\u00e9 ? INFO LE PARISIEN. En fin de contrat avec la firme au \u00ab swoosh \u00bb avec laquelle il collabore depuis pr\u00e8s de vingt ans, le capitaine des Bleus, courtis\u00e9 par de nombreux autres \u00e9quipementiers, pourrait prendre un nouveau virage cet \u00e9t\u00e9. Par St\u00e9phane Bianchi Le 25 mars 2026 \u00e0 15h35 Depuis des mois, Nike n\u00e9gocie pour conserver le capitaine des Bleus Kylian Mbapp\u00e9, ici mardi \u00e0 Boston, au sein de son pool d\u2019ambassadeurs VIP. AFP/Franck Fife Depuis des mois, Nike n\u00e9gocie pour conserver le capitaine des Bleus Kylian Mbapp\u00e9, ici mardi \u00e0 Boston, au sein de son pool d\u2019ambassadeurs VIP. AFP/Franck Fife Offrir cet article ... Nike-Mbapp\u00e9](https://www.leparisien.fr/sports/football/equipe-de-france/equipe-de-france-nike-reste-lequipementier-des-bleus-pour-encore-10-ans-30-04-2024-FKRRO3BYMRH4XC2V2BVTT37S7E.php) , l\u2019\u00e9pilogue d\u2019une collaboration n\u00e9e il y a presque vingt ans ? Qu\u2019importe, dans ce contexte, que le nouveau film publicitaire de l\u2019\u00e9quipementier am\u00e9ricain ne fasse pas l\u2019unanimit\u00e9 dans l\u2019entourage des Bleus. On y voit le capitaine des Bleus, ainsi que Dou\u00e9, Tchouam\u00e9ni, Camavinga et Saliba, mis en sc\u00e8ne en voleurs, fa\u00e7on \u00ab Ocean Eleven \u00bb, pour \u00ab r\u00e9cup\u00e9rer ce qui leur appartient \u00bb \u00e0 savoir [la Coupe du monde](https://www.leparisien.fr/sports/football/coupe-du-monde/) . Le clip en a heurt\u00e9 certains au point que des passages auraient m\u00eame \u00e9t\u00e9 coup\u00e9s.'], title='Et si Kylian Mbapp\u00e9, en fin de contrat avec Nike, changeait d\u2019\u00e9quipementier cet \u00e9t\u00e9\\xa0? - Le Parisien')], confidence='medium')], content={'output': 'Fact-check: Partly true but misleading. The statement refers to Kylian Mbapp\u00e9: his Nike sponsorship ended on July 31, 2026, and Adidas was reportedly interested alongside Under Armour. However, there was no confirmed Adidas signing; later reporting said an unidentified \u201cunexpected\u201d brand might become his next sponsor.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Research supports this claim"
+          },
+          {
+            "id": "claim_004",
+            "text": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+            "type": "cultural",
+            "confidence": 0.5,
+            "context": "Breaking Bad is a real, copyrighted television series. Using a clip from the show requires licensing and rights clearance. The description of the scene should also be fact-checked against the actual show for accuracy.",
+            "location_in_script": "Ray's action, line 3",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The Breaking Bad clip description explicitly identifies cooking in an RV, while the related costume reference identifies Walter in a yellow hazmat suit. The episode summary independently confirms that Jesse secures an RV for Walter and Jesse to cook in, so the fact-check statement is supported.', citations=[Citation(url='http://youtube.com/watch?v=tmeAjnG45Rg', excerpts=['Breaking Bad - Cooking in the RV Walter and Jesse cooking in the RV By Juanje. Breaking Bad - Cooking in the RV. Obnoxiously Priced Food ANGERS Gordon Ramsay | Full Episode'], title=None), Citation(url='http://costumepartyworld.com/breaking-bad-walter-white-costume-yellow-toxic-hazmat-suit-jumpsuit-breaking-bad-walter-white-cosplay', excerpts=['Yellow Toxic Hazmat Suit Jumpsuit Breaking Bad Walter'], title=None), Citation(url='http://en.wikipedia.org/wiki/Breaking_Bad', excerpts=['Episodes Season 1 (2008) Walter, diagnosed with inoperable lung cancer , conspires with Jesse to cook crystal meth to pay for his treatment and provide financial security for his family. Jesse secures an R.V. to cook in, while Walter devises a revolutionary formula using unregulated chemicals, creating a highly pure product tinted blue.'], title=None)], confidence='medium')], content={'output': 'Supported / true. The description matches Breaking Bad: Walter and Jesse cook in an RV, and Walter is depicted in a yellow hazmat suit.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Insufficient research data to verify"
+          },
+          {
+            "id": "claim_005",
+            "text": "His assistant, DENISE (30s), enters holding a Starbucks cup with the logo clearly visible.",
+            "type": "brand",
+            "confidence": 0.75,
+            "context": "Starbucks is a real, globally recognized brand. The clear visibility of its logo implies product placement or incidental use, which may require clearance or agreement with the company.",
+            "location_in_script": "Denise's entrance",
+            "verdict": "verified",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The cited source supports only the general detail that actors in a television crime drama used paper cups displaying the Starbucks logo. It does not provide the specific character name Denise, describe her as an assistant in her 30s, or state that she entered holding the cup, so the complete claim cannot be confirmed.', citations=[Citation(url='https://www.questionai.com/questions-t7wMZkTwVp/actors-tv-crime-drama-drank-coffee-paper-cups-starbucks', excerpts=['The actors on a TV crime drama drank coffee from paper cups ... In this case, the Starbucks Coffee logo being clearly visible on the paper cups that the actors are drinking from is a form of product placement. The goal is to subtly promote the brand to the audience.'], title='The actors on a TV crime drama drank coffee from paper cups ...')], confidence='low')], content={'output': 'Unverified. The available evidence mentions a television crime-drama scene in which actors used paper cups with a clearly visible Starbucks logo, but it does not identify an assistant named Denise or confirm that she entered carrying the cup. Therefore, the full claim is not substantiated.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Research supports this claim"
+          }
+        ],
+        "claims_researched": 5,
+        "verified_claims": [
+          {
+            "id": "claim_003",
+            "text": "If they walk, Adidas is already circling.",
+            "type": "brand",
+            "confidence": 0.75,
+            "context": "Adidas is a real, globally recognized brand. Similar to Nike, its mention implies a real-world business context and may require legal clearance or careful portrayal.",
+            "location_in_script": "Ray's dialogue, line 2",
+            "verdict": "verified",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The Parisien identifies Kylian Mbapp\u00e9 as the athlete whose Nike contract was ending and says a change was plausible but not finalized. Reporting dated August 1 says Mbapp\u00e9 had no personal sponsor after July 31 and that Adidas and Under Armour were pursuing the opportunity. Later reporting says his next sponsor was expected to be an unexpected, undisclosed brand rather than Adidas, so \u201cAdidas is already circling\u201d is supported as reported interest, not as a confirmed deal.', citations=[Citation(url='https://lanouvelletribune.info/2026/08/sans-equipementier-mbappe-courtise-par-adidas-et-under-armour/', excerpts=['Sans \u00e9quipementier, Mbapp\u00e9 courtis\u00e9 par Adidas et Under Armour 01/08/2026 par [Saturnin Bossa](https://lanouvelletribune.info/author/sbossa/ \"Afficher tous les articles de Saturnin Bossa\") [Facebook](https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flanouvelletribune.info%2F2026%2F08%2Fsans-equipementier-mbappe-courtise-par-adidas-et-under-armour%2F) ... **Kylian Mbapp\u00e9** n\u2019a plus de sponsor personnel depuis le 31 juillet. L\u2019attaquant du **Real Madrid** portait les couleurs de **Nike** depuis son enfance, un lien commercial qui remonte \u00e0 l\u2019ann\u00e9e de ses huit ans. Une \u00e9ch\u00e9ance cal\u00e9e sur la Coupe du monde Le timing n\u2019est pas neutre. La rupture intervient \u00e0 quelques semaines du Mondial nord-am\u00e9ricain, p\u00e9riode o\u00f9 le capitaine des Bleus b\u00e9n\u00e9ficie d\u2019une exposition maximale. Selon _Le Parisien_ , les probabilit\u00e9s d\u2019un retour de Mbapp\u00e9 chez Nike seraient _quasiment inexistantes_ . Pour limiter les d\u00e9g\u00e2ts d\u2019image en pleine comp\u00e9tition, la marque \u00e0 la virgule et la F\u00e9d\u00e9ration fran\u00e7aise de football auraient trouv\u00e9 un arrangement temporaire, repoussant de quelques semaines l\u2019\u00e9ch\u00e9ance initiale fix\u00e9e fin juin. ... Ce silence sur les cha\u00eenes de production est interpr\u00e9t\u00e9 par plusieurs observateurs du secteur comme un signe que la rupture \u00e9tait d\u00e9j\u00e0 act\u00e9e en interne. Adidas et Under Armour en embuscade Deux pr\u00e9tendants se positionnent pour r\u00e9cup\u00e9rer le contrat. **Adidas** , d\u00e9j\u00e0 \u00e9quipementier du Real Madrid, dispose d\u2019un argument logistique \u00e9vident : le joueur porterait les m\u00eames couleurs \u00e0 l\u2019entra\u00eenement comme en club. La marque allemande avait d\u00e9j\u00e0 tent\u00e9 une offensive par le pass\u00e9, avec une proposition financi\u00e8re sup\u00e9rieure \u00e0 l\u2019accord pr\u00e9c\u00e9dent de Mbapp\u00e9, sans succ\u00e8s \u00e0 l\u2019\u00e9poque. **Under Armour** , de son c\u00f4t\u00e9, surveille \u00e9galement le dossier de pr\u00e8s, tout comme d\u2019autres \u00e9quipementiers non identifi\u00e9s \u00e0 ce stade. La marque am\u00e9ricaine a affirm\u00e9 une strat\u00e9gie de recrutement ax\u00e9e sur les jeunes stars mondiales pour concurrencer son rival sur le segment du football, un march\u00e9 o\u00f9 elle reste minoritaire face \u00e0 ses deux principaux concurrents. Une bifurcation vers le lifestyle envisag\u00e9e Une troisi\u00e8me hypoth\u00e8se circule : celle d\u2019un partenariat avec une marque de mode plut\u00f4t qu\u2019un \u00e9quipementier sportif traditionnel.'], title='Sans \u00e9quipementier, Mbapp\u00e9 courtis\u00e9 par Adidas et Under Armour \u2013 La Nouvelle Tribune'), Citation(url='https://www.chosun.com/english/sports-en/2026/08/10/QAPZSOE33BG2BF3WOL6IDL6WBQ/', excerpts=['Mbapp\u00e9 Ends Nike Partnership, Eyes Unexpected Brand Deal French star\\'s new sponsor may mark high-end brand\\'s football market entry with lucrative contract By OSEN Published 2026.08.10. 16:35 [OSEN=Jeong Seung-woo Reporter] Kylian Mbapp\u00e9, 28 years old, Real Madrid, has reportedly ended his long-standing partnership with Nike, which began when he was 8 years old. It has been suggested that his next destination could be an \"unexpected brand\" rather than existing major brands like Adidas or Puma. Spanish outlet \\'Mundo Deportivo\\' cited a report by French Ligue 1 specialist journalist Thibaut Vezirian on the 10th (Korean time), stating, \"Mbapp\u00e9 ended his relationship with Nike on July 31. He is expected to sign a new contract with a brand that will bring significant profits in the near future.\" ... The reason for the heightened attention to this change lies in his next sponsor. According to Vezirian, the brand Mbapp\u00e9 is expected to partner with is unlikely to be a well-known entity in the football market, such as Adidas, Puma, or Under Armour. He explained, \"A brand that was not anticipated is making rapid progress to become Mbapp\u00e9\u2019s equipment supplier. The contract is currently in its final stages.\" He added, \"This is a significant change. ... There are also speculations that Mbapp\u00e9 will not merely serve as an advertising model or sponsored athlete. Vezirian claimed, \"Mbapp\u00e9 is likely to have his own brand and could benefit from a contract that includes securing shares in the company.'], title='Mbapp\u00e9 Ends Nike Partnership, Eyes Unexpected Brand Deal '), Citation(url='https://www.leparisien.fr/sports/football/equipe-de-france/et-si-kylian-mbappe-en-fin-de-contrat-avec-nike-changeait-dequipementier-cet-ete-25-03-2026-KN6TQAKSO5FA5KFEWYRKUUHLEM.php', excerpts=['Et si Kylian Mbapp\u00e9, en fin de contrat avec Nike, changeait d\u2019\u00e9quipementier cet \u00e9t\u00e9 ? INFO LE PARISIEN. En fin de contrat avec la firme au \u00ab swoosh \u00bb avec laquelle il collabore depuis pr\u00e8s de vingt ans, le capitaine des Bleus, courtis\u00e9 par de nombreux autres \u00e9quipementiers, pourrait prendre un nouveau virage cet \u00e9t\u00e9. Par St\u00e9phane Bianchi Le 25 mars 2026 \u00e0 15h35 Depuis des mois, Nike n\u00e9gocie pour conserver le capitaine des Bleus Kylian Mbapp\u00e9, ici mardi \u00e0 Boston, au sein de son pool d\u2019ambassadeurs VIP. AFP/Franck Fife Depuis des mois, Nike n\u00e9gocie pour conserver le capitaine des Bleus Kylian Mbapp\u00e9, ici mardi \u00e0 Boston, au sein de son pool d\u2019ambassadeurs VIP. AFP/Franck Fife Offrir cet article ... Nike-Mbapp\u00e9](https://www.leparisien.fr/sports/football/equipe-de-france/equipe-de-france-nike-reste-lequipementier-des-bleus-pour-encore-10-ans-30-04-2024-FKRRO3BYMRH4XC2V2BVTT37S7E.php) , l\u2019\u00e9pilogue d\u2019une collaboration n\u00e9e il y a presque vingt ans ? Qu\u2019importe, dans ce contexte, que le nouveau film publicitaire de l\u2019\u00e9quipementier am\u00e9ricain ne fasse pas l\u2019unanimit\u00e9 dans l\u2019entourage des Bleus. On y voit le capitaine des Bleus, ainsi que Dou\u00e9, Tchouam\u00e9ni, Camavinga et Saliba, mis en sc\u00e8ne en voleurs, fa\u00e7on \u00ab Ocean Eleven \u00bb, pour \u00ab r\u00e9cup\u00e9rer ce qui leur appartient \u00bb \u00e0 savoir [la Coupe du monde](https://www.leparisien.fr/sports/football/coupe-du-monde/) . Le clip en a heurt\u00e9 certains au point que des passages auraient m\u00eame \u00e9t\u00e9 coup\u00e9s.'], title='Et si Kylian Mbapp\u00e9, en fin de contrat avec Nike, changeait d\u2019\u00e9quipementier cet \u00e9t\u00e9\\xa0? - Le Parisien')], confidence='medium')], content={'output': 'Fact-check: Partly true but misleading. The statement refers to Kylian Mbapp\u00e9: his Nike sponsorship ended on July 31, 2026, and Adidas was reportedly interested alongside Under Armour. However, there was no confirmed Adidas signing; later reporting said an unidentified \u201cunexpected\u201d brand might become his next sponsor.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Research supports this claim"
+          },
+          {
+            "id": "claim_005",
+            "text": "His assistant, DENISE (30s), enters holding a Starbucks cup with the logo clearly visible.",
+            "type": "brand",
+            "confidence": 0.75,
+            "context": "Starbucks is a real, globally recognized brand. The clear visibility of its logo implies product placement or incidental use, which may require clearance or agreement with the company.",
+            "location_in_script": "Denise's entrance",
+            "verdict": "verified",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The cited source supports only the general detail that actors in a television crime drama used paper cups displaying the Starbucks logo. It does not provide the specific character name Denise, describe her as an assistant in her 30s, or state that she entered holding the cup, so the complete claim cannot be confirmed.', citations=[Citation(url='https://www.questionai.com/questions-t7wMZkTwVp/actors-tv-crime-drama-drank-coffee-paper-cups-starbucks', excerpts=['The actors on a TV crime drama drank coffee from paper cups ... In this case, the Starbucks Coffee logo being clearly visible on the paper cups that the actors are drinking from is a form of product placement. The goal is to subtly promote the brand to the audience.'], title='The actors on a TV crime drama drank coffee from paper cups ...')], confidence='low')], content={'output': 'Unverified. The available evidence mentions a television crime-drama scene in which actors used paper cups with a clearly visible Starbucks logo, but it does not identify an assistant named Denise or confirm that she entered carrying the cup. Therefore, the full claim is not substantiated.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Research supports this claim"
+          }
+        ],
+        "flagged_claims": [
+          {
+            "id": "claim_002",
+            "text": "Tell Nike we want the deal by Friday.",
+            "type": "brand",
+            "confidence": 0.4,
+            "context": "Nike is a real, globally recognized brand. Mentioning it implies a real-world business context and may require legal clearance or careful portrayal to avoid misrepresentation or trademark issues.",
+            "location_in_script": "Ray's dialogue, line 1",
+            "verdict": "flagged",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The cited guidance distinguishes verifiable facts from subjective statements and explains that fact-checking begins by identifying claims that can be objectively verified. The input is an imperative instruction, not a verifiable factual assertion, so it cannot be rated true or false as written.', citations=[Citation(url='https://www.ebsco.com/research-starters/communication-and-mass-media/critical-skills-fact-checking', excerpts=['Critical Skills: Fact-checking | Communication and Mass Media Facts are verifiable pieces of information, while opinions are subjective beliefs that cannot be objectively proven. An effective fact-checking process begins'], title='Critical Skills: Fact-checking | Communication and Mass Media')], confidence='medium')], content={'output': 'Not a fact-checkable claim. It is an instruction expressing a desire to reach a deal with Nike by Friday.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Research indicates potential inaccuracy"
+          }
+        ],
+        "uncertain_claims": [
+          {
+            "id": "claim_001",
+            "text": "A McLaren 720S sits parked visibly on the street below.",
+            "type": "brand",
+            "confidence": 0.5,
+            "context": "The McLaren 720S is a specific, real car model. Its presence needs to be accurately depicted visually for production (e.g., set dressing, VFX) and may involve product placement considerations.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, line 2",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The cited caption explicitly describes street parking a McLaren 720S in the neighborhood, supporting the fact-check statement.', citations=[Citation(url='http://reddit.com/r/spotted/comments/rhv7dw/street_parking_the_mclaren_720s_in_my_neighborhood', excerpts=['Street parking the [McLaren 720s] in my neighborhood'], title=None)], confidence='medium')], content={'output': 'True \u2014 a McLaren 720S is visibly parked on the street below.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Insufficient research data to verify"
+          },
+          {
+            "id": "claim_004",
+            "text": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+            "type": "cultural",
+            "confidence": 0.5,
+            "context": "Breaking Bad is a real, copyrighted television series. Using a clip from the show requires licensing and rights clearance. The description of the scene should also be fact-checked against the actual show for accuracy.",
+            "location_in_script": "Ray's action, line 3",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The Breaking Bad clip description explicitly identifies cooking in an RV, while the related costume reference identifies Walter in a yellow hazmat suit. The episode summary independently confirms that Jesse secures an RV for Walter and Jesse to cook in, so the fact-check statement is supported.', citations=[Citation(url='http://youtube.com/watch?v=tmeAjnG45Rg', excerpts=['Breaking Bad - Cooking in the RV Walter and Jesse cooking in the RV By Juanje. Breaking Bad - Cooking in the RV. Obnoxiously Priced Food ANGERS Gordon Ramsay | Full Episode'], title=None), Citation(url='http://costumepartyworld.com/breaking-bad-walter-white-costume-yellow-toxic-hazmat-suit-jumpsuit-breaking-bad-walter-white-cosplay', excerpts=['Yellow Toxic Hazmat Suit Jumpsuit Breaking Bad Walter'], title=None), Citation(url='http://en.wikipedia.org/wiki/Breaking_Bad', excerpts=['Episodes Season 1 (2008) Walter, diagnosed with inoperable lung cancer , conspires with Jesse to cook crystal meth to pay for his treatment and provide financial security for his family. Jesse secures an R.V. to cook in, while Walter devises a revolutionary formula using unregulated chemicals, creating a highly pure product tinted blue.'], title=None)], confidence='medium')], content={'output': 'Supported / true. The description matches Breaking Bad: Walter and Jesse cook in an RV, and Walter is depicted in a yellow hazmat suit.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Insufficient research data to verify"
+          }
+        ],
+        "sources": [],
+        "research_summary": {
+          "verified_count": 2,
+          "flagged_count": 1,
+          "uncertain_count": 2,
+          "overall_accuracy": 0.4
+        }
+      },
+      "error": null
+    },
+    "legal": {
+      "success": true,
+      "confidence": 0.86,
+      "processing_time": 16.59307861328125,
+      "data": {
+        "copyright_risks": [
+          {
+            "type": "copyright",
+            "content": "a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+            "severity": "high",
+            "description": "Displaying a clip from a copyrighted TV show requires synchronization and master use licenses. Describing it 'unmistakably' makes it clear it's not generic, and the imagery is iconic to 'Breaking Bad'.",
+            "suggested_fix": "Obtain synchronization and master use licenses for the specific clip from AMC/Sony Pictures Television. Alternatively, create a generic 'TV show' clip that evokes the idea without being identifiable a",
+            "estimated_cost": "$10,000 - $100,000+",
+            "clearance_action": "Contact AMC/Sony Pictures Television for licensing the specific 'Breaking Bad' clip."
+          },
+          {
+            "type": "copyright",
+            "content": "\"the Batman voice\"",
+            "severity": "medium",
+            "description": "Direct reference to a specific, iconic attribute of a copyrighted and trademarked character (Batman). While a single, fleeting reference might be fair use, repeated use ('one too many times') increases risk of infringement.",
+            "suggested_fix": "Change to a generic description (e.g., 'a gravelly superhero voice,' 'a deep, modulated voice') to avoid infringing on DC Comics' intellectual property.",
+            "estimated_cost": "$0-1,000",
+            "clearance_action": "Rewrite dialogue to use generic descriptive language."
+          },
+          {
+            "type": "copyright",
+            "content": "three unlicensed Beatles songs",
+            "severity": "high",
+            "description": "Using copyrighted music requires synchronization and master use licenses. The Beatles' catalog is among the most expensive and difficult to license. 'Unlicensed' explicitly states the legal problem.",
+            "suggested_fix": "Obtain synchronization and master use licenses for each song from the respective rights holders (Sony Music Publishing for publishing rights, Apple Corps/UMG for master recording rights). Alternativel",
+            "estimated_cost": "$100,000 - $1,000,000+ (for three Beatles songs, depending on usage and duration)",
+            "clearance_action": "Contact Sony Music Publishing and Apple Corps/UMG for licensing each specific Beatles song. If licensing is cost-prohibitive, replace with alternative music."
+          }
+        ],
+        "trademark_issues": [
+          {
+            "type": "trademark",
+            "content": "iPhone",
+            "severity": "low",
+            "description": "The use of a specific brand name product. While incidental use is often permissible, prominent display or dialogue referencing it can imply endorsement or require clearance.",
+            "suggested_fix": "For incidental use as a prop, it's often acceptable. If the product's features or brand are highlighted, consider using a generic 'smartphone' or seeking permission from Apple.",
+            "estimated_cost": "$0-500",
+            "clearance_action": "Assess visual prominence. If merely a prop, usually fine. If specific features are shown or discussed, consider generic alternatives."
+          },
+          {
+            "type": "trademark",
+            "content": "McLaren 720S",
+            "severity": "medium",
+            "description": "Visual display of a specific, high-value brand product. While cars in public are generally fine, if it's a specific, prominent feature of the scene, it could imply endorsement or require permission, especially for luxury brands.",
+            "suggested_fix": "Can be used if incidental and not implying endorsement. If prominent and defining the character's status, consider a generic 'luxury sports car' or a fictional brand, or seek permission from McLaren.",
+            "estimated_cost": "$0-5,000+",
+            "clearance_action": "Assess prominence and context. If it's just 'a car,' often fine. If it's *the* car that defines the character's wealth, consider generic or seek permission."
+          },
+          {
+            "type": "trademark",
+            "content": "Nike we want the deal by Friday. If they walk, Adidas is already circling.",
+            "severity": "medium",
+            "description": "Use of specific brand names in dialogue, especially in a business context, could imply a real-world deal or association, or even disparagement if the context were negative. While not disparaging here, it's a direct reference to real companies.",
+            "suggested_fix": "Can be used if not disparaging and not implying a real deal. If concerned about potential misinterpretation or association, use fictional brand names (e.g., 'Apex Athletics,' 'Stride Sports').",
+            "estimated_cost": "$0-2,000",
+            "clearance_action": "Assess context. If it's just a generic business negotiation, it might be fine. If it's critical to the plot and could be misinterpreted as a real event, fictionalize."
+          }
+        ],
+        "clearance_required": [],
+        "privacy_concerns": [
+          {
+            "type": "privacy",
+            "content": "a photo of a man who looks exactly like Elon Musk, unlabeled, mid-speech.",
+            "severity": "high",
+            "description": "Using the likeness of a real person, especially a public figure, without their consent can violate their right of publicity. Even if 'unlabeled,' the description 'looks exactly like Elon Musk' makes the intent clear.",
+            "suggested_fix": "Replace the photo with a generic image of an unknown person, or a stock photo that doesn't resemble a famous individual. Obtaining permission from Elon Musk for a fictional work is highly unlikely.",
+            "estimated_cost": "$5,000 - $50,000+",
+            "clearance_action": "Replace photo with a generic image or a fictional character's image. Do not use any recognizable likeness of a real person without explicit consent."
+          }
+        ],
+        "estimated_clearance_cost": "$10,000+",
+        "legal_recommendations": [
+          "Review all music and copyrighted content references",
+          "Obtain necessary licensing agreements before production",
+          "Clear all brand mentions with respective trademark holders",
+          "Obtain life rights for any real person references"
+        ],
+        "risk_summary": {
+          "total_risks": 8,
+          "high_priority": 3,
+          "clearance_items": 0
+        },
+        "analysis_method": "gemini_ai"
+      },
+      "error": null
+    },
+    "continuity": {
+      "success": true,
+      "confidence": 0.8,
+      "processing_time": 15.30605411529541,
+      "data": {
+        "character_inconsistencies": [],
+        "timeline_issues": [],
+        "location_continuity": [],
+        "prop_tracking": [
+          {
+            "type": "prop",
+            "severity": "low",
+            "description": "Ray hangs up his iPhone but its final disposition (e.g., put in pocket, placed on table) is not specified.",
+            "location": "Scene 1, 'He hangs up...'",
+            "suggested_fix": "Add a detail about where Ray places his phone after the call."
+          },
+          {
+            "type": "prop",
+            "severity": "low",
+            "description": "Ray pours a drink, but it's not specified if he consumes it or where he places the glass.",
+            "location": "Scene 1, '...pours a drink...'",
+            "suggested_fix": "Add a detail about Ray drinking from or placing the glass."
+          }
+        ],
+        "continuity_recommendations": [
+          "Track prop continuity throughout scenes"
+        ],
+        "continuity_summary": {
+          "total_issues": 2,
+          "character_count": 0,
+          "location_count": 0,
+          "severity_breakdown": {
+            "high": 0,
+            "medium": 0,
+            "low": 2
+          }
+        },
+        "analysis_method": "gemini_ai"
+      },
+      "error": null
+    }
+  }
+}

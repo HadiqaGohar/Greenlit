@@ -3,6 +3,7 @@ Research Agent - Verifies factual claims using Parallel API
 Acts as the "researcher" who fact-checks extracted claims
 """
 
+import asyncio
 import logging
 import time
 from typing import Dict, List, Any, Optional
@@ -11,6 +12,11 @@ from ..research.parallel_client import get_parallel_client
 from ..models.agent_schemas import AgentTask, AgentResult
 
 logger = logging.getLogger(__name__)
+
+# Max claims to research (balance between thoroughness and speed)
+MAX_CLAIMS = 3
+# Timeout per claim in seconds
+CLAIM_TIMEOUT = 60.0
 
 
 class ResearchAgent:
@@ -38,44 +44,63 @@ class ResearchAgent:
             if not claims:
                 claims = await self._extract_research_queries(script_text)
             
+            # Limit claims for speed
+            claims = claims[:MAX_CLAIMS]
+            logger.info(f"Research agent: verifying {len(claims)} claims (limited to {MAX_CLAIMS} for speed)")
+            
             # Get Parallel client
             parallel_client = await get_parallel_client()
             
-            # Research each claim
-            researched_claims = []
-            for claim in claims[:5]:  # Limit to 5 claims for performance
+            # Research all claims IN PARALLEL with timeout
+            async def research_single_claim(claim):
                 try:
-                    # Create research query
                     query = self._create_research_query(claim)
+                    logger.info(f"Researching claim {claim.get('id', 'unknown')}: {query[:80]}...")
                     
-                    # Research using Parallel API
-                    research_result = await parallel_client.research_query(
-                        query=query,
-                        context={"script_context": script_text[:500]}
+                    # Add timeout per claim
+                    research_result = await asyncio.wait_for(
+                        parallel_client.research_query(
+                            query=query,
+                            context={"script_context": script_text[:500]}
+                        ),
+                        timeout=CLAIM_TIMEOUT
                     )
                     
-                    # Analyze result and determine verdict
                     verdict_info = self._analyze_research_result(claim, research_result)
-                    
-                    researched_claims.append({
+                    logger.info(f"Claim {claim.get('id', 'unknown')}: {verdict_info['verdict']} ({verdict_info['confidence']:.0%})")
+                    return {
                         **claim,
                         "verdict": verdict_info["verdict"],
                         "confidence": verdict_info["confidence"],
                         "sources": research_result.get("sources", []),
                         "research_summary": research_result.get("summary", ""),
                         "note": verdict_info["note"]
-                    })
-                    
+                    }
+                except asyncio.TimeoutError:
+                    logger.warning(f"Research timed out for claim {claim.get('id', 'unknown')} after {CLAIM_TIMEOUT}s")
+                    return {
+                        **claim,
+                        "verdict": "uncertain",
+                        "confidence": 0.5,
+                        "sources": [],
+                        "research_summary": "Research timed out",
+                        "note": f"Research exceeded {CLAIM_TIMEOUT}s timeout - marked as uncertain"
+                    }
                 except Exception as e:
                     logger.warning(f"Research failed for claim {claim.get('id', 'unknown')}: {str(e)}")
-                    researched_claims.append({
+                    return {
                         **claim,
                         "verdict": "error",
                         "confidence": 0.0,
                         "sources": [],
                         "research_summary": "Research failed",
                         "note": f"Research error: {str(e)}"
-                    })
+                    }
+            
+            # Fire all claims at once — total time = slowest claim, not sum of all
+            researched_claims = await asyncio.gather(*[
+                research_single_claim(claim) for claim in claims
+            ])
             
             # Categorize results
             verified_claims = [c for c in researched_claims if c["verdict"] == "verified"]
@@ -182,36 +207,29 @@ class ResearchAgent:
         summary = research_result.get("summary", "").lower()
         sources = research_result.get("sources", [])
         
-        # Determine verdict based on confidence and content analysis
-        if confidence >= 0.85:
-            # High confidence - likely accurate
+        # Check negative/flagged indicators first
+        if any(w in summary for w in ["false", "inaccurate", "incorrect", "misleading", "anachronism", "unlicensed", "infring"]):
+            verdict = "flagged"
+            note = "Research indicates inaccuracy or clearance risk"
+            confidence = min(confidence, 0.45)
+        # Check positive/verified indicators
+        elif any(w in summary for w in ["supported", "true", "accurate", "confirmed", "correct", "verified"]):
+            verdict = "verified"
+            note = "Research confirms this claim"
+            confidence = max(confidence, 0.8)
+        elif confidence >= 0.8:
             verdict = "verified"
             note = "Research confirms this claim with high confidence"
-            
-        elif confidence <= 0.3:
-            # Low confidence - likely inaccurate or uncertain
+        elif confidence <= 0.35:
             verdict = "flagged" 
-            note = "Research suggests this claim may be inaccurate"
-            
-        elif "inaccurate" in summary or "false" in summary or "incorrect" in summary:
-            verdict = "flagged"
-            note = "Research indicates potential inaccuracy"
-            confidence = min(confidence, 0.4)
-            
-        elif "accurate" in summary or "correct" in summary or "confirmed" in summary:
-            verdict = "verified"
-            note = "Research supports this claim"
-            confidence = max(confidence, 0.7)
-            
+            note = "Research suggests this claim may be inaccurate or unverified"
         elif len(sources) == 0:
             verdict = "uncertain"
-            note = "Insufficient research data to verify"
+            note = "Insufficient research data to verify conclusively"
             confidence = 0.5
-            
         else:
-            # Medium confidence - uncertain
             verdict = "uncertain"
-            note = "Research provides mixed or unclear results"
+            note = "Research provides mixed or contextual results"
         
         return {
             "verdict": verdict,

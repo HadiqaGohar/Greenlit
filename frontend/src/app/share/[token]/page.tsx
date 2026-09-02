@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Clock, Users, AlertTriangle, CheckCircle, Film, ArrowLeft } from "lucide-react";
+import { AlertTriangle, CheckCircle, Film, ArrowLeft } from "lucide-react";
 
 interface ShareData {
   script_id: string;
@@ -12,6 +12,7 @@ interface ShareData {
   expires_at: string;
   access_count: number;
   report?: {
+    risk_assessment?: { overall_risk_score?: number; risk_level?: string };
     risk_score?: number;
     risk_level?: string;
     claims?: Array<{ text: string; verdict: string; confidence: number }>;
@@ -27,6 +28,7 @@ export default function SharePage() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { fetchShareData(); }, [token]);
 
   const fetchShareData = async () => {
@@ -38,8 +40,9 @@ export default function SharePage() {
   };
 
   const report = data?.report;
-  const riskScore = report?.risk_score ?? 0;
-  const riskLevel = report?.risk_level ?? "unknown";
+  // Handle both nested (risk_assessment.overall_risk_score) and flat (risk_score) formats
+  const riskScore = report?.risk_assessment?.overall_risk_score ?? report?.risk_score ?? 0;
+  const riskLevel = report?.risk_assessment?.risk_level ?? report?.risk_level ?? "unknown";
   const claims = report?.claims ?? [];
   const agents = report?.agent_results ?? {};
   const verified = claims.filter(c => c.verdict === "verified").length;

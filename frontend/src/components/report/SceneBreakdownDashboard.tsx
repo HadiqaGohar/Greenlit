@@ -22,6 +22,7 @@ const riskColors: Record<string, string> = {
   low: "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300",
   medium: "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-300",
   high: "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-300",
+  unknown: "bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400",
 };
 
 function getRiskLevel(score: number): string {
@@ -30,11 +31,41 @@ function getRiskLevel(score: number): string {
   return "high";
 }
 
+interface NormalizedScene extends Scene {
+  risk_known: boolean;
+}
+
+function normalizeScenes(input: Scene[]): NormalizedScene[] {
+  return (input ?? []).map((s: any) => {
+    const risk_known = typeof s?.risk_score === "number";
+    return {
+      scene_number: s?.scene_number ?? 0,
+      title: s?.title ?? "Untitled Scene",
+      location: s?.location ?? "",
+      time_of_day: s?.time_of_day ?? "",
+      characters_present: Array.isArray(s?.characters_present)
+        ? s.characters_present
+        : [],
+      risk_score: risk_known ? s.risk_score : 0,
+      risk_known,
+      estimated_cost: typeof s?.estimated_cost === "number" ? s.estimated_cost : 0,
+      production_notes: Array.isArray(s?.production_notes)
+        ? s.production_notes
+        : [],
+      required_clearances: Array.isArray(s?.required_clearances)
+        ? s.required_clearances
+        : [],
+    };
+  });
+}
+
 export function SceneBreakdownDashboard({ scenes }: SceneBreakdownDashboardProps) {
   const [selectedScene, setSelectedScene] = useState<number | null>(null);
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
 
-  if (scenes.length === 0) {
+  const normalized = normalizeScenes(scenes);
+
+  if (normalized.length === 0) {
     return (
       <div className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-900">
         <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -47,9 +78,8 @@ export function SceneBreakdownDashboard({ scenes }: SceneBreakdownDashboardProps
     );
   }
 
-  const totalCost = scenes.reduce((sum, s) => sum + s.estimated_cost, 0);
-  const avgRisk = scenes.reduce((sum, s) => sum + s.risk_score, 0) / scenes.length;
-  const highRiskScenes = scenes.filter((s) => s.risk_score >= 70).length;
+  const totalCost = normalized.reduce((sum, s) => sum + s.estimated_cost, 0);
+  const highRiskScenes = normalized.filter((s) => s.risk_known && s.risk_score >= 70).length;
 
   return (
     <div className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-900">
@@ -59,7 +89,7 @@ export function SceneBreakdownDashboard({ scenes }: SceneBreakdownDashboardProps
             Scene Breakdown
           </h3>
           <p className="text-sm text-gray-500 dark:text-gray-400">
-            {scenes.length} scenes analyzed
+            {normalized.length} scenes analyzed
           </p>
         </div>
         <div className="flex gap-2">
@@ -90,7 +120,7 @@ export function SceneBreakdownDashboard({ scenes }: SceneBreakdownDashboardProps
       <div className="mb-6 grid grid-cols-3 gap-4">
         <div className="rounded-lg bg-gray-50 p-3 dark:bg-gray-800">
           <p className="text-2xl font-bold text-gray-900 dark:text-white">
-            {scenes.length}
+            {normalized.length}
           </p>
           <p className="text-xs text-gray-500 dark:text-gray-400">Total Scenes</p>
         </div>
@@ -114,8 +144,10 @@ export function SceneBreakdownDashboard({ scenes }: SceneBreakdownDashboardProps
             : "space-y-2"
         }
       >
-        {scenes.map((scene) => {
-          const riskLevel = getRiskLevel(scene.risk_score);
+        {normalized.map((scene) => {
+          const riskLevel = scene.risk_known
+            ? getRiskLevel(scene.risk_score)
+            : "unknown";
           const isSelected = selectedScene === scene.scene_number;
 
           return (
@@ -143,7 +175,7 @@ export function SceneBreakdownDashboard({ scenes }: SceneBreakdownDashboardProps
                 <span
                   className={`rounded-full px-2 py-0.5 text-xs font-medium ${riskColors[riskLevel]}`}
                 >
-                  {scene.risk_score.toFixed(0)}
+                  {scene.risk_known ? scene.risk_score.toFixed(0) : "N/A"}
                 </span>
               </div>
 

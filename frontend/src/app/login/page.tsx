@@ -28,8 +28,8 @@ export default function LoginPage() {
     try {
       await signIn(email, password);
       router.push('/dashboard');
-    } catch {
-      setError('Failed to sign in. Please check your credentials.');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to sign in. Please check your credentials.');
     } finally {
       setLoading(false);
     }

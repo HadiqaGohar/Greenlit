@@ -1,0 +1,214 @@
+{
+  "report_id": "26fbd7c6-5838-4031-8a47-947a110b62cd",
+  "timestamp": "2026-08-27T18:31:34.773785+00:00",
+  "processing_time": 86.686662,
+  "risk_assessment": {
+    "overall_risk_score": 60.0,
+    "risk_level": "medium"
+  },
+  "agent_results": {
+    "director": {
+      "success": true,
+      "confidence": 0.85,
+      "processing_time": 15.719049453735352,
+      "data": {
+        "claims": [
+          {
+            "id": "general_56125c92",
+            "text": "```json\n[\n  {\n    \"id\": \"claim_1\",\n    \"text\": \"A McLaren 720S sits parked visibly on the street below",
+            "type": "general",
+            "confidence": 0.5,
+            "context": "Content analyzed for factual accuracy",
+            "location_in_script": "full_script"
+          }
+        ],
+        "claims_extracted": 1,
+        "claims_by_type": {
+          "general": [
+            {
+              "id": "general_56125c92",
+              "text": "```json\n[\n  {\n    \"id\": \"claim_1\",\n    \"text\": \"A McLaren 720S sits parked visibly on the street below",
+              "type": "general",
+              "confidence": 0.5,
+              "context": "Content analyzed for factual accuracy",
+              "location_in_script": "full_script"
+            }
+          ]
+        },
+        "script_sections": [
+          {
+            "type": "scene_header",
+            "start_line": 0,
+            "line_count": 41,
+            "content_summary": "INT. LUXURY APARTMENT - DAY"
+          }
+        ],
+        "extraction_method": "gemini_ai",
+        "agent_version": "1.0"
+      },
+      "error": null
+    },
+    "research": {
+      "success": true,
+      "confidence": 0.75,
+      "processing_time": 70.94815587997437,
+      "data": {
+        "claims": [
+          {
+            "id": "general_56125c92",
+            "text": "```json\n[\n  {\n    \"id\": \"claim_1\",\n    \"text\": \"A McLaren 720S sits parked visibly on the street below",
+            "type": "general",
+            "confidence": 0.75,
+            "context": "Content analyzed for factual accuracy",
+            "location_in_script": "full_script",
+            "verdict": "verified",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The cited public post describes street parking of a McLaren 720S and says the car was parked on the side of a road. It does not state or demonstrate that the car was visible on a street below, so the more specific claim cannot be confirmed.', citations=[Citation(url='https://www.reddit.com/r/spotted/comments/rhv7dw/street_parking_the_mclaren_720s_in_my_neighborhood', excerpts=['Street parking the [McLaren 720s] in my neighborhood r/spotted - a car parked on the side of a road'], title='Street parking the [McLaren 720s] in my neighborhood : r/spotted')], confidence='medium')], content={'output': 'Unverified. The available evidence supports that a McLaren 720S was parked on a street, but it does not establish that it was visibly parked on the street below. Therefore, the claim as stated is not confirmed.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Research supports this claim"
+          }
+        ],
+        "claims_researched": 1,
+        "verified_claims": [
+          {
+            "id": "general_56125c92",
+            "text": "```json\n[\n  {\n    \"id\": \"claim_1\",\n    \"text\": \"A McLaren 720S sits parked visibly on the street below",
+            "type": "general",
+            "confidence": 0.75,
+            "context": "Content analyzed for factual accuracy",
+            "location_in_script": "full_script",
+            "verdict": "verified",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The cited public post describes street parking of a McLaren 720S and says the car was parked on the side of a road. It does not state or demonstrate that the car was visible on a street below, so the more specific claim cannot be confirmed.', citations=[Citation(url='https://www.reddit.com/r/spotted/comments/rhv7dw/street_parking_the_mclaren_720s_in_my_neighborhood', excerpts=['Street parking the [McLaren 720s] in my neighborhood r/spotted - a car parked on the side of a road'], title='Street parking the [McLaren 720s] in my neighborhood : r/spotted')], confidence='medium')], content={'output': 'Unverified. The available evidence supports that a McLaren 720S was parked on a street, but it does not establish that it was visibly parked on the street below. Therefore, the claim as stated is not confirmed.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Research supports this claim"
+          }
+        ],
+        "flagged_claims": [],
+        "uncertain_claims": [],
+        "sources": [],
+        "research_summary": {
+          "verified_count": 1,
+          "flagged_count": 0,
+          "uncertain_count": 0,
+          "overall_accuracy": 1.0
+        }
+      },
+      "error": null
+    },
+    "legal": {
+      "success": true,
+      "confidence": 0.84,
+      "processing_time": 11.671015501022339,
+      "data": {
+        "copyright_risks": [
+          {
+            "type": "copyright",
+            "content": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+            "severity": "high",
+            "description": "Direct visual reference to a specific, iconic copyrighted television series, including character design and setting. This constitutes copyright infringement of the underlying work and potentially the master recording/broadcast if an actual clip is used.",
+            "suggested_fix": "License the clip from AMC/Sony Pictures Television, or change the description to a generic 'TV show' or a fictional show to avoid specific identification.",
+            "estimated_cost": "$5,000-$50,000+ (licensing) or $0 (change description)",
+            "clearance_action": "Contact AMC/Sony Pictures Television for clip licensing, or script revision."
+          },
+          {
+            "type": "copyright",
+            "content": "Also -- the soundtrack list still has three unlicensed Beatles songs on it.",
+            "severity": "high",
+            "description": "Explicit statement of intent to use unlicensed copyrighted music. Using copyrighted music in a film requires both a synchronization license (from the music publisher for the composition) and a master use license (from the record label for the specific recording). Beatles songs are notoriously expens",
+            "suggested_fix": "Obtain synchronization and master use licenses for each song, or replace with licensed or public domain music.",
+            "estimated_cost": "Very high, potentially hundreds of thousands to millions for multiple Beatles songs.",
+            "clearance_action": "Contact the music publishers (e.g., Sony Music Publishing, Universal Music Publishing Group) and master recording owners (e.g., Apple Corps Ltd./Universal Music Group) for licensing."
+          }
+        ],
+        "trademark_issues": [
+          {
+            "type": "trademark",
+            "content": "A McLaren 720S sits parked visibly on the street below.",
+            "severity": "medium",
+            "description": "Visual depiction of a specific, high-end branded product. While generally permissible if incidental, prominent display could imply endorsement or product placement, requiring a clearance or product placement agreement.",
+            "suggested_fix": "Obtain a product placement agreement with McLaren, or obscure the branding/model number, or change the car to a generic luxury sports car.",
+            "estimated_cost": "$0 (obscure/generic) to $5,000-$50,000+ (product placement/licensing)",
+            "clearance_action": "Contact McLaren's legal/marketing department for permission or instruct production design to obscure/change."
+          },
+          {
+            "type": "trademark",
+            "content": "Tell Nike we want the deal by Friday. If they walk, Adidas is already circling.",
+            "severity": "medium",
+            "description": "Use of specific brand names in dialogue, implying business dealings. While often permissible, if the context suggests false business relationships, negative portrayal, or endorsement, it could lead to trademark dilution or false light claims.",
+            "suggested_fix": "Change brand names to fictional ones (e.g., 'Apex Athletics,' 'Stride Sportswear').",
+            "estimated_cost": "$0",
+            "clearance_action": "Script revision."
+          },
+          {
+            "type": "trademark",
+            "content": "His assistant, DENISE (30s), enters holding a Starbucks cup with the logo clearly visible.",
+            "severity": "medium",
+            "description": "Visual depiction of a specific branded product. Prominent display of a brand logo could imply endorsement or product placement, requiring a clearance or product placement agreement.",
+            "suggested_fix": "Obtain a product placement agreement with Starbucks, or obscure the logo, or use a generic coffee cup.",
+            "estimated_cost": "$0 (obscure/generic) to $1,000-$10,000+ (product placement/licensing)",
+            "clearance_action": "Contact Starbucks legal/marketing department for permission or instruct production design to obscure/change."
+          }
+        ],
+        "clearance_required": [],
+        "privacy_concerns": [
+          {
+            "type": "privacy",
+            "content": "On top: a photo of a man who looks exactly like Elon Musk, unlabeled, mid-speech.",
+            "severity": "high",
+            "description": "Use of a real person's likeness without permission. This is a violation of the right of publicity, which protects individuals from unauthorized commercial use of their name, image, or likeness. Elon Musk is a highly recognizable public figure.",
+            "suggested_fix": "Obtain a likeness release from Elon Musk, or replace the photo with a generic 'tech mogul' or a fictional character's image.",
+            "estimated_cost": "Potentially very high (if permission is granted) or $0 (if replaced with generic photo)",
+            "clearance_action": "Contact Elon Musk's representatives for a likeness release, or instruct production design to replace the photo."
+          }
+        ],
+        "estimated_clearance_cost": "$10,000+",
+        "legal_recommendations": [
+          "Review all music and copyrighted content references",
+          "Obtain necessary licensing agreements before production",
+          "Clear all brand mentions with respective trademark holders",
+          "Obtain life rights for any real person references"
+        ],
+        "risk_summary": {
+          "total_risks": 7,
+          "high_priority": 3,
+          "clearance_items": 0
+        },
+        "analysis_method": "gemini_ai"
+      },
+      "error": null
+    },
+    "continuity": {
+      "success": true,
+      "confidence": 0.85,
+      "processing_time": 10.862226009368896,
+      "data": {
+        "character_inconsistencies": [],
+        "timeline_issues": [],
+        "location_continuity": [],
+        "prop_tracking": [
+          {
+            "type": "prop",
+            "severity": "medium",
+            "description": "Denise enters holding a Starbucks cup, but its disposition is not mentioned when she subsequently sets a folder on the table. It's unclear if she puts the cup down, drinks from it, or continues holding it while performing the next action.",
+            "location": "Scene 1, after 'His assistant, DENISE (30s), enters holding a Starbucks cup with the logo clearly visible.'",
+            "suggested_fix": "Add an action for Denise regarding the Starbucks cup, e.g., 'Denise sets her Starbucks cup on the table, then places a folder beside it,' or 'Denise, still holding her Starbucks cup, sets a folder on "
+          }
+        ],
+        "continuity_recommendations": [
+          "Track prop continuity throughout scenes"
+        ],
+        "continuity_summary": {
+          "total_issues": 1,
+          "character_count": 0,
+          "location_count": 0,
+          "severity_breakdown": {
+            "high": 0,
+            "medium": 1,
+            "low": 0
+          }
+        },
+        "analysis_method": "gemini_ai"
+      },
+      "error": null
+    }
+  }
+}

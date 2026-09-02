@@ -1,0 +1,141 @@
+{
+  "report_id": "1499bf5a-506f-4f3f-92d5-8f4e34d17a77",
+  "timestamp": "2026-08-25T15:59:36.081927+00:00",
+  "processing_time": 132.636986,
+  "risk_assessment": {
+    "overall_risk_score": 60.0,
+    "risk_level": "medium"
+  },
+  "agent_results": {
+    "director": {
+      "success": true,
+      "confidence": 0.85,
+      "processing_time": 12.615558862686157,
+      "data": {
+        "claims": [
+          {
+            "id": "year_0f249442",
+            "text": "Reference to year 1989",
+            "type": "historical",
+            "confidence": 0.8,
+            "context": "Year 1989 mentioned in script - verify historical accuracy",
+            "location_in_script": "detected_by_regex"
+          },
+          {
+            "id": "year_f867020c",
+            "text": "Reference to year 1987",
+            "type": "historical",
+            "confidence": 0.8,
+            "context": "Year 1987 mentioned in script - verify historical accuracy",
+            "location_in_script": "detected_by_regex"
+          },
+          {
+            "id": "name_556be078",
+            "text": "Reference to While",
+            "type": "geographic",
+            "confidence": 0.6,
+            "context": "Proper noun 'While' may need fact verification",
+            "location_in_script": "detected_by_regex"
+          },
+          {
+            "id": "name_9ea5a59c",
+            "text": "Reference to Berlin Wall",
+            "type": "biographical",
+            "confidence": 0.6,
+            "context": "Proper noun 'Berlin Wall' may need fact verification",
+            "location_in_script": "detected_by_regex"
+          },
+          {
+            "id": "name_6a320fd0",
+            "text": "Reference to This",
+            "type": "geographic",
+            "confidence": 0.6,
+            "context": "Proper noun 'This' may need fact verification",
+            "location_in_script": "detected_by_regex"
+          }
+        ],
+        "claims_extracted": 5,
+        "claims_by_type": {
+          "historical": [
+            {
+              "id": "year_0f249442",
+              "text": "Reference to year 1989",
+              "type": "historical",
+              "confidence": 0.8,
+              "context": "Year 1989 mentioned in script - verify historical accuracy",
+              "location_in_script": "detected_by_regex"
+            },
+            {
+              "id": "year_f867020c",
+              "text": "Reference to year 1987",
+              "type": "historical",
+              "confidence": 0.8,
+              "context": "Year 1987 mentioned in script - verify historical accuracy",
+              "location_in_script": "detected_by_regex"
+            }
+          ],
+          "geographic": [
+            {
+              "id": "name_556be078",
+              "text": "Reference to While",
+              "type": "geographic",
+              "confidence": 0.6,
+              "context": "Proper noun 'While' may need fact verification",
+              "location_in_script": "detected_by_regex"
+            },
+            {
+              "id": "name_6a320fd0",
+              "text": "Reference to This",
+              "type": "geographic",
+              "confidence": 0.6,
+              "context": "Proper noun 'This' may need fact verification",
+              "location_in_script": "detected_by_regex"
+            }
+          ],
+          "biographical": [
+            {
+              "id": "name_9ea5a59c",
+              "text": "Reference to Berlin Wall",
+              "type": "biographical",
+              "confidence": 0.6,
+              "context": "Proper noun 'Berlin Wall' may need fact verification",
+              "location_in_script": "detected_by_regex"
+            }
+          ]
+        },
+        "script_sections": [
+          {
+            "type": "scene_header",
+            "start_line": 0,
+            "line_count": 54,
+            "content_summary": "INT. CIA ARCHIVES - NIGHT"
+          }
+        ],
+        "extraction_method": "gemini_ai",
+        "agent_version": "1.0"
+      },
+      "error": null
+    },
+    "research": {
+      "success": false,
+      "confidence": 0.0,
+      "processing_time": 120.0,
+      "data": {},
+      "error": "Agent execution timed out"
+    },
+    "legal": {
+      "success": false,
+      "confidence": 0.0,
+      "processing_time": 120.0,
+      "data": {},
+      "error": "Agent execution timed out"
+    },
+    "continuity": {
+      "success": false,
+      "confidence": 0.0,
+      "processing_time": 120.0,
+      "data": {},
+      "error": "Agent execution timed out"
+    }
+  }
+}

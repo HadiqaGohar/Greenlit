@@ -6,8 +6,20 @@ interface ContinuityPanelProps {
   agentResult: AgentResult | null;
 }
 
+type ContinuityIssue = string | { description?: string; issue?: string; scenes?: string[] };
+
+interface ContinuityData {
+  character_inconsistencies?: ContinuityIssue[];
+  timeline_issues?: ContinuityIssue[];
+  location_continuity?: ContinuityIssue[];
+  prop_tracking?: ContinuityIssue[];
+  dialogue_consistency?: ContinuityIssue[];
+  continuity_recommendations?: string[];
+  continuity_summary?: string;
+}
+
 export function ContinuityPanel({ agentResult }: ContinuityPanelProps) {
-  const data = agentResult?.data ?? {};
+  const data = (agentResult?.data ?? {}) as ContinuityData;
 
   const characterIssues = data.character_inconsistencies ?? [];
   const timelineIssues = data.timeline_issues ?? [];
@@ -95,7 +107,7 @@ export function ContinuityPanel({ agentResult }: ContinuityPanelProps) {
             <span>💬</span> Dialogue Consistency ({dialogueConsistency.length})
           </h3>
           <div className="space-y-2">
-            {dialogueConsistency.map((issue: any, i: number) => (
+              {dialogueConsistency.map((issue: ContinuityIssue, i: number) => (
               <div
                 key={i}
                 className="rounded-lg border border-gray-200 bg-gray-50 p-3 dark:border-gray-700 dark:bg-gray-800/50"
@@ -157,7 +169,7 @@ function IssueSection({
 }: {
   title: string;
   icon: string;
-  issues: any[];
+  issues: ContinuityIssue[];
   color: string;
 }) {
   const colorMap: Record<string, string> = {
@@ -185,7 +197,7 @@ function IssueSection({
       </div>
       {issues.length > 0 ? (
         <ul className="mt-3 space-y-1.5">
-          {issues.slice(0, 5).map((issue: any, i: number) => (
+           {issues.slice(0, 5).map((issue: ContinuityIssue, i: number) => (
             <li
               key={i}
               className="text-xs text-gray-700 dark:text-gray-300"

@@ -16,7 +16,7 @@ def _utcnow():
 class AgentTask(BaseModel):
     """Task specification for individual agents"""
     task_id: str = Field(default_factory=lambda: str(uuid4()))
-    agent_type: Literal["director", "research", "legal", "continuity"]
+    agent_type: Literal["director", "research", "legal", "continuity", "storyboard", "tts", "schedule", "stakeholder", "budget", "relationship", "pitch_deck", "location", "cultural"]
     task_data: Dict[str, Any]
     priority: Literal["low", "normal", "high"] = "normal"
     created_at: datetime = Field(default_factory=_utcnow)
@@ -118,6 +118,7 @@ class OrchestratorReport(BaseModel):
     report_id: str
     timestamp: datetime
     script_length: int
+    script_text: str = Field(default="", description="Original script text")
     agent_results: Dict[str, AgentResult]
     risk_assessment: RiskAssessment
     processing_time: float

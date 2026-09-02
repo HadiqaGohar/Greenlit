@@ -1,15 +1,14 @@
 "use client";
 
-import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-interface PieChartSlice {
+export interface PieChartSlice {
   label: string;
   value: number;
   color?: string;
 }
 
-interface PieChartProps {
+export interface PieChartProps {
   data: PieChartSlice[];
   size?: number;
   title?: string;
@@ -17,7 +16,6 @@ interface PieChartProps {
 }
 
 export function PieChart({ data, size = 200, title, showLegend = true }: PieChartProps) {
-  const { theme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => setMounted(true), []);

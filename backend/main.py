@@ -154,6 +154,94 @@ try:
 except ImportError:
     logger.warning("Monitoring router not available yet")
 
+# Add chat router ("Ask the Script")
+try:
+    from app.routers import chat
+    app.include_router(chat.router, prefix="/api", tags=["Chat"])
+except ImportError:
+    logger.warning("Chat router not available yet")
+
+# Add scene risk router (Heatmap)
+try:
+    from app.routers import scene_risk
+    app.include_router(scene_risk.router, prefix="/api", tags=["Scene Risk"])
+except ImportError:
+    logger.warning("Scene risk router not available yet")
+
+# Add budget estimation router
+try:
+    from app.routers import budget
+    app.include_router(budget.router, prefix="/api", tags=["Budget"])
+except ImportError:
+    logger.warning("Budget router not available yet")
+
+# Add cultural sensitivity router
+try:
+    from app.routers import cultural
+    app.include_router(cultural.router, prefix="/api", tags=["Cultural"])
+except ImportError:
+    logger.warning("Cultural sensitivity router not available yet")
+
+# Add storyboard generation router
+try:
+    from app.routers import storyboard
+    app.include_router(storyboard.router, prefix="/api", tags=["Storyboard"])
+except ImportError:
+    logger.warning("Storyboard router not available yet")
+
+# Add TTS / Table Read router
+try:
+    from app.routers import tts
+    app.include_router(tts.router, prefix="/api", tags=["TTS"])
+except ImportError:
+    logger.warning("TTS router not available yet")
+
+# Add Production Schedule router
+try:
+    from app.routers import schedule
+    app.include_router(schedule.router, prefix="/api", tags=["Schedule"])
+except ImportError:
+    logger.warning("Schedule router not available yet")
+
+# Add Multi-Stakeholder Analysis router
+try:
+    from app.routers import stakeholder
+    app.include_router(stakeholder.router, prefix="/api", tags=["Stakeholder"])
+except ImportError:
+    logger.warning("Stakeholder router not available yet")
+
+
+# Add Character Relationship Graph router
+try:
+    from app.routers import relationship
+    app.include_router(relationship.router, prefix="/api", tags=["Relationship"])
+except ImportError:
+    logger.warning("Relationship router not available yet")
+
+
+# Add Script Comparison router
+try:
+    from app.routers import script_compare
+    app.include_router(script_compare.router, prefix="/api", tags=["Script Compare"])
+except ImportError:
+    logger.warning("Script comparison router not available yet")
+
+
+# Add Pitch Deck router
+try:
+    from app.routers import pitch_deck
+    app.include_router(pitch_deck.router, prefix="/api", tags=["Pitch Deck"])
+except ImportError:
+    logger.warning("Pitch deck router not available yet")
+
+
+# Add Scene-to-Location Matching router
+try:
+    from app.routers import location
+    app.include_router(location.router, prefix="/api", tags=["Location"])
+except ImportError:
+    logger.warning("Location router not available yet")
+
 
 # Root endpoint
 @app.get("/")

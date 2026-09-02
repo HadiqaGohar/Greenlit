@@ -35,9 +35,10 @@ async def list_watched_folders(request: Request):
         return {"folders": []}
 
     status = file_watcher.get_watch_status()
+    folders = status.get("folders", [])
     return {
-        "folders": status.get("watched_folders", []),
-        "total": len(status.get("watched_folders", [])),
+        "folders": folders,
+        "total": len(folders),
     }
 
 
@@ -85,7 +86,7 @@ async def get_notification_settings(
     settings = db.query(NotificationSettings).filter(NotificationSettings.user_id == user_id).first()
     if not settings:
         # Create default settings
-        settings = NotificationSettings(id=uuid4(), user_id=user_id)
+        settings = NotificationSettings(id=str(uuid4()), user_id=user_id)
         db.add(settings)
         db.commit()
         db.refresh(settings)
@@ -111,7 +112,7 @@ async def update_notification_settings(
     """Update notification settings for a user"""
     settings = db.query(NotificationSettings).filter(NotificationSettings.user_id == user_id).first()
     if not settings:
-        settings = NotificationSettings(id=uuid4(), user_id=user_id)
+        settings = NotificationSettings(id=str(uuid4()), user_id=user_id)
         db.add(settings)
 
     s = request.settings

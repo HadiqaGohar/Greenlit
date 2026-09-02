@@ -1,0 +1,44 @@
+{
+  "export_id": "bb875f12-26ae-4b53-8ecd-1564ed14469e",
+  "script_id": "sample-test",
+  "generated_at": "2026-08-28T17:20:02.890189+00:00",
+  "report": {
+    "script_id": "sample-test",
+    "risk_score": 72,
+    "risk_level": "high",
+    "claims": [
+      {
+        "text": "iPhone in 1912",
+        "verdict": "anachronism"
+      },
+      {
+        "text": "Starbucks cup",
+        "verdict": "trademark"
+      }
+    ],
+    "agent_results": {
+      "director": {
+        "data": {
+          "claims": [
+            {
+              "text": "iPhone in 1912",
+              "verdict": "anachronism"
+            },
+            {
+              "text": "Starbucks cup",
+              "verdict": "trademark"
+            }
+          ]
+        }
+      },
+      "legal": {
+        "success": true,
+        "confidence_score": 0.8
+      }
+    }
+  },
+  "sections": [
+    "overview",
+    "claims"
+  ]
+}

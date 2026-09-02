@@ -1,0 +1,18 @@
+{
+  "export_id": "91caec9e-17af-4bfb-9bad-bcaee3896127",
+  "script_id": "26fbd7c6-5838-4031-8a47-947a110b62cd",
+  "generated_at": "2026-08-27T19:22:51.240808+00:00",
+  "report": {
+    "script_id": "26fbd7c6-5838-4031-8a47-947a110b62cd",
+    "risk_score": 45,
+    "risk_level": "medium",
+    "claims": [],
+    "agent_results": {}
+  },
+  "sections": [
+    "overview",
+    "claims",
+    "legal",
+    "continuity"
+  ]
+}

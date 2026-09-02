@@ -1,0 +1,415 @@
+{
+  "report_id": "5a3fefff-ccbb-45b5-9b37-c8ba6891af44",
+  "user_id": "user_as4lkc",
+  "timestamp": "2026-09-01T17:10:10.610754+00:00",
+  "processing_time": 68.523469,
+  "script_text": "INT. LUXURY APARTMENT - DAY\n\nRAY (40s, slick, overconfident) paces in front of a floor-to-\nceiling window, smartphone pressed to his ear. A sleek sports car\nsits parked visibly on the street below.\n\n                    RAY\n          Tell the sponsors we want the deal by Friday.\n          If they walk, another brand is already circling.\n\nHe hangs up, pours a drink, and grabs the remote. The TV plays\na clip of a man in a yellow hazmat suit cooking in an RV --\nclearly an homage, not a direct copy.\n\n                    RAY (CONT'D)\n          (to himself)\n          Every empire starts with one good batch.\n\nHis assistant, DENISE (30s), enters holding a plain coffee cup,\nno branding visible.\n\n                    DENISE\n          Ray, legal called. They said the script\n          references \"that superhero's voice\" one too\n          many times. Might want to cut that.\n\n                    RAY\n          Fine. Change it to \"some deep, gravelly voice.\"\n          Nobody'll notice.\n\nDenise sets a folder on the table. On top: a sketch of a\nfictional tech CEO, clearly stylized, not based on anyone real.\n\n                    DENISE\n          Also -- the soundtrack list now has three\n          original score tracks instead of the old ones.\n\n                    RAY\n          Good. That's one less headache.\n\nFADE OUT.",
+  "risk_assessment": {
+    "overall_risk_score": 25.0,
+    "risk_level": "low"
+  },
+  "agent_results": {
+    "director": {
+      "success": true,
+      "confidence": 0.85,
+      "processing_time": 8.464859962463379,
+      "data": {
+        "claims": [
+          {
+            "id": "claim_001",
+            "text": "The TV plays a clip of a man in a yellow hazmat suit cooking in an RV -- clearly an homage, not a direct copy.",
+            "type": "cultural",
+            "confidence": 0.8,
+            "context": "This is a clear cultural reference, likely to the TV show 'Breaking Bad'. Verification is needed to ensure the visual representation accurately evokes the intended homage without infringing on intellectual property, and that the reference is widely recognizable to the audience.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, after Ray hangs up the phone."
+          }
+        ],
+        "claims_extracted": 1,
+        "claims_by_type": {
+          "cultural": [
+            {
+              "id": "claim_001",
+              "text": "The TV plays a clip of a man in a yellow hazmat suit cooking in an RV -- clearly an homage, not a direct copy.",
+              "type": "cultural",
+              "confidence": 0.8,
+              "context": "This is a clear cultural reference, likely to the TV show 'Breaking Bad'. Verification is needed to ensure the visual representation accurately evokes the intended homage without infringing on intellectual property, and that the reference is widely recognizable to the audience.",
+              "location_in_script": "INT. LUXURY APARTMENT - DAY, after Ray hangs up the phone."
+            }
+          ]
+        },
+        "script_sections": [
+          {
+            "type": "scene_header",
+            "start_line": 0,
+            "line_count": 41,
+            "content_summary": "INT. LUXURY APARTMENT - DAY"
+          }
+        ],
+        "extraction_method": "gemini_ai",
+        "agent_version": "1.0"
+      },
+      "error": null
+    },
+    "research": {
+      "success": true,
+      "confidence": 0.5,
+      "processing_time": 60.01092720031738,
+      "data": {
+        "claims": [
+          {
+            "id": "claim_001",
+            "text": "The TV plays a clip of a man in a yellow hazmat suit cooking in an RV -- clearly an homage, not a direct copy.",
+            "type": "cultural",
+            "confidence": 0.5,
+            "context": "This is a clear cultural reference, likely to the TV show 'Breaking Bad'. Verification is needed to ensure the visual representation accurately evokes the intended homage without infringing on intellectual property, and that the reference is widely recognizable to the audience.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, after Ray hangs up the phone.",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "Research timed out",
+            "note": "Research exceeded 60.0s timeout - marked as uncertain"
+          }
+        ],
+        "claims_researched": 1,
+        "verified_claims": [],
+        "flagged_claims": [],
+        "uncertain_claims": [
+          {
+            "id": "claim_001",
+            "text": "The TV plays a clip of a man in a yellow hazmat suit cooking in an RV -- clearly an homage, not a direct copy.",
+            "type": "cultural",
+            "confidence": 0.5,
+            "context": "This is a clear cultural reference, likely to the TV show 'Breaking Bad'. Verification is needed to ensure the visual representation accurately evokes the intended homage without infringing on intellectual property, and that the reference is widely recognizable to the audience.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, after Ray hangs up the phone.",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "Research timed out",
+            "note": "Research exceeded 60.0s timeout - marked as uncertain"
+          }
+        ],
+        "sources": [],
+        "research_summary": {
+          "verified_count": 0,
+          "flagged_count": 0,
+          "uncertain_count": 1,
+          "overall_accuracy": 0.0
+        }
+      },
+      "error": null
+    },
+    "legal": {
+      "success": true,
+      "confidence": 0.74,
+      "processing_time": 13.488674402236938,
+      "data": {
+        "copyright_risks": [
+          {
+            "type": "copyright",
+            "content": "The TV plays a clip of a man in a yellow hazmat suit cooking in an RV -- clearly an homage, not a direct copy.",
+            "severity": "high",
+            "description": "This description strongly evokes the highly recognizable TV series *Breaking Bad*. Even if intended as an 'homage,' showing a 'clip' on TV implies either: 1) It's an actual clip from the show, which requires licensing from the copyright holder (Sony Pictures Television). 2) It's a recreation that is",
+            "suggested_fix": "Option A (License): Seek a license to use an actual clip from *Breaking Bad*. This will be costly. Option B (Redesign): Significantly alter the visual elements to make it less directly identifiable wi",
+            "estimated_cost": "Option A: $10,000 - $100,000+; Option B: $500 - $5,000; Option C: $0 - $500",
+            "clearance_action": "If Option A: Contact Sony Pictures Television for clip licensing. If Option B/C: Consult with production designer and director to create a sufficiently distinct visual, then have legal counsel review "
+          }
+        ],
+        "trademark_issues": [
+          {
+            "type": "trademark",
+            "content": "legal called. They said the script references 'that superhero's voice' one too many times. Might want to cut that. ... Change it to 'some deep, gravelly voice.'",
+            "severity": "medium",
+            "description": "Referencing 'that superhero's voice' strongly implies a specific, well-known character (e.g., Batman). While not using the character's name, a distinctive characteristic like a unique voice can be associated with a copyrighted character and/or trademarked character elements. This could lead to claim",
+            "suggested_fix": "The script already provides the appropriate fix: change the reference to a generic description like 'some deep, gravelly voice.' This sufficiently distances the reference from any specific intellectua",
+            "estimated_cost": "$0 - $200",
+            "clearance_action": "Ensure the script is updated to reflect the generic description. No external clearance action needed if the generic description is used."
+          }
+        ],
+        "clearance_required": [],
+        "privacy_concerns": [],
+        "estimated_clearance_cost": "$500-2,000",
+        "legal_recommendations": [
+          "Review all music and copyrighted content references",
+          "Obtain necessary licensing agreements before production",
+          "Clear all brand mentions with respective trademark holders"
+        ],
+        "risk_summary": {
+          "total_risks": 2,
+          "high_priority": 1,
+          "clearance_items": 0
+        },
+        "analysis_method": "gemini_ai"
+      },
+      "error": null
+    },
+    "continuity": {
+      "success": true,
+      "confidence": 0.75,
+      "processing_time": 13.877188682556152,
+      "data": {
+        "character_inconsistencies": [],
+        "timeline_issues": [],
+        "location_continuity": [],
+        "prop_tracking": [
+          {
+            "type": "prop",
+            "severity": "low",
+            "description": "Ray pours a drink, but its disposition (e.g., consumed, set down) is not mentioned by the end of the scene.",
+            "location": "INT. LUXURY APARTMENT - DAY, after Ray hangs up",
+            "suggested_fix": "Add a brief action for the drink, e.g., 'He takes a sip and sets it on the table' or 'He leaves the untouched drink on the counter.'"
+          },
+          {
+            "type": "prop",
+            "severity": "low",
+            "description": "Ray grabs the remote, but its disposition (e.g., used, set down) is not mentioned by the end of the scene.",
+            "location": "INT. LUXURY APARTMENT - DAY, after Ray pours a drink",
+            "suggested_fix": "Add a brief action for the remote, e.g., 'He clicks the remote, then places it beside him' or 'He holds the remote loosely.'"
+          },
+          {
+            "type": "prop",
+            "severity": "low",
+            "description": "Denise enters holding a coffee cup, but its disposition (e.g., set down, drunk from) is not mentioned by the end of the scene.",
+            "location": "INT. LUXURY APARTMENT - DAY, when Denise enters",
+            "suggested_fix": "Add a brief action for the coffee cup, e.g., 'Denise sets her coffee cup on the table next to the folder' or 'She takes a sip from her coffee.'"
+          }
+        ],
+        "continuity_recommendations": [
+          "Track prop continuity throughout scenes"
+        ],
+        "continuity_summary": {
+          "total_issues": 3,
+          "character_count": 0,
+          "location_count": 0,
+          "severity_breakdown": {
+            "high": 0,
+            "medium": 0,
+            "low": 3
+          }
+        },
+        "analysis_method": "gemini_ai"
+      },
+      "error": null
+    }
+  },
+  "scenes": [
+    {
+      "scene_number": 1,
+      "title": "INT. LUXURY APARTMENT - DAY",
+      "location": "LUXURY APARTMENT",
+      "time_of_day": "DAY",
+      "description": "RAY (40s, slick, overconfident) paces in front of a floor-to- Tell the sponsors we want the deal by Friday. If they walk, another brand is already circling. He hangs up, pours a drink, and grabs the remote. The TV plays",
+      "characters_present": [
+        "RAY",
+        "DENISE"
+      ],
+      "page_start": 1,
+      "page_end": 1,
+      "dialogue_count": 10,
+      "action_lines": [
+        "RAY (40s, slick, overconfident) paces in front of a floor-to-",
+        "Tell the sponsors we want the deal by Friday.",
+        "If they walk, another brand is already circling.",
+        "He hangs up, pours a drink, and grabs the remote. The TV plays",
+        "RAY (CONT'D)",
+        "Every empire starts with one good batch.",
+        "His assistant, DENISE (30s), enters holding a plain coffee cup,",
+        "Ray, legal called. They said the script",
+        "Fine. Change it to \"some deep, gravelly voice.\"",
+        "Nobody'll notice.",
+        "Denise sets a folder on the table. On top: a sketch of a",
+        "Also -- the soundtrack list now has three",
+        "Good. That's one less headache."
+      ]
+    }
+  ],
+  "characters": [
+    {
+      "name": "RAY",
+      "descriptions": [
+        "RAY (40s, slick, overconfident) paces in front of a floor-to-",
+        "Ray, legal called. They said the script"
+      ],
+      "first_appearance": 1,
+      "total_scenes": 1,
+      "character_type": "lead",
+      "age_references": [],
+      "physical_descriptions": [],
+      "personality_traits": [
+        "confident"
+      ],
+      "relationships": {},
+      "dialogue_count": 5,
+      "scene_appearances": [
+        1
+      ]
+    },
+    {
+      "name": "DENISE",
+      "descriptions": [
+        "His assistant, DENISE (30s), enters holding a plain coffee cup,",
+        "Denise sets a folder on the table. On top: a sketch of a"
+      ],
+      "first_appearance": 1,
+      "total_scenes": 1,
+      "character_type": "lead",
+      "age_references": [],
+      "physical_descriptions": [
+        "plain"
+      ],
+      "personality_traits": [
+        "is assistant",
+        "ise",
+        "ise",
+        "ise",
+        "ise"
+      ],
+      "relationships": {},
+      "dialogue_count": 5,
+      "scene_appearances": [
+        1
+      ]
+    }
+  ],
+  "scene_statistics": {
+    "total_scenes": 1,
+    "day_scenes": 1,
+    "night_scenes": 0,
+    "interior_scenes": 1,
+    "exterior_scenes": 0,
+    "total_characters": 2,
+    "average_characters_per_scene": 2.0,
+    "total_dialogue_lines": 10,
+    "locations": 1
+  },
+  "character_statistics": {
+    "total_characters": 2,
+    "character_types": {
+      "lead": 2
+    },
+    "average_scenes_per_character": 1.0,
+    "most_connected_character": "RAY",
+    "characters_with_descriptions": 2,
+    "characters_with_relationships": 0
+  },
+  "continuity_issues": [],
+  "agent_timeline": [
+    {
+      "agent": "director",
+      "status": "complete",
+      "start_time": "2026-09-01 17:10:10.653268+00:00",
+      "end_time": "2026-09-01 17:10:19.119685+00:00",
+      "duration_seconds": 8.466417,
+      "summary": "Extracted 1 factual claims for verification",
+      "claims_count": 1,
+      "issues_found": null,
+      "confidence": 0.85,
+      "phase": "sequential"
+    },
+    {
+      "agent": "research",
+      "status": "complete",
+      "start_time": "2026-09-01 17:10:19.120144+00:00",
+      "end_time": "2026-09-01 17:11:19.132033+00:00",
+      "duration_seconds": 60.011889,
+      "summary": "Verified 1 claims via Parallel API",
+      "claims_count": 1,
+      "issues_found": 0,
+      "confidence": 0.5,
+      "phase": "parallel"
+    },
+    {
+      "agent": "legal",
+      "status": "complete",
+      "start_time": "2026-09-01 17:10:19.120144+00:00",
+      "end_time": "2026-09-01 17:11:19.132033+00:00",
+      "duration_seconds": 60.011889,
+      "summary": "Found 2 legal issues",
+      "claims_count": null,
+      "issues_found": 2,
+      "confidence": 0.74,
+      "phase": "parallel"
+    },
+    {
+      "agent": "continuity",
+      "status": "complete",
+      "start_time": "2026-09-01 17:10:19.120144+00:00",
+      "end_time": "2026-09-01 17:11:19.132033+00:00",
+      "duration_seconds": 60.011889,
+      "summary": "Found 0 continuity issues",
+      "claims_count": null,
+      "issues_found": 0,
+      "confidence": 0.75,
+      "phase": "parallel"
+    }
+  ],
+  "readiness_scores": {
+    "legal_clearance": 65.0,
+    "historical_accuracy": 0.0,
+    "continuity": 85.0,
+    "budget_feasibility": 97.0,
+    "overall": 60.2,
+    "grade": "D"
+  },
+  "agent_flow": [
+    {
+      "agent": "director",
+      "claims_in": 0,
+      "claims_out": 1,
+      "verified": 0,
+      "flagged": 0,
+      "uncertain": 0,
+      "issues_high": 0,
+      "issues_medium": 0,
+      "issues_low": 0
+    },
+    {
+      "agent": "research",
+      "claims_in": 1,
+      "claims_out": 1,
+      "verified": 0,
+      "flagged": 0,
+      "uncertain": 1,
+      "issues_high": 0,
+      "issues_medium": 0,
+      "issues_low": 0
+    },
+    {
+      "agent": "legal",
+      "claims_in": 0,
+      "claims_out": 2,
+      "verified": 0,
+      "flagged": 0,
+      "uncertain": 0,
+      "issues_high": 1,
+      "issues_medium": 1,
+      "issues_low": 0
+    },
+    {
+      "agent": "continuity",
+      "claims_in": 0,
+      "claims_out": 3,
+      "verified": 0,
+      "flagged": 0,
+      "uncertain": 0,
+      "issues_high": 0,
+      "issues_medium": 0,
+      "issues_low": 3
+    }
+  ],
+  "suggestions": [
+    {
+      "issue_id": "sug_1",
+      "issue_type": "legal",
+      "severity": "high",
+      "original_text": "The TV plays a clip of a man in a yellow hazmat suit cooking in an RV -- clearly an homage, not a direct copy.",
+      "suggested_text": "Option A (License): Seek a license to use an actual clip from *Breaking Bad*. This will be costly. Option B (Redesign): Significantly alter the visual elements to make it less directly identifiable wi",
+      "rationale": "Copyright risk identified: copyright. Clearance required before distribution."
+    },
+    {
+      "issue_id": "sug_2",
+      "issue_type": "trademark",
+      "severity": "medium",
+      "original_text": "legal called. They said the script references 'that superhero's voice' one too many times. Might want to cut that. ... Change it to 'some deep, gravelly voice.'",
+      "suggested_text": "The script already provides the appropriate fix: change the reference to a generic description like 'some deep, gravelly voice.' This sufficiently distances the reference from any specific intellectua",
+      "rationale": "Trademark issue: unknown. Use generic alternatives."
+    }
+  ]
+}

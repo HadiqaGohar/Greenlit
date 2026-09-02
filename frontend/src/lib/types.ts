@@ -24,7 +24,7 @@ export interface Claim {
 
 // ─── Agent result types ───────────────────────────────────────────────────────
 
-export type AgentType = "director" | "research" | "legal" | "continuity";
+export type AgentType = "director" | "research" | "legal" | "continuity" | "storyboard" | "tts" | "schedule" | "stakeholder";
 
 export interface AgentResult {
   agent_type: AgentType;
@@ -32,9 +32,9 @@ export interface AgentResult {
   confidence_score: number;
   confidence?: number;
   processing_time: number;
-  data: Record<string, any> | null;
+  data: Record<string, unknown> | null;
   error_message?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export interface RiskAssessment {
@@ -142,7 +142,7 @@ export interface AnalyticsSummary {
   activeCollaborators: number;
   trends: TrendPoint[];
   topRiskCategories: Record<string, number>;
-  recentActivity: any[];
+  recentActivity: Array<Record<string, unknown>>;
 }
 
 export interface TrendPoint {
@@ -201,7 +201,7 @@ export interface DashboardData {
   projects: ProjectSummary[];
   analytics: AnalyticsSummary;
   notifications: Notification[];
-  recentExports: any[];
+  recentExports: Array<Record<string, unknown>>;
 }
 
 // ─── Collaboration types ──────────────────────────────────────────────────────
@@ -282,5 +282,5 @@ export type WSMessageType =
 export interface WSMessage {
   type: WSMessageType;
   timestamp?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }

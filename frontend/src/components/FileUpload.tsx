@@ -80,7 +80,7 @@ export function FileUpload({
       });
 
       onFileSelect(file, content);
-    } catch (error) {
+    } catch {
       setUploadedFile({
         file,
         preview: "",
@@ -120,7 +120,7 @@ export function FileUpload({
         processFile(files[0]);
       }
     },
-    [disabled]
+    [disabled, processFile]
   );
 
   const handleFileInput = (e: React.ChangeEvent<HTMLInputElement>) => {

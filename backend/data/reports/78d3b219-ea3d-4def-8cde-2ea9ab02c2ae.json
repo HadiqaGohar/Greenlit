@@ -1,0 +1,207 @@
+{
+  "report_id": "78d3b219-ea3d-4def-8cde-2ea9ab02c2ae",
+  "timestamp": "2026-08-25T18:49:23.063960+00:00",
+  "processing_time": 190.074091,
+  "risk_assessment": {
+    "overall_risk_score": 20.0,
+    "risk_level": "low"
+  },
+  "agent_results": {
+    "director": {
+      "success": true,
+      "confidence": 0.85,
+      "processing_time": 10.056219577789307,
+      "data": {
+        "claims": [
+          {
+            "id": "claim_001",
+            "text": "A McLaren 720S sits parked visibly on the street below.",
+            "type": "brand",
+            "confidence": 0.8,
+            "context": "The McLaren 720S is a specific, real car model. Its presence needs to be accurately depicted in terms of visual appearance and potentially legal clearance for prominent display.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, opening description"
+          },
+          {
+            "id": "claim_002",
+            "text": "Tell Nike we want the deal by Friday. If they walk, Adidas is already circling.",
+            "type": "brand",
+            "confidence": 0.8,
+            "context": "Nike and Adidas are real, major global brands. Referencing them in dialogue, even in a fictional context, might require legal clearance or consideration for brand association.",
+            "location_in_script": "Ray's first dialogue"
+          },
+          {
+            "id": "claim_003",
+            "text": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+            "type": "cultural",
+            "confidence": 0.8,
+            "context": "Breaking Bad is a real, copyrighted television series. Using a clip from it would require licensing and clearance from the rights holders (AMC/Sony Pictures Television). The description of the scene is also specific to the show.",
+            "location_in_script": "After Ray hangs up the phone"
+          },
+          {
+            "id": "claim_004",
+            "text": "His assistant, DENISE (30s), enters holding a Starbucks cup with the logo clearly visible.",
+            "type": "brand",
+            "confidence": 0.8,
+            "context": "Starbucks is a real, trademarked brand. Displaying its logo prominently could be considered product placement and might require agreements or legal clearance.",
+            "location_in_script": "After Ray's 'Every empire...' line"
+          },
+          {
+            "id": "claim_005",
+            "text": "Ray, legal called. They said the script references \"the Batman voice\" one too many times.",
+            "type": "brand",
+            "confidence": 0.8,
+            "context": "Batman is a trademarked character owned by DC Comics/Warner Bros. Referencing 'the Batman voice' could potentially infringe on intellectual property rights, as suggested by the script's 'legal' department.",
+            "location_in_script": "Denise's first dialogue"
+          },
+          {
+            "id": "claim_006",
+            "text": "On top: a photo of a man who looks exactly like Elon Musk, unlabeled, mid-speech.",
+            "type": "biographical",
+            "confidence": 0.8,
+            "context": "Elon Musk is a real, prominent public figure. Using his likeness (even a photo) could require legal clearance, especially if it implies endorsement or is used in a specific context within the film.",
+            "location_in_script": "After Denise sets a folder on the table"
+          },
+          {
+            "id": "claim_007",
+            "text": "Also -- the soundtrack list still has three unlicensed Beatles songs on it.",
+            "type": "cultural",
+            "confidence": 0.8,
+            "context": "The Beatles are a real, iconic musical group whose songs are copyrighted. Using their music in a production requires obtaining proper licenses, which can be complex and expensive.",
+            "location_in_script": "Denise's second dialogue"
+          }
+        ],
+        "claims_extracted": 7,
+        "claims_by_type": {
+          "brand": [
+            {
+              "id": "claim_001",
+              "text": "A McLaren 720S sits parked visibly on the street below.",
+              "type": "brand",
+              "confidence": 0.8,
+              "context": "The McLaren 720S is a specific, real car model. Its presence needs to be accurately depicted in terms of visual appearance and potentially legal clearance for prominent display.",
+              "location_in_script": "INT. LUXURY APARTMENT - DAY, opening description"
+            },
+            {
+              "id": "claim_002",
+              "text": "Tell Nike we want the deal by Friday. If they walk, Adidas is already circling.",
+              "type": "brand",
+              "confidence": 0.8,
+              "context": "Nike and Adidas are real, major global brands. Referencing them in dialogue, even in a fictional context, might require legal clearance or consideration for brand association.",
+              "location_in_script": "Ray's first dialogue"
+            },
+            {
+              "id": "claim_004",
+              "text": "His assistant, DENISE (30s), enters holding a Starbucks cup with the logo clearly visible.",
+              "type": "brand",
+              "confidence": 0.8,
+              "context": "Starbucks is a real, trademarked brand. Displaying its logo prominently could be considered product placement and might require agreements or legal clearance.",
+              "location_in_script": "After Ray's 'Every empire...' line"
+            },
+            {
+              "id": "claim_005",
+              "text": "Ray, legal called. They said the script references \"the Batman voice\" one too many times.",
+              "type": "brand",
+              "confidence": 0.8,
+              "context": "Batman is a trademarked character owned by DC Comics/Warner Bros. Referencing 'the Batman voice' could potentially infringe on intellectual property rights, as suggested by the script's 'legal' department.",
+              "location_in_script": "Denise's first dialogue"
+            }
+          ],
+          "cultural": [
+            {
+              "id": "claim_003",
+              "text": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+              "type": "cultural",
+              "confidence": 0.8,
+              "context": "Breaking Bad is a real, copyrighted television series. Using a clip from it would require licensing and clearance from the rights holders (AMC/Sony Pictures Television). The description of the scene is also specific to the show.",
+              "location_in_script": "After Ray hangs up the phone"
+            },
+            {
+              "id": "claim_007",
+              "text": "Also -- the soundtrack list still has three unlicensed Beatles songs on it.",
+              "type": "cultural",
+              "confidence": 0.8,
+              "context": "The Beatles are a real, iconic musical group whose songs are copyrighted. Using their music in a production requires obtaining proper licenses, which can be complex and expensive.",
+              "location_in_script": "Denise's second dialogue"
+            }
+          ],
+          "biographical": [
+            {
+              "id": "claim_006",
+              "text": "On top: a photo of a man who looks exactly like Elon Musk, unlabeled, mid-speech.",
+              "type": "biographical",
+              "confidence": 0.8,
+              "context": "Elon Musk is a real, prominent public figure. Using his likeness (even a photo) could require legal clearance, especially if it implies endorsement or is used in a specific context within the film.",
+              "location_in_script": "After Denise sets a folder on the table"
+            }
+          ]
+        },
+        "script_sections": [
+          {
+            "type": "scene_header",
+            "start_line": 0,
+            "line_count": 41,
+            "content_summary": "INT. LUXURY APARTMENT - DAY"
+          }
+        ],
+        "extraction_method": "gemini_ai",
+        "agent_version": "1.0"
+      },
+      "error": null
+    },
+    "research": {
+      "success": false,
+      "confidence": 0.0,
+      "processing_time": 180.0,
+      "data": {},
+      "error": "Agent timed out after 180.0s"
+    },
+    "legal": {
+      "success": true,
+      "confidence": 0.7,
+      "processing_time": 14.780889749526978,
+      "data": {
+        "copyright_risks": [],
+        "trademark_issues": [],
+        "clearance_required": [],
+        "privacy_concerns": [],
+        "estimated_clearance_cost": "$0",
+        "legal_recommendations": [
+          "No major legal risks identified in script analysis"
+        ],
+        "risk_summary": {
+          "total_risks": 0,
+          "high_priority": 0,
+          "clearance_items": 0
+        },
+        "analysis_method": "gemini_ai"
+      },
+      "error": null
+    },
+    "continuity": {
+      "success": true,
+      "confidence": 0.9,
+      "processing_time": 8.877747297286987,
+      "data": {
+        "character_inconsistencies": [],
+        "timeline_issues": [],
+        "location_continuity": [],
+        "prop_tracking": [],
+        "continuity_recommendations": [
+          "No significant continuity issues detected"
+        ],
+        "continuity_summary": {
+          "total_issues": 0,
+          "character_count": 0,
+          "location_count": 0,
+          "severity_breakdown": {
+            "high": 0,
+            "medium": 0,
+            "low": 0
+          }
+        },
+        "analysis_method": "gemini_ai"
+      },
+      "error": null
+    }
+  }
+}

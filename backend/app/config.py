@@ -6,11 +6,12 @@ Loads environment variables and provides application configuration
 import os
 import warnings
 from typing import List, Optional
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class Settings(BaseSettings):
     """Application settings loaded from environment variables"""
+    model_config = SettingsConfigDict(env_file=".env", case_sensitive=True, extra="ignore")
     
     # Gemini Configuration (Google Cloud Gen AI SDK)
     GEMINI_API_KEY: Optional[str] = None
@@ -47,17 +48,13 @@ class Settings(BaseSettings):
     RATE_LIMIT_PERIOD: int = 60
     
     # Multi-Agent Configuration
-    AGENTS_ENABLED: List[str] = ["director", "research", "legal", "continuity"]
+    AGENTS_ENABLED: List[str] = ["director", "research", "legal", "continuity", "storyboard", "tts", "schedule", "stakeholder", "budget", "relationship", "pitch_deck", "location"]
     PARALLEL_AGENT_EXECUTION: bool = True
     MAX_CONCURRENT_AGENTS: int = 4
     
     # Monitoring
     SENTRY_DSN: Optional[str] = None
     ENABLE_MONITORING: bool = False
-    
-    class Config:
-        env_file = ".env"
-        case_sensitive = True
 
 
 # Create global settings instance

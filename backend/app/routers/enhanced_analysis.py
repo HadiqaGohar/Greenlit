@@ -162,7 +162,6 @@ async def enhanced_analyze(
             status_code=500,
             detail=f"Enhanced analysis failed: {str(e)}"
         )
-
 @router.get("/scene-breakdown/{report_id}")
 async def get_scene_breakdown(
     report_id: str,
@@ -172,28 +171,56 @@ async def get_scene_breakdown(
     Get detailed scene breakdown for a report
     """
     try:
-        # In production, fetch from database
-        # For now, return mock data
+        # Load report from file storage
+        import os
+        import json
+        
+        report_file = f"data/reports/{report_id}.json"
+        script_text = ""
+        
+        if os.path.exists(report_file):
+            with open(report_file, "r") as f:
+                report_data = json.load(f)
+                script_text = report_data.get("script_text", "")
+        
+        if not script_text:
+            # Fallback: return minimal data
+            return {
+                "report_id": report_id,
+                "scenes": [],
+                "message": "Script text not available for scene breakdown"
+            }
+        
+        # Parse screenplay into scenes
+        scenes, scene_stats = parse_screenplay(script_text)
+        
+        # Format scenes for response
+        formatted_scenes = []
+        for i, scene in enumerate(scenes, 1):
+            formatted_scenes.append({
+                "scene_number": i,
+                "title": scene.title if hasattr(scene, 'title') else f"Scene {i}",
+                "location": scene.location if hasattr(scene, 'location') else "Unknown",
+                "time_of_day": scene.time_of_day if hasattr(scene, 'time_of_day') else "DAY",
+                "characters": scene.characters_present if hasattr(scene, 'characters_present') else [],
+                "risk_score": 25,  # Default low risk
+                "complexity": "low",
+                "notes": [f"Scene contains {len(scene.characters_present) if hasattr(scene, 'characters_present') else 0} characters"]
+            })
+        
         return {
             "report_id": report_id,
-            "scenes": [
-                {
-                    "scene_number": 1,
-                    "title": "INT. COFFEE SHOP - DAY",
-                    "location": "Coffee Shop",
-                    "characters": ["SARAH", "MIKE"],
-                    "risk_score": 25,
-                    "complexity": "low",
-                    "notes": ["Simple dialogue scene", "Standard lighting setup"]
-                }
-            ]
+            "scenes": formatted_scenes,
+            "stats": scene_stats
         }
         
     except Exception as e:
+        logger.error(f"Failed to get scene breakdown: {e}")
         raise HTTPException(
             status_code=500,
             detail=f"Failed to get scene breakdown: {str(e)}"
         )
+
 
 @router.get("/character-bible/{report_id}")
 async def get_character_bible(
@@ -204,28 +231,61 @@ async def get_character_bible(
     Get character bible for a report
     """
     try:
-        # In production, fetch from database
+        # Load report from file storage
+        import os
+        import json
+        
+        report_file = f"data/reports/{report_id}.json"
+        script_text = ""
+        
+        if os.path.exists(report_file):
+            with open(report_file, "r") as f:
+                report_data = json.load(f)
+                script_text = report_data.get("script_text", "")
+        
+        if not script_text:
+            return {
+                "report_id": report_id,
+                "characters": {},
+                "message": "Script text not available for character analysis"
+            }
+        
+        # Parse screenplay and extract characters
+        scenes, _ = parse_screenplay(script_text)
+        characters, continuity_issues, char_stats = extract_characters(scenes, script_text)
+        
+        # Generate character bible
+        character_bible = generate_character_bible(scenes, script_text)
+        
+        # Format characters for response
+        formatted_characters = {}
+        for name, profile in character_bible.characters.items():
+            formatted_characters[name] = {
+                "name": profile.name,
+                "type": profile.character_type,
+                "scenes": profile.total_scenes,
+                "description": profile.descriptions[0] if profile.descriptions else "No description",
+                "relationships": dict(profile.relationships),
+                "first_appearance": profile.first_appearance,
+                "scene_appearances": profile.scene_appearances
+            }
+        
         return {
             "report_id": report_id,
-            "characters": {
-                "SARAH": {
-                    "name": "SARAH",
-                    "type": "lead",
-                    "scenes": 12,
-                    "description": "Young professional, determined",
-                    "relationships": {"MIKE": "romantic interest"}
-                }
-            },
-            "casting_notes": {
-                "SARAH": ["Lead role - experienced actor required", "Age 25-30"]
-            }
+            "characters": formatted_characters,
+            "continuity_issues": continuity_issues,
+            "casting_notes": character_bible.casting_suggestions,
+            "production_notes": character_bible.production_notes,
+            "stats": char_stats
         }
         
     except Exception as e:
+        logger.error(f"Failed to get character bible: {e}")
         raise HTTPException(
             status_code=500,
             detail=f"Failed to get character bible: {str(e)}"
         )
+
 
 @router.get("/production-insights/{report_id}")
 async def get_production_insights(
@@ -236,36 +296,74 @@ async def get_production_insights(
     Get production insights and recommendations
     """
     try:
+        # Load report from file storage
+        import os
+        import json
+        
+        report_file = f"data/reports/{report_id}.json"
+        script_text = ""
+        risk_score = 50
+        
+        if os.path.exists(report_file):
+            with open(report_file, "r") as f:
+                report_data = json.load(f)
+                script_text = report_data.get("script_text", "")
+                risk_score = report_data.get("risk_assessment", {}).get("overall_risk_score", 50)
+        
+        if not script_text:
+            return {
+                "report_id": report_id,
+                "budget_estimate": {},
+                "message": "Script text not available for production insights"
+            }
+        
+        # Parse screenplay for stats
+        scenes, scene_stats = parse_screenplay(script_text)
+        
+        # Generate insights based on actual script analysis
+        num_scenes = len(scenes)
+        num_locations = len(set(s.location if hasattr(s, 'location') else "Unknown" for s in scenes))
+        has_night = any(s.time_of_day.upper() == "NIGHT" for s in scenes if hasattr(s, 'time_of_day'))
+        
         return {
             "report_id": report_id,
             "budget_estimate": {
-                "total": 250000,
+                "total": max(50000, num_scenes * 15000 + num_locations * 10000),
                 "breakdown": {
-                    "cast": 80000,
-                    "locations": 50000,
-                    "equipment": 60000,
-                    "legal": 15000,
-                    "contingency": 45000
+                    "cast": max(15000, num_scenes * 5000),
+                    "locations": max(10000, num_locations * 8000),
+                    "equipment": max(10000, num_scenes * 3000),
+                    "legal": 5000,
+                    "contingency": max(5000, num_scenes * 2000)
                 }
             },
             "shooting_schedule": {
-                "estimated_days": 18,
-                "complexity_factors": ["Multiple locations", "Large cast scenes"],
-                "recommendations": ["Schedule dialogue scenes first", "Plan for weather delays"]
+                "estimated_days": max(5, num_scenes * 2),
+                "complexity_factors": [
+                    f"{num_scenes} scenes to shoot",
+                    f"{num_locations} unique locations",
+                    "Night shoots required" if has_night else "Day shoots only"
+                ],
+                "recommendations": [
+                    "Group scenes by location to minimize moves",
+                    "Schedule dialogue scenes first",
+                    "Plan for weather delays for exterior scenes"
+                ]
             },
             "risk_mitigation": [
                 "Obtain location permits early",
                 "Secure legal clearances for mentioned brands",
                 "Plan backup locations for exterior scenes"
-            ]
+            ],
+            "stats": scene_stats
         }
         
     except Exception as e:
+        logger.error(f"Failed to get production insights: {e}")
         raise HTTPException(
             status_code=500,
             detail=f"Failed to get production insights: {str(e)}"
         )
-
 # Helper functions
 def _calculate_risk_summary(scene_analyses: List[SceneAnalysisResponse], standard_analysis) -> Dict[str, Any]:
     """Calculate overall risk summary"""

@@ -50,9 +50,11 @@ Extract factual claims from the script that could affect production accuracy. Fo
 5. BRAND/TRADEMARK MENTIONS: Company names, product names
 6. BIOGRAPHICAL INFO: Real people, their achievements, dates
 
+IMPORTANT: For each claim, provide the COMPLETE SENTENCE or full phrase from the script. Do not extract partial text or fragments. If a claim spans multiple sentences, include the full context.
+
 For each claim, provide:
-- The exact text/quote from script
-- Type of claim (historical/geographic/technical/cultural/brand/biographical)
+- The exact text/quote from script (COMPLETE SENTENCE, not fragments)
+- Type of claim (historical/geographic/technical/cultural/brand/biographical) 
 - Why it needs verification
 - Location in script (approximate)
 
@@ -60,7 +62,7 @@ Format as JSON array:
 [
   {
     "id": "unique_id",
-    "text": "exact quote from script",
+    "text": "complete sentence or full phrase from script - not fragments",
     "type": "historical|geographic|technical|cultural|brand|biographical", 
     "confidence": 0.8,
     "context": "why this needs verification",
@@ -75,7 +77,7 @@ Only extract genuine factual claims that could be verified or fact-checked. Igno
                 prompt=f"Extract factual claims from this script:\n\n{script_text}",
                 system_prompt=system_prompt,
                 temperature=0.2,
-                max_tokens=2000
+                max_tokens=3000
             )
             
             # Parse JSON response
@@ -118,38 +120,82 @@ Only extract genuine factual claims that could be verified or fact-checked. Igno
     def _parse_claims_response(self, response: str) -> List[Dict[str, Any]]:
         """Parse Gemini response and extract claims"""
         
-        try:
-            import json
-            import re
+        # Log raw response for debugging
+        logger.info(f"Raw Gemini response ({len(response)} chars): {response[:500]}...")
+        
+        # Step 1: Strip markdown code fences if present
+        cleaned_response = response.strip()
+        if cleaned_response.startswith("```json"):
+            cleaned_response = cleaned_response[7:]  # Remove ```json
+        if cleaned_response.startswith("```"):
+            cleaned_response = cleaned_response[3:]  # Remove ```
+        if cleaned_response.endswith("```"):
+            cleaned_response = cleaned_response[:-3]  # Remove trailing ```
+        cleaned_response = cleaned_response.strip()
+        
+        # Step 2: Try to extract JSON array
+        json_match = re.search(r'\[.*\]', cleaned_response, re.DOTALL)
+        
+        # If no complete array found, try to handle truncated JSON
+        if not json_match:
+            logger.warning(f"No complete JSON array found. Attempting to fix truncated JSON...")
             
-            # Try to extract JSON from response
-            # Look for JSON array pattern
-            json_match = re.search(r'\[.*\]', response, re.DOTALL)
-            if json_match:
-                json_str = json_match.group(0)
-                claims = json.loads(json_str)
+            # Check if response starts with [ but is truncated
+            if cleaned_response.startswith('['):
+                # Try to fix truncated JSON by closing brackets
+                truncated = cleaned_response
+                # Count open vs close brackets
+                open_braces = truncated.count('{') - truncated.count('}')
+                open_brackets = truncated.count('[') - truncated.count(']')
                 
-                # Validate and clean claims
-                cleaned_claims = []
-                for claim in claims:
-                    if isinstance(claim, dict) and "text" in claim and "type" in claim:
-                        claim_id = claim.get("id", f"claim_{uuid4().hex[:8]}")
-                        cleaned_claims.append({
-                            "id": claim_id,
-                            "text": claim["text"][:200],  # Limit length
-                            "type": claim.get("type", "unknown"),
-                            "confidence": float(claim.get("confidence", 0.7)),
-                            "context": claim.get("context", "")[:300],
-                            "location_in_script": claim.get("location_in_script", "unknown")
-                        })
+                # Add missing closing brackets/braces
+                truncated += '}' * open_braces + ']' * open_brackets
                 
-                return cleaned_claims[:10]  # Limit to 10 claims max
+                # Remove trailing incomplete objects (common in truncation)
+                last_complete = truncated.rfind('},')
+                if last_complete > 0:
+                    truncated = truncated[:last_complete + 1] + ']'
+                    json_match = re.search(r'\[.*\]', truncated, re.DOTALL)
+                    if json_match:
+                        logger.info("Successfully repaired truncated JSON response")
         
-        except Exception as e:
-            logger.warning(f"Failed to parse JSON claims: {str(e)}")
+        if not json_match:
+            logger.error(f"No JSON array found in response. Cleaned response preview: {cleaned_response[:300]}")
+            raise ValueError(f"Failed to extract JSON array from Gemini response. Response does not contain a valid JSON array. Preview: {cleaned_response[:200]}")
         
-        # Fallback: create synthetic claims based on simple analysis
-        return self._create_fallback_claims(response)
+        json_str = json_match.group(0)
+        
+        # Step 3: Parse JSON
+        try:
+            claims = json.loads(json_str)
+        except json.JSONDecodeError as e:
+            logger.error(f"JSON parsing failed: {e}. JSON string preview: {json_str[:300]}")
+            raise ValueError(f"Invalid JSON in Gemini response: {e}")
+        
+        # Step 4: Validate and clean claims
+        cleaned_claims = []
+        for claim in claims:
+            if isinstance(claim, dict) and "text" in claim and "type" in claim:
+                claim_id = claim.get("id", f"claim_{uuid4().hex[:8]}")
+                claim_text = claim["text"]
+                # Skip very short fragments (less than 15 chars)
+                if len(claim_text) < 15:
+                    logger.warning(f"Skipping short claim fragment: {claim_text[:50]}")
+                    continue
+                cleaned_claims.append({
+                    "id": claim_id,
+                    "text": claim_text,
+                    "type": claim.get("type", "unknown"),
+                    "confidence": float(claim.get("confidence", 0.7)),
+                    "context": claim.get("context", ""),
+                    "location_in_script": claim.get("location_in_script", "unknown")
+                })
+        
+        if not cleaned_claims:
+            logger.warning(f"Parsed {len(claims)} claims but none passed validation. Raw claims: {claims[:3]}")
+        
+        logger.info(f"Successfully parsed {len(cleaned_claims)} claims from Gemini response")
+        return cleaned_claims[:10]  # Limit to 10 claims max
     
     def _create_fallback_claims(self, text: str) -> List[Dict[str, Any]]:
         """Create fallback claims if JSON parsing fails"""
@@ -158,41 +204,54 @@ Only extract genuine factual claims that could be verified or fact-checked. Igno
         
         claims = []
         
-        # Look for years (historical dates)
-        years = re.findall(r'\b(19\d{2}|20\d{2})\b', text)
-        for year in set(years[:3]):  # Max 3 years
-            claims.append({
-                "id": f"year_{uuid4().hex[:8]}",
-                "text": f"Reference to year {year}",
-                "type": "historical",
-                "confidence": 0.8,
-                "context": f"Year {year} mentioned in script - verify historical accuracy",
-                "location_in_script": "detected_by_regex"
-            })
-        
-        # Look for proper nouns (potential locations/people)
-        proper_nouns = re.findall(r'\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*\b', text)
-        for noun in set(proper_nouns[:3]):  # Max 3 nouns
-            if len(noun) > 3 and noun not in ["The", "And", "But", "For"]:
+        # Look for years with context (historical dates)
+        # Find sentences containing years
+        year_pattern = r'[^.]*(?:19\d{2}|20\d{2})[^.]*\.'
+        year_sentences = re.findall(year_pattern, text)
+        for sentence in year_sentences[:3]:
+            sentence = sentence.strip()
+            if len(sentence) >20:  # Only meaningful sentences
                 claims.append({
-                    "id": f"name_{uuid4().hex[:8]}",
-                    "text": f"Reference to {noun}",
-                    "type": "biographical" if " " in noun else "geographic",
-                    "confidence": 0.6,
-                    "context": f"Proper noun '{noun}' may need fact verification",
+                    "id": f"year_{uuid4().hex[:8]}",
+                    "text": sentence,
+                    "type": "historical",
+                    "confidence": 0.8,
+                    "context": "Historical reference found in script - verify accuracy",
                     "location_in_script": "detected_by_regex"
                 })
         
-        # If no claims found, add a generic one
+        # Look for real place names with context
+        # Find sentences mentioning known cities/landmarks
+        location_pattern = r'[^.]*(?:New York|London|Paris|Tokyo|Berlin|Moscow|Times Square|Central Park|White House)[^.]*\.'
+        location_sentences = re.findall(location_pattern, text, re.IGNORECASE)
+        for sentence in location_sentences[:3]:
+            sentence = sentence.strip()
+            if len(sentence) >20:
+                claims.append({
+                    "id": f"location_{uuid4().hex[:8]}",
+                    "text": sentence,
+                    "type": "geographic",
+                    "confidence": 0.7,
+                    "context": "Real location mentioned - verify geographic accuracy",
+                    "location_in_script": "detected_by_regex"
+                })
+        
+        # If no meaningful claims found, add a generic one
         if not claims:
-            claims.append({
-                "id": f"general_{uuid4().hex[:8]}",
-                "text": "Script content analyzed",
-                "type": "general",
-                "confidence": 0.5,
-                "context": "No specific factual claims automatically detected",
-                "location_in_script": "full_script"
-            })
+            # Get first meaningful sentence
+            sentences = re.split(r'[.!?]+', text)
+            for sentence in sentences:
+                sentence = sentence.strip()
+                if len(sentence) >30:
+                    claims.append({
+                        "id": f"general_{uuid4().hex[:8]}",
+                        "text": sentence,
+                        "type": "general",
+                        "confidence": 0.5,
+                        "context": "Content analyzed for factual accuracy",
+                        "location_in_script": "full_script"
+                    })
+                    break
         
         return claims[:5]  # Limit fallback claims
     

@@ -8,6 +8,7 @@ import { TUTORIAL_STEPS, SAMPLE_SCRIPTS } from '@/lib/sampleData';
 import GuidedTour from '@/components/GuidedTour';
 import OnboardingBanner from '@/components/dashboard/OnboardingBanner';
 import SampleScriptsPanel from '@/components/dashboard/SampleScriptsPanel';
+import { listReports } from '@/lib/api';
 import { motion } from 'framer-motion';
 import {
   FileText,
@@ -27,6 +28,7 @@ interface Report {
   date: string;
   claimCount: number;
   flaggedCount: number;
+  riskScore?: number;
   status?: string;
 }
 
@@ -38,7 +40,7 @@ function StatCard({
   change,
   index,
 }: {
-  icon: any;
+  icon: React.ComponentType<{ size?: string | number; style?: React.CSSProperties }>;
   label: string;
   value: string | number;
   color: string;
@@ -88,37 +90,74 @@ export default function DashboardPage() {
     flaggedClaims: 0
   });
 
-  const { hasCompletedOnboarding, hasSeenTutorial } = useOnboardingProgress();
+  const { hasCompletedOnboarding } = useOnboardingProgress();
   const { hasSamplesLoaded, loadedSamples } = useLoadedSamples();
   const [showTour, setShowTour] = useState(false);
 
   useEffect(() => {
-    const mockReports: Report[] = [];
-    
-    const sampleReports = SAMPLE_SCRIPTS
-      .filter(sample => loadedSamples.includes(sample.id))
-      .map(sample => ({
-        id: sample.id,
-        title: sample.title,
-        date: new Date().toISOString(),
-        claimCount: sample.analysisResults.overview.totalClaims,
-        flaggedCount: sample.analysisResults.overview.flaggedClaims,
-        status: 'completed'
-      }));
+    async function fetchReports() {
+      try {
+        // Fetch real reports from backend, filtered by current user
+        const { reports: backendReports } = await listReports(user?.uid);
+        
+        // Convert backend reports to our format
+        const realReports: Report[] = backendReports.map(r => ({
+          id: r.id,
+          title: r.title,
+          date: r.date,
+          claimCount: r.claimCount,
+          flaggedCount: r.flaggedCount,
+          riskScore: r.riskScore,
+          status: r.status
+        }));
+        
+        // Also add sample reports that were loaded
+        const sampleReports = SAMPLE_SCRIPTS
+          .filter(sample => loadedSamples.includes(sample.id))
+          .map(sample => ({
+            id: sample.id,
+            title: sample.title,
+            date: new Date().toISOString(),
+            claimCount: sample.analysisResults.overview.totalClaims,
+            flaggedCount: sample.analysisResults.overview.flaggedClaims,
+            status: 'completed'
+          }));
 
-    const allReports = [...mockReports, ...sampleReports];
-    setReports(allReports);
+        // Combine: real reports first, then samples (avoid duplicates)
+        const sampleIds = new Set(sampleReports.map(s => s.id));
+        const uniqueRealReports = realReports.filter(r => !sampleIds.has(r.id));
+        const allReports = [...uniqueRealReports, ...sampleReports];
+        
+        setReports(allReports);
+        
+        setStats({
+          totalScripts: allReports.length,
+          totalClaims: allReports.reduce((sum, report) => sum + report.claimCount, 0),
+          verifiedClaims: sampleReports.reduce((sum, report) => {
+            const sample = SAMPLE_SCRIPTS.find(s => s.id === report.id);
+            return sum + (sample?.analysisResults.overview.verifiedClaims || 0);
+          }, 0),
+          flaggedClaims: allReports.reduce((sum, report) => sum + report.flaggedCount, 0)
+        });
+      } catch (err) {
+        console.error('Failed to fetch reports from backend:', err);
+        // Fallback to sample reports only
+        const sampleReports = SAMPLE_SCRIPTS
+          .filter(sample => loadedSamples.includes(sample.id))
+          .map(sample => ({
+            id: sample.id,
+            title: sample.title,
+            date: new Date().toISOString(),
+            claimCount: sample.analysisResults.overview.totalClaims,
+            flaggedCount: sample.analysisResults.overview.flaggedClaims,
+            status: 'completed'
+          }));
+        setReports(sampleReports);
+      }
+    }
     
-    setStats({
-      totalScripts: allReports.length,
-      totalClaims: allReports.reduce((sum, report) => sum + report.claimCount, 0),
-      verifiedClaims: sampleReports.reduce((sum, report) => {
-        const sample = SAMPLE_SCRIPTS.find(s => s.id === report.id);
-        return sum + (sample?.analysisResults.overview.verifiedClaims || 0);
-      }, 0),
-      flaggedClaims: allReports.reduce((sum, report) => sum + report.flaggedCount, 0)
-    });
-  }, [loadedSamples]);
+    fetchReports();
+  }, [loadedSamples, user?.uid]);
 
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('en-US', {
@@ -321,6 +360,11 @@ export default function DashboardPage() {
                           {report.flaggedCount > 0 && (
                             <span style={{ color: 'var(--flagged)' }}>
                               {report.flaggedCount} flagged
+                            </span>
+                          )}
+                          {report.riskScore !== undefined && report.riskScore > 0 && (
+                            <span style={{ color: report.riskScore > 70 ? 'var(--flagged)' : 'var(--verified)' }}>
+                              Risk: {Math.round(report.riskScore)}%
                             </span>
                           )}
                         </div>

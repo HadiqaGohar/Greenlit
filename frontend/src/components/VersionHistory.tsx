@@ -38,6 +38,7 @@ export function VersionHistory({ scriptId, onRollback }: VersionHistoryProps) {
 
   useEffect(() => {
     loadVersions();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [scriptId]);
 
   const loadVersions = async () => {

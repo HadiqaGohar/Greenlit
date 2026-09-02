@@ -1,0 +1,6 @@
+Section,Category,Status,Details
+Overview,Risk Score,high,72%
+Claim,Fact Check,anachronism,iPhone in 1912
+Claim,Fact Check,trademark,Starbucks cup
+Agent,director,Failed,0% confidence
+Agent,legal,Success,80% confidence

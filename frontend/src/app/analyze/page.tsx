@@ -8,9 +8,11 @@ import { AnalysisProgress } from "@/components/AnalysisProgress";
 import { useAnalysis } from "@/hooks/useAnalysis";
 import { useKeyboardShortcuts } from "@/hooks/useKeyboardShortcuts";
 import { ShortcutHelp } from "@/components/ShortcutHelp";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function AnalyzePage() {
   const router = useRouter();
+  const { user } = useAuth();
   const [scriptText, setScriptText] = useState("");
   const {
     isLoading,
@@ -22,7 +24,7 @@ export default function AnalyzePage() {
     estimatedTimeRemaining,
     analyze,
     reset,
-  } = useAnalysis();
+  } = useAnalysis(user?.uid);
 
   const handleShortcutAction = useCallback(
     (key: string) => {

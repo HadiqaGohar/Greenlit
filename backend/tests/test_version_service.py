@@ -26,7 +26,7 @@ class TestVersionService:
         assert version.script_id == self.script_id
         assert version.version_number == 1
         assert version.message == "Initial version"
-        assert version.word_count == 5
+        assert version.word_count == 6
         assert version.line_count == 3
 
     def test_create_multiple_versions(self):

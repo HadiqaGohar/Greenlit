@@ -9,14 +9,12 @@ import {
   addWatchFolder,
   removeWatchFolder,
   getAutomationStatus,
-  ApiError,
 } from "@/lib/api";
+import { useAuth } from "@/contexts/AuthContext";
 import type { NotificationSettings, WatchedFolder } from "@/lib/types";
 
-// Mock user ID until auth is fully implemented
-const MOCK_USER_ID = "default-user";
-
 export default function SettingsPage() {
+  const { user } = useAuth();
   const [activeTab, setActiveTab] = useState<"notifications" | "automation">("notifications");
   const [settings, setSettings] = useState<NotificationSettings | null>(null);
   const [folders, setFolders] = useState<WatchedFolder[]>([]);
@@ -31,13 +29,14 @@ export default function SettingsPage() {
   const [isAddingFolder, setIsAddingFolder] = useState(false);
 
   useEffect(() => {
-    loadData();
-  }, []);
+    if (user?.uid) loadData();
+  }, [user?.uid]);
 
   async function loadData() {
+    if (!user?.uid) return;
     try {
       const [settingsData, foldersData, statusData] = await Promise.allSettled([
-        getNotificationSettings(MOCK_USER_ID),
+        getNotificationSettings(user.uid),
         getWatchedFolders(),
         getAutomationStatus(),
       ]);
@@ -45,7 +44,7 @@ export default function SettingsPage() {
       if (settingsData.status === "fulfilled") setSettings(settingsData.value);
       if (foldersData.status === "fulfilled") setFolders(foldersData.value.folders ?? []);
       if (statusData.status === "fulfilled") setAutomationStatus(statusData.value);
-    } catch (err) {
+    } catch {
       // Use defaults
     } finally {
       setIsLoading(false);
@@ -53,11 +52,11 @@ export default function SettingsPage() {
   }
 
   async function handleSaveSettings() {
-    if (!settings) return;
+    if (!settings || !user?.uid) return;
     setIsSaving(true);
     setSaveMessage(null);
     try {
-      await updateNotificationSettings(MOCK_USER_ID, settings);
+      await updateNotificationSettings(user.uid, settings);
       setSaveMessage("Settings saved successfully!");
       setTimeout(() => setSaveMessage(null), 3000);
     } catch {

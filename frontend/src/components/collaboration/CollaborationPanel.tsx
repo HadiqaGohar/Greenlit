@@ -46,53 +46,6 @@ export function CollaborationPanel({
   const [onlineMembers, setOnlineMembers] = useState<{ user_id: string; user_name: string }[]>([]);
   const [notifications, setNotifications] = useState<Notification[]>([]);
 
-  // WebSocket for real-time sync
-  const handleWSMessage = useCallback(
-    (message: WSMessage) => {
-      switch (message.type) {
-        case "comment_added":
-          setComments((prev) => [...prev, message.comment as CommentType]);
-          break;
-        case "comment_updated":
-          setComments((prev) =>
-            prev.map((c) => (c.id === (message.comment as CommentType).id ? (message.comment as CommentType) : c)),
-          );
-          break;
-        case "comment_deleted":
-          setComments((prev) => prev.filter((c) => c.id !== message.comment_id));
-          break;
-        case "issue_resolved":
-          setComments((prev) =>
-            prev.map((c) => (c.id === message.comment_id ? { ...c, resolved: true } : c)),
-          );
-          break;
-        case "review_status_changed":
-        case "review_requested":
-          loadReviews();
-          break;
-        case "team_member_added":
-        case "team_member_removed":
-          loadTeam();
-          break;
-        case "user_joined":
-        case "user_left":
-          setOnlineMembers(message.members || []);
-          break;
-        case "script_status_updated":
-          // Could trigger parent refresh
-          break;
-      }
-    },
-    [scriptId],
-  );
-
-  const { isConnected } = useWebSocket({
-    scriptId,
-    userId,
-    userName,
-    onMessage: handleWSMessage,
-  });
-
   // Load initial data
   const loadComments = useCallback(async () => {
     try {
@@ -135,6 +88,53 @@ export function CollaborationPanel({
       setNotifications(data.notifications);
     } catch {}
   }, [userId]);
+
+  // WebSocket for real-time sync
+  const handleWSMessage = useCallback(
+    (message: WSMessage) => {
+      switch (message.type) {
+        case "comment_added":
+          setComments((prev) => [...prev, message.comment as CommentType]);
+          break;
+        case "comment_updated":
+          setComments((prev) =>
+            prev.map((c) => (c.id === (message.comment as CommentType).id ? (message.comment as CommentType) : c)),
+          );
+          break;
+        case "comment_deleted":
+          setComments((prev) => prev.filter((c) => c.id !== message.comment_id));
+          break;
+        case "issue_resolved":
+          setComments((prev) =>
+            prev.map((c) => (c.id === message.comment_id ? { ...c, resolved: true } : c)),
+          );
+          break;
+        case "review_status_changed":
+        case "review_requested":
+          loadReviews();
+          break;
+        case "team_member_added":
+        case "team_member_removed":
+          loadTeam();
+          break;
+        case "user_joined":
+        case "user_left":
+          setOnlineMembers((message.members as { user_id: string; user_name: string }[]) ?? []);
+          break;
+        case "script_status_updated":
+          // Could trigger parent refresh
+          break;
+      }
+    },
+    [scriptId, loadReviews, loadTeam],
+  );
+
+  const { isConnected } = useWebSocket({
+    scriptId,
+    userId,
+    userName,
+    onMessage: handleWSMessage,
+  });
 
   useEffect(() => {
     loadComments();
@@ -263,6 +263,8 @@ export function CollaborationPanel({
               <CommentThread
                 comments={comments}
                 currentUserId={userId}
+                currentUserName={userName}
+                currentUserRole={userRole}
                 onAddComment={handleAddComment}
                 onResolve={handleResolve}
                 onDelete={handleDelete}

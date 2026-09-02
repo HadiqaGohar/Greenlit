@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 
 interface GuidedTourProps {
-  steps: any[];
+  steps: Array<{ title: string; description: string; target?: string }>;
   isOpen: boolean;
   onClose: () => void;
   onComplete: () => void;
@@ -13,7 +13,6 @@ interface GuidedTourProps {
 export default function GuidedTour({ 
   steps, 
   isOpen, 
-  onClose, 
   onComplete, 
   currentStepIndex = 0 
 }: GuidedTourProps) {

@@ -28,6 +28,7 @@ class VersionResponse(BaseModel):
     created_at: str
     word_count: int
     line_count: int
+    content: Optional[str] = None
 
 
 class DiffResponse(BaseModel):
@@ -69,6 +70,7 @@ async def create_version(request: CreateVersionRequest):
             created_at=version.created_at.isoformat(),
             word_count=version.word_count,
             line_count=version.line_count,
+            content=version.content,
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to create version: {str(e)}")
@@ -90,6 +92,7 @@ async def get_versions(script_id: str):
                 created_at=v.created_at.isoformat(),
                 word_count=v.word_count,
                 line_count=v.line_count,
+                content=v.content,
             )
             for v in versions
         ]
@@ -114,6 +117,7 @@ async def get_latest_version(script_id: str):
             created_at=version.created_at.isoformat(),
             word_count=version.word_count,
             line_count=version.line_count,
+            content=version.content,
         )
     except HTTPException:
         raise

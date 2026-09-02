@@ -36,7 +36,7 @@ export function formatDate(dateString: string): string {
     } else {
       return date.toLocaleDateString();
     }
-  } catch (error) {
+  } catch {
     return "Unknown";
   }
 }
@@ -91,7 +91,7 @@ export function calculatePercentage(value: number, total: number): number {
 /**
  * Debounce function
  */
-export function debounce<T extends (...args: any[]) => any>(
+export function debounce<T extends (...args: Parameters<T>) => void>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
@@ -103,7 +103,7 @@ export function debounce<T extends (...args: any[]) => any>(
     }
     
     timeout = setTimeout(() => {
-      func.apply(null, args);
+      func(...args);
     }, wait);
   };
 }
@@ -167,7 +167,42 @@ export function timeAgo(dateString: string): string {
     } else {
       return `${days} day${days > 1 ? "s" : ""} ago`;
     }
-  } catch (error) {
+  } catch {
     return "Unknown";
   }
+}
+
+/**
+ * Get icon for agent type
+ */
+export function getAgentIcon(agent: string): string {
+  const iconMap: Record<string, string> = {
+    director: "🎬",
+    research: "🔍",
+    legal: "⚖️",
+    continuity: "🔗",
+    storyboard: "🖼️",
+    tts: "🎙️",
+    schedule: "📅",
+    stakeholder: "🏢",
+    "risk-dashboard": "📊",
+  };
+  return iconMap[agent] || "🤖";
+}
+
+/**
+ * Get color for agent type
+ */
+export function getAgentColor(agent: string): string {
+  const colorMap: Record<string, string> = {
+    director: "#60a5fa",
+    research: "#34d399",
+    legal: "#f59e0b",
+    continuity: "#a78bfa",
+    storyboard: "#ec4899",
+    tts: "#06b6d4",
+    schedule: "#84cc16",
+    stakeholder: "#f97316",
+  };
+  return colorMap[agent] || "#6b7280";
 }

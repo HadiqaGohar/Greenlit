@@ -1,0 +1,351 @@
+{
+  "report_id": "cda4c28b-4349-48a9-ae70-51685641bcd6",
+  "timestamp": "2026-08-27T18:55:15.501041+00:00",
+  "processing_time": 112.009634,
+  "risk_assessment": {
+    "overall_risk_score": 10.0,
+    "risk_level": "low"
+  },
+  "agent_results": {
+    "director": {
+      "success": true,
+      "confidence": 0.85,
+      "processing_time": 10.875444889068604,
+      "data": {
+        "claims": [
+          {
+            "id": "claim_001",
+            "text": "A McLaren 720S sits parked visibly on the street below.",
+            "type": "brand",
+            "confidence": 0.9,
+            "context": "Verification needed for the specific car model (McLaren 720S) for visual accuracy in production.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, first paragraph"
+          },
+          {
+            "id": "claim_002",
+            "text": "Tell Nike we want the deal by Friday. If they walk, Adidas is already circling.",
+            "type": "brand",
+            "confidence": 0.9,
+            "context": "Mentions specific, real-world brands (Nike, Adidas). While the deal is fictional, the brand names are used and could have implications for product placement or legal clearance.",
+            "location_in_script": "Ray's dialogue, first speech"
+          },
+          {
+            "id": "claim_003",
+            "text": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+            "type": "cultural",
+            "confidence": 0.9,
+            "context": "References a specific, real-world TV show ('Breaking Bad') and a highly recognizable scene. Requires verification for intellectual property rights if an actual clip is to be used, or for visual accuracy if recreating the scene.",
+            "location_in_script": "After Ray hangs up the phone"
+          },
+          {
+            "id": "claim_004",
+            "text": "Denise enters holding a Starbucks cup with the logo clearly visible.",
+            "type": "brand",
+            "confidence": 0.9,
+            "context": "Mentions a specific, real-world brand (Starbucks). Requires verification for product placement agreements and visual accuracy of the cup and logo.",
+            "location_in_script": "After Ray's 'Every empire...' line"
+          },
+          {
+            "id": "claim_005",
+            "text": "Ray, legal called. They said the script references 'the Batman voice' one too many times. Might want to cut that.",
+            "type": "cultural",
+            "confidence": 0.9,
+            "context": "References a specific, trademarked fictional character ('Batman') and explicitly mentions legal concerns regarding its use. Requires verification for intellectual property clearance.",
+            "location_in_script": "Denise's first dialogue"
+          },
+          {
+            "id": "claim_006",
+            "text": "On top: a photo of a man who looks exactly like Elon Musk, unlabeled, mid-speech.",
+            "type": "biographical",
+            "confidence": 0.9,
+            "context": "References a specific, real-world public figure (Elon Musk). Requires verification for rights to use his likeness (photo) and potential legal implications.",
+            "location_in_script": "After Denise sets the folder on the table"
+          },
+          {
+            "id": "claim_007",
+            "text": "Also -- the soundtrack list still has three unlicensed Beatles songs on it.",
+            "type": "cultural",
+            "confidence": 0.9,
+            "context": "References a specific, real-world musical group ('The Beatles') and explicitly mentions licensing issues for their songs. Requires verification for music rights and clearance.",
+            "location_in_script": "Denise's second dialogue"
+          }
+        ],
+        "claims_extracted": 7,
+        "claims_by_type": {
+          "brand": [
+            {
+              "id": "claim_001",
+              "text": "A McLaren 720S sits parked visibly on the street below.",
+              "type": "brand",
+              "confidence": 0.9,
+              "context": "Verification needed for the specific car model (McLaren 720S) for visual accuracy in production.",
+              "location_in_script": "INT. LUXURY APARTMENT - DAY, first paragraph"
+            },
+            {
+              "id": "claim_002",
+              "text": "Tell Nike we want the deal by Friday. If they walk, Adidas is already circling.",
+              "type": "brand",
+              "confidence": 0.9,
+              "context": "Mentions specific, real-world brands (Nike, Adidas). While the deal is fictional, the brand names are used and could have implications for product placement or legal clearance.",
+              "location_in_script": "Ray's dialogue, first speech"
+            },
+            {
+              "id": "claim_004",
+              "text": "Denise enters holding a Starbucks cup with the logo clearly visible.",
+              "type": "brand",
+              "confidence": 0.9,
+              "context": "Mentions a specific, real-world brand (Starbucks). Requires verification for product placement agreements and visual accuracy of the cup and logo.",
+              "location_in_script": "After Ray's 'Every empire...' line"
+            }
+          ],
+          "cultural": [
+            {
+              "id": "claim_003",
+              "text": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+              "type": "cultural",
+              "confidence": 0.9,
+              "context": "References a specific, real-world TV show ('Breaking Bad') and a highly recognizable scene. Requires verification for intellectual property rights if an actual clip is to be used, or for visual accuracy if recreating the scene.",
+              "location_in_script": "After Ray hangs up the phone"
+            },
+            {
+              "id": "claim_005",
+              "text": "Ray, legal called. They said the script references 'the Batman voice' one too many times. Might want to cut that.",
+              "type": "cultural",
+              "confidence": 0.9,
+              "context": "References a specific, trademarked fictional character ('Batman') and explicitly mentions legal concerns regarding its use. Requires verification for intellectual property clearance.",
+              "location_in_script": "Denise's first dialogue"
+            },
+            {
+              "id": "claim_007",
+              "text": "Also -- the soundtrack list still has three unlicensed Beatles songs on it.",
+              "type": "cultural",
+              "confidence": 0.9,
+              "context": "References a specific, real-world musical group ('The Beatles') and explicitly mentions licensing issues for their songs. Requires verification for music rights and clearance.",
+              "location_in_script": "Denise's second dialogue"
+            }
+          ],
+          "biographical": [
+            {
+              "id": "claim_006",
+              "text": "On top: a photo of a man who looks exactly like Elon Musk, unlabeled, mid-speech.",
+              "type": "biographical",
+              "confidence": 0.9,
+              "context": "References a specific, real-world public figure (Elon Musk). Requires verification for rights to use his likeness (photo) and potential legal implications.",
+              "location_in_script": "After Denise sets the folder on the table"
+            }
+          ]
+        },
+        "script_sections": [
+          {
+            "type": "scene_header",
+            "start_line": 0,
+            "line_count": 41,
+            "content_summary": "INT. LUXURY APARTMENT - DAY"
+          }
+        ],
+        "extraction_method": "gemini_ai",
+        "agent_version": "1.0"
+      },
+      "error": null
+    },
+    "research": {
+      "success": true,
+      "confidence": 0.48,
+      "processing_time": 101.10975790023804,
+      "data": {
+        "claims": [
+          {
+            "id": "claim_001",
+            "text": "A McLaren 720S sits parked visibly on the street below.",
+            "type": "brand",
+            "confidence": 0.5,
+            "context": "Verification needed for the specific car model (McLaren 720S) for visual accuracy in production.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, first paragraph",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The cited text explicitly describes \u201cStreet parking the McLaren 720s\u201d in a neighborhood, supporting the claim that a McLaren 720S is parked on a street.', citations=[Citation(url='http://reddit.com/r/spotted/comments/rhv7dw/street_parking_the_mclaren_720s_in_my_neighborhood', excerpts=['Street parking the [McLaren 720s] in my neighborhood'], title='Reddit - The heart of the internet')], confidence='medium')], content={'output': 'True \u2014 a McLaren 720S is parked on a street.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Insufficient research data to verify"
+          },
+          {
+            "id": "claim_002",
+            "text": "Tell Nike we want the deal by Friday. If they walk, Adidas is already circling.",
+            "type": "brand",
+            "confidence": 0.5,
+            "context": "Mentions specific, real-world brands (Nike, Adidas). While the deal is fictional, the brand names are used and could have implications for product placement or legal clearance.",
+            "location_in_script": "Ray's dialogue, first speech",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The Athletic reports that Nike was in exclusive negotiations to become the provider for UEFA\u2019s men\u2019s Champions League, Europa League, and Conference League, with the proposed arrangement covering 2027\u20132031; it also states that Adidas\u2019s and the other supplier\u2019s agreements were set to expire at the end of the 2026\u201327 season. The report does not state a Friday deadline. UEFA\u2019s own 2026 article confirms Adidas\u2019s 25-year partnership and its official match ball for the 2026 Champions League final, supporting the conclusion that Adidas was the incumbent supplier rather than simply a bidder circling a Nike deal.', citations=[Citation(url='https://www.nytimes.com/athletic/7183705/2026/04/09/nike-champions-league-match-ball-uefa', excerpts=['Nike in exclusive talks to become men\u2019s Champions League ball provider, ending 25 years of Adidas Nike is in exclusive negotiations to become the match ball provider for the UEFA men\u2019s Champions League, Europa League and Conference League. The American company is set to break Adidas\u2019 25-year stranglehold over the match ball for the men\u2019s Champions League, with the German sports manufacturer having held the sponsorship agreement with Europe\u2019s elite club competition since 2001. ... But UEFA \u2014 the continent\u2019s footballing governing body \u2014 recently went out to tender, as [first revealed by](https://www.nytimes.com/athletic/7115535/2026/03/13/champions-league-match-ball-adidas-nike-puma/) _The Athletic_ in March , to ... Adidas has been the official match ball provider for the Champions League since 2001, when the German sportswear company clawed the rights away from Nike, while French sports retailer Decathlon has provided the match balls for the Europa ... Both deals are set to expire at the end of the 2026-2027 season, and sources close to the situation said there was interest from both Nike and Puma. Nike, however, appear to have emerged triumphant. ... enter an exclusive negotiation period with Nike to become the official match ball provider for all UEFA men\u2019s club competitions from 2027 to 2031. This decision follows a highly competitive tender process launched in March 2026 by UC3 and its agency, Relevent Football Partners. No further comment will be made in the meantime.\u201d ...'], title='Nike in exclusive talks to become men\u2019s Champions League ball provider, ending 25 years of Adidas - The Athletic'), Citation(url='https://www.uefa.com/uefachampionsleague/news/02a2-1fe20f7f09cf-9bcd591d1c6e-1000--adidas-unveils-official-match-ball-for-2026-champions-leag', excerpts=['UEFA Champions League - Adidas unveils official match ball for 2026 Champions League final in Budapest - News Adidas unveils official match ball for 2026 Champions League final in Budapest Monday, February 9, 2026 Article summary The UEFA Champions League Final Budapest 2026 Official Match Ball will make its debut during the UEFA Champions League knockout phase. Article body adidas has revealed the official match ball for the 2026 UEFA Champions League final in Budapest, a design that brings the spirit of the host city to the world\\'s biggest football stage. Drawing inspiration from Budapest\\'s identity as \"Buda and Pest \u2013 a Tale of Two Cities,\" the ball reflects the contrast and harmony that define the Hungarian capital. ... Beyond aesthetics, the ball meets the highest standards of elite performance. Featuring adidas\\' proven thermally bonded, seamless construction, the official match ball delivers exceptional accuracy, consistency, and control \u2013 engineered for the speed, precision and intensity of UEFA Champions League football. More than a match ball, the UEFA Champions League Final Budapest 2026 Official Match Ball serves as a canvas for storytelling, capturing the essence of the host city while becoming part of football history the moment it rolls onto the pitch. This season also marks the 25th anniversary of adidas\\' partnership with the UEFA Champions League, celebrating a quarter-century of innovation, iconic design and the ongoing evolution of the legendary starball, which has helped shape how the game\\'s most prestigious competition looks and plays on the world stage.'], title='Adidas unveils official match ball for 2026 Champions League final in Budapest | UEFA Champions League 2025/26 | UEFA.com')], confidence='medium')], content={'output': 'Fact check: Misleading and unsupported. The likely relevant deal is UEFA\u2019s men\u2019s club-competition match-ball agreement: Nike entered exclusive negotiations for a proposed 2027\u20132031 deal, while Adidas\u2019s existing arrangement continued through the 2026\u201327 season. There is no evidence of a Friday deadline. The claim that Adidas is merely \u201ccircling\u201d is also misleading\u2014Adidas was the incumbent supplier and was being replaced, not reported as a fallback bidder if Nike withdrew.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Insufficient research data to verify"
+          },
+          {
+            "id": "claim_003",
+            "text": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+            "type": "cultural",
+            "confidence": 0.5,
+            "context": "References a specific, real-world TV show ('Breaking Bad') and a highly recognizable scene. Requires verification for intellectual property rights if an actual clip is to be used, or for visual accuracy if recreating the scene.",
+            "location_in_script": "After Ray hangs up the phone",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The Breaking Bad synopsis explicitly states that Jesse obtains an RV for Walter and Jesse to cook in. A separately labeled clip is titled \u201cBreaking Bad - Cooking in the RV,\u201d directly matching the RV-cooking description. Additional public references associate Breaking Bad with hazmat-suit imagery, including a video titled \u201cBreaking Bad Hazmat Suit\u201d and a listing describing a yellow hazmat suit as a Walter White/Breaking Bad costume. Together, these support the fact-check conclusion that the described clip is consistent with Breaking Bad, while not independently proving the specific television broadcast.', citations=[Citation(url='http://en.wikipedia.org/wiki/Breaking_Bad', excerpts=['Episodes Season 1 (2008) Walter, diagnosed with inoperable lung cancer , conspires with Jesse to cook crystal meth to pay for his treatment and provide financial security for his family. Jesse secures an R.V. to cook in, while Walter devises a revolutionary formula using unregulated chemicals, creating a highly pure product tinted blue.'], title='Breaking Bad - Wikipedia'), Citation(url='https://www.youtube.com/watch?v=tmeAjnG45Rg', excerpts=['Breaking Bad - Cooking in the RV Walter and Jesse cooking in the RV By Juanje. Breaking Bad - Cooking in the RV. Obnoxiously Priced Food ANGERS Gordon Ramsay | Full Episode |'], title='Breaking Bad - Cooking in the RV'), Citation(url='https://www.youtube.com/watch?v=pw74Jio4GyQ', excerpts=['Breaking Bad Hazmat Suit - YouTube Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.'], title='Breaking Bad Hazmat Suit - YouTube'), Citation(url='https://www.costumepartyworld.com/breaking-bad-walter-white-costume-yellow-toxic-hazmat-suit-jumpsuit-breaking-bad-walter-white-cosplay', excerpts=['Yellow Toxic Hazmat Suit Jumpsuit Breaking Bad Walter'], title='Yellow Toxic Hazmat Suit Jumpsuit Breaking Bad Walter ... Costume Party World https://www.costumepartyworld.com \u203a ...')], confidence='medium')], content={'output': 'True. The description matches a recognizable Breaking Bad setup: Walter White and Jesse Pinkman cook methamphetamine in an RV, and the series is associated with yellow hazmat suits. The available evidence supports identifying the scene as Breaking Bad, although the exact TV broadcast itself is not independently verified.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Insufficient research data to verify"
+          },
+          {
+            "id": "claim_004",
+            "text": "Denise enters holding a Starbucks cup with the logo clearly visible.",
+            "type": "brand",
+            "confidence": 0.4,
+            "context": "Mentions a specific, real-world brand (Starbucks). Requires verification for product placement agreements and visual accuracy of the cup and logo.",
+            "location_in_script": "After Ray's 'Every empire...' line",
+            "verdict": "flagged",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The cited material mentions a generic TV-crime-drama example involving visibly branded Starbucks cups, but it does not identify Denise or state that she enters holding one. Therefore, the specific claim cannot be confirmed from the available evidence.', citations=[Citation(url='https://quizlet.com/252623033/unit-6-marketing-test-flash-cards', excerpts=['Unit 6 Marketing Test Students also studied T or F? The actors on a TV crime drama drank coffee from paper cups with the Starbucks Coffee logo clearly visible. This is a promotion form called product placement. False'], title='Unit 6 Marketing Test Flashcards | Quizlet')], confidence='low')], content={'output': 'Unverified \u2014 the available evidence does not establish that Denise enters holding a Starbucks cup with its logo clearly visible.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Research indicates potential inaccuracy"
+          },
+          {
+            "id": "claim_005",
+            "text": "Ray, legal called. They said the script references 'the Batman voice' one too many times. Might want to cut that.",
+            "type": "cultural",
+            "confidence": 0.5,
+            "context": "References a specific, trademarked fictional character ('Batman') and explicitly mentions legal concerns regarding its use. Requires verification for intellectual property clearance.",
+            "location_in_script": "Denise's first dialogue",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The available screenplay sources identify and reproduce Batman screenplay material, but neither documents Ray, a legal call, nor an instruction to reduce references to \u201cthe Batman voice.\u201d Therefore, the statement is not substantiated by the available public evidence.', citations=[Citation(url='https://thescriptsavant.com/movies/the_batman.pdf', excerpts=['Rev. 12/17/20 (B lue) THE BATMAN by Matt Reeves & Peter Craig previous revisions by Matt Reeves Matt Reeves & Mattson Tomlin Written by Matt Reeves & Peter Craig This script is the confidential and proprietary property of Warner Bros. Pictures and no portion of it may be performed, distributed, reproduced, used, quoted or published without prior permission. ARTICULATED PRODUCTIONS LIMITED ROZAR PICTURES, LLC 4000 Warner Boulevard Burbank, California 91522 WHITE FEBURARY SHOOTING DRAFT February 9, 2020 WARNER BROS. ENT. All Rights Reserved Based on characters from DC Batman created by Bob Kane and Bill Finger 1 2 3 **BLACK SCREEN** **The quiet hum of CITY TRAFFIC and DISTANT SIRENS.** **Gradually, we make out something unnerving, right beside** **us: SOMEONE BREATHING'], title='The Batman'), Citation(url='https://www.scriptslug.com/script/batman-1989', excerpts=[\"Articles Resources Newsletter About Batman (1989) Film Poster Batman Film \\\\- 1989 [Read](https://assets.scriptslug.com/live/pdf/scripts/batman-1989.pdf?v=1745519713) Preview **Screenplay by** [Sam Hamm](https://www.scriptslug.com/scripts/writer/sam-hamm) and [Warren Skaaren](https://www.scriptslug.com/scripts/writer/warren-skaaren) In Gotham City, a masked vigilante wages a relentless battle against crime. His fight intensifies when he faces a ruthless criminal, Jack Napier, who transforms into the psychotic Joker, unleashing chaos and testing Batman's resolve. Film Action Adventure Superhero DC Comics Warner Bros. Related Scripts\"], title='\\n  Batman (1989) - Movie Script | Script Slug\\n')], confidence='medium')], content={'output': 'Unverified: no public evidence confirms that Ray said legal objected to repeated references to \u201cthe Batman voice\u201d or recommended cutting one.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Insufficient research data to verify"
+          }
+        ],
+        "claims_researched": 5,
+        "verified_claims": [],
+        "flagged_claims": [
+          {
+            "id": "claim_004",
+            "text": "Denise enters holding a Starbucks cup with the logo clearly visible.",
+            "type": "brand",
+            "confidence": 0.4,
+            "context": "Mentions a specific, real-world brand (Starbucks). Requires verification for product placement agreements and visual accuracy of the cup and logo.",
+            "location_in_script": "After Ray's 'Every empire...' line",
+            "verdict": "flagged",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The cited material mentions a generic TV-crime-drama example involving visibly branded Starbucks cups, but it does not identify Denise or state that she enters holding one. Therefore, the specific claim cannot be confirmed from the available evidence.', citations=[Citation(url='https://quizlet.com/252623033/unit-6-marketing-test-flash-cards', excerpts=['Unit 6 Marketing Test Students also studied T or F? The actors on a TV crime drama drank coffee from paper cups with the Starbucks Coffee logo clearly visible. This is a promotion form called product placement. False'], title='Unit 6 Marketing Test Flashcards | Quizlet')], confidence='low')], content={'output': 'Unverified \u2014 the available evidence does not establish that Denise enters holding a Starbucks cup with its logo clearly visible.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Research indicates potential inaccuracy"
+          }
+        ],
+        "uncertain_claims": [
+          {
+            "id": "claim_001",
+            "text": "A McLaren 720S sits parked visibly on the street below.",
+            "type": "brand",
+            "confidence": 0.5,
+            "context": "Verification needed for the specific car model (McLaren 720S) for visual accuracy in production.",
+            "location_in_script": "INT. LUXURY APARTMENT - DAY, first paragraph",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The cited text explicitly describes \u201cStreet parking the McLaren 720s\u201d in a neighborhood, supporting the claim that a McLaren 720S is parked on a street.', citations=[Citation(url='http://reddit.com/r/spotted/comments/rhv7dw/street_parking_the_mclaren_720s_in_my_neighborhood', excerpts=['Street parking the [McLaren 720s] in my neighborhood'], title='Reddit - The heart of the internet')], confidence='medium')], content={'output': 'True \u2014 a McLaren 720S is parked on a street.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Insufficient research data to verify"
+          },
+          {
+            "id": "claim_002",
+            "text": "Tell Nike we want the deal by Friday. If they walk, Adidas is already circling.",
+            "type": "brand",
+            "confidence": 0.5,
+            "context": "Mentions specific, real-world brands (Nike, Adidas). While the deal is fictional, the brand names are used and could have implications for product placement or legal clearance.",
+            "location_in_script": "Ray's dialogue, first speech",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The Athletic reports that Nike was in exclusive negotiations to become the provider for UEFA\u2019s men\u2019s Champions League, Europa League, and Conference League, with the proposed arrangement covering 2027\u20132031; it also states that Adidas\u2019s and the other supplier\u2019s agreements were set to expire at the end of the 2026\u201327 season. The report does not state a Friday deadline. UEFA\u2019s own 2026 article confirms Adidas\u2019s 25-year partnership and its official match ball for the 2026 Champions League final, supporting the conclusion that Adidas was the incumbent supplier rather than simply a bidder circling a Nike deal.', citations=[Citation(url='https://www.nytimes.com/athletic/7183705/2026/04/09/nike-champions-league-match-ball-uefa', excerpts=['Nike in exclusive talks to become men\u2019s Champions League ball provider, ending 25 years of Adidas Nike is in exclusive negotiations to become the match ball provider for the UEFA men\u2019s Champions League, Europa League and Conference League. The American company is set to break Adidas\u2019 25-year stranglehold over the match ball for the men\u2019s Champions League, with the German sports manufacturer having held the sponsorship agreement with Europe\u2019s elite club competition since 2001. ... But UEFA \u2014 the continent\u2019s footballing governing body \u2014 recently went out to tender, as [first revealed by](https://www.nytimes.com/athletic/7115535/2026/03/13/champions-league-match-ball-adidas-nike-puma/) _The Athletic_ in March , to ... Adidas has been the official match ball provider for the Champions League since 2001, when the German sportswear company clawed the rights away from Nike, while French sports retailer Decathlon has provided the match balls for the Europa ... Both deals are set to expire at the end of the 2026-2027 season, and sources close to the situation said there was interest from both Nike and Puma. Nike, however, appear to have emerged triumphant. ... enter an exclusive negotiation period with Nike to become the official match ball provider for all UEFA men\u2019s club competitions from 2027 to 2031. This decision follows a highly competitive tender process launched in March 2026 by UC3 and its agency, Relevent Football Partners. No further comment will be made in the meantime.\u201d ...'], title='Nike in exclusive talks to become men\u2019s Champions League ball provider, ending 25 years of Adidas - The Athletic'), Citation(url='https://www.uefa.com/uefachampionsleague/news/02a2-1fe20f7f09cf-9bcd591d1c6e-1000--adidas-unveils-official-match-ball-for-2026-champions-leag', excerpts=['UEFA Champions League - Adidas unveils official match ball for 2026 Champions League final in Budapest - News Adidas unveils official match ball for 2026 Champions League final in Budapest Monday, February 9, 2026 Article summary The UEFA Champions League Final Budapest 2026 Official Match Ball will make its debut during the UEFA Champions League knockout phase. Article body adidas has revealed the official match ball for the 2026 UEFA Champions League final in Budapest, a design that brings the spirit of the host city to the world\\'s biggest football stage. Drawing inspiration from Budapest\\'s identity as \"Buda and Pest \u2013 a Tale of Two Cities,\" the ball reflects the contrast and harmony that define the Hungarian capital. ... Beyond aesthetics, the ball meets the highest standards of elite performance. Featuring adidas\\' proven thermally bonded, seamless construction, the official match ball delivers exceptional accuracy, consistency, and control \u2013 engineered for the speed, precision and intensity of UEFA Champions League football. More than a match ball, the UEFA Champions League Final Budapest 2026 Official Match Ball serves as a canvas for storytelling, capturing the essence of the host city while becoming part of football history the moment it rolls onto the pitch. This season also marks the 25th anniversary of adidas\\' partnership with the UEFA Champions League, celebrating a quarter-century of innovation, iconic design and the ongoing evolution of the legendary starball, which has helped shape how the game\\'s most prestigious competition looks and plays on the world stage.'], title='Adidas unveils official match ball for 2026 Champions League final in Budapest | UEFA Champions League 2025/26 | UEFA.com')], confidence='medium')], content={'output': 'Fact check: Misleading and unsupported. The likely relevant deal is UEFA\u2019s men\u2019s club-competition match-ball agreement: Nike entered exclusive negotiations for a proposed 2027\u20132031 deal, while Adidas\u2019s existing arrangement continued through the 2026\u201327 season. There is no evidence of a Friday deadline. The claim that Adidas is merely \u201ccircling\u201d is also misleading\u2014Adidas was the incumbent supplier and was being replaced, not reported as a fallback bidder if Nike withdrew.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Insufficient research data to verify"
+          },
+          {
+            "id": "claim_003",
+            "text": "The TV plays a clip that looks unmistakably like a scene from Breaking Bad -- a man in a yellow hazmat suit cooking in an RV.",
+            "type": "cultural",
+            "confidence": 0.5,
+            "context": "References a specific, real-world TV show ('Breaking Bad') and a highly recognizable scene. Requires verification for intellectual property rights if an actual clip is to be used, or for visual accuracy if recreating the scene.",
+            "location_in_script": "After Ray hangs up the phone",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The Breaking Bad synopsis explicitly states that Jesse obtains an RV for Walter and Jesse to cook in. A separately labeled clip is titled \u201cBreaking Bad - Cooking in the RV,\u201d directly matching the RV-cooking description. Additional public references associate Breaking Bad with hazmat-suit imagery, including a video titled \u201cBreaking Bad Hazmat Suit\u201d and a listing describing a yellow hazmat suit as a Walter White/Breaking Bad costume. Together, these support the fact-check conclusion that the described clip is consistent with Breaking Bad, while not independently proving the specific television broadcast.', citations=[Citation(url='http://en.wikipedia.org/wiki/Breaking_Bad', excerpts=['Episodes Season 1 (2008) Walter, diagnosed with inoperable lung cancer , conspires with Jesse to cook crystal meth to pay for his treatment and provide financial security for his family. Jesse secures an R.V. to cook in, while Walter devises a revolutionary formula using unregulated chemicals, creating a highly pure product tinted blue.'], title='Breaking Bad - Wikipedia'), Citation(url='https://www.youtube.com/watch?v=tmeAjnG45Rg', excerpts=['Breaking Bad - Cooking in the RV Walter and Jesse cooking in the RV By Juanje. Breaking Bad - Cooking in the RV. Obnoxiously Priced Food ANGERS Gordon Ramsay | Full Episode |'], title='Breaking Bad - Cooking in the RV'), Citation(url='https://www.youtube.com/watch?v=pw74Jio4GyQ', excerpts=['Breaking Bad Hazmat Suit - YouTube Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on YouTube.'], title='Breaking Bad Hazmat Suit - YouTube'), Citation(url='https://www.costumepartyworld.com/breaking-bad-walter-white-costume-yellow-toxic-hazmat-suit-jumpsuit-breaking-bad-walter-white-cosplay', excerpts=['Yellow Toxic Hazmat Suit Jumpsuit Breaking Bad Walter'], title='Yellow Toxic Hazmat Suit Jumpsuit Breaking Bad Walter ... Costume Party World https://www.costumepartyworld.com \u203a ...')], confidence='medium')], content={'output': 'True. The description matches a recognizable Breaking Bad setup: Walter White and Jesse Pinkman cook methamphetamine in an RV, and the series is associated with yellow hazmat suits. The available evidence supports identifying the scene as Breaking Bad, although the exact TV broadcast itself is not independently verified.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Insufficient research data to verify"
+          },
+          {
+            "id": "claim_005",
+            "text": "Ray, legal called. They said the script references 'the Batman voice' one too many times. Might want to cut that.",
+            "type": "cultural",
+            "confidence": 0.5,
+            "context": "References a specific, trademarked fictional character ('Batman') and explicitly mentions legal concerns regarding its use. Requires verification for intellectual property clearance.",
+            "location_in_script": "Denise's first dialogue",
+            "verdict": "uncertain",
+            "sources": [],
+            "research_summary": "TaskRunJsonOutput(basis=[FieldBasis(field='output', reasoning='The available screenplay sources identify and reproduce Batman screenplay material, but neither documents Ray, a legal call, nor an instruction to reduce references to \u201cthe Batman voice.\u201d Therefore, the statement is not substantiated by the available public evidence.', citations=[Citation(url='https://thescriptsavant.com/movies/the_batman.pdf', excerpts=['Rev. 12/17/20 (B lue) THE BATMAN by Matt Reeves & Peter Craig previous revisions by Matt Reeves Matt Reeves & Mattson Tomlin Written by Matt Reeves & Peter Craig This script is the confidential and proprietary property of Warner Bros. Pictures and no portion of it may be performed, distributed, reproduced, used, quoted or published without prior permission. ARTICULATED PRODUCTIONS LIMITED ROZAR PICTURES, LLC 4000 Warner Boulevard Burbank, California 91522 WHITE FEBURARY SHOOTING DRAFT February 9, 2020 WARNER BROS. ENT. All Rights Reserved Based on characters from DC Batman created by Bob Kane and Bill Finger 1 2 3 **BLACK SCREEN** **The quiet hum of CITY TRAFFIC and DISTANT SIRENS.** **Gradually, we make out something unnerving, right beside** **us: SOMEONE BREATHING'], title='The Batman'), Citation(url='https://www.scriptslug.com/script/batman-1989', excerpts=[\"Articles Resources Newsletter About Batman (1989) Film Poster Batman Film \\\\- 1989 [Read](https://assets.scriptslug.com/live/pdf/scripts/batman-1989.pdf?v=1745519713) Preview **Screenplay by** [Sam Hamm](https://www.scriptslug.com/scripts/writer/sam-hamm) and [Warren Skaaren](https://www.scriptslug.com/scripts/writer/warren-skaaren) In Gotham City, a masked vigilante wages a relentless battle against crime. His fight intensifies when he faces a ruthless criminal, Jack Napier, who transforms into the psychotic Joker, unleashing chaos and testing Batman's resolve. Film Action Adventure Superhero DC Comics Warner Bros. Related Scripts\"], title='\\n  Batman (1989) - Movie Script | Script Slug\\n')], confidence='medium')], content={'output': 'Unverified: no public evidence confirms that Ray said legal objected to repeated references to \u201cthe Batman voice\u201d or recommended cutting one.'}, type='json', beta_fields=None, mcp_tool_calls=None, output_schema={})",
+            "note": "Insufficient research data to verify"
+          }
+        ],
+        "sources": [],
+        "research_summary": {
+          "verified_count": 0,
+          "flagged_count": 1,
+          "uncertain_count": 4,
+          "overall_accuracy": 0.0
+        }
+      },
+      "error": null
+    },
+    "legal": {
+      "success": true,
+      "confidence": 0.7,
+      "processing_time": 15.326786041259766,
+      "data": {
+        "copyright_risks": [],
+        "trademark_issues": [],
+        "clearance_required": [],
+        "privacy_concerns": [],
+        "estimated_clearance_cost": "$0",
+        "legal_recommendations": [
+          "No major legal risks identified in script analysis"
+        ],
+        "risk_summary": {
+          "total_risks": 0,
+          "high_priority": 0,
+          "clearance_items": 0
+        },
+        "analysis_method": "gemini_ai"
+      },
+      "error": null
+    },
+    "continuity": {
+      "success": true,
+      "confidence": 0.85,
+      "processing_time": 10.221412897109985,
+      "data": {
+        "character_inconsistencies": [],
+        "timeline_issues": [],
+        "location_continuity": [],
+        "prop_tracking": [
+          {
+            "type": "prop",
+            "severity": "low",
+            "description": "Denise enters holding a Starbucks cup, but its disposition is not mentioned when she subsequently sets a folder on the table. It's unclear if she put it down, is still holding it, or if it disappeared.",
+            "location": "Scene 1, after 'Denise enters holding a Starbucks cup with the logo clearly visible.' and before 'Denise sets a folder on the table.'",
+            "suggested_fix": "Specify what Denise does with the Starbucks cup. For example, 'Denise sets her Starbucks cup on the table, then sets a folder on top of it.'"
+          }
+        ],
+        "continuity_recommendations": [
+          "Track prop continuity throughout scenes"
+        ],
+        "continuity_summary": {
+          "total_issues": 1,
+          "character_count": 0,
+          "location_count": 0,
+          "severity_breakdown": {
+            "high": 0,
+            "medium": 0,
+            "low": 1
+          }
+        },
+        "analysis_method": "gemini_ai"
+      },
+      "error": null
+    }
+  }
+}
