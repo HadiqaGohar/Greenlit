@@ -32,7 +32,6 @@ class Settings(BaseSettings):
         env_file=".env",
         case_sensitive=True,
         extra="ignore",
-        env_ignore={"CORS_ORIGINS"},
     )
     
     # Gemini Configuration (Google Cloud Gen AI SDK)
@@ -78,9 +77,6 @@ class Settings(BaseSettings):
 
 # Create global settings instance
 settings = Settings()
-
-# Inject CORS_ORIGINS parsed manually
-settings.CORS_ORIGINS = CORS_ORIGINS
 
 # Check for default SECRET_KEY and warn
 if settings.SECRET_KEY == "dev-secret-key-change-in-production":

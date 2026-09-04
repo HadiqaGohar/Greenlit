@@ -12,7 +12,7 @@ from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from app.config import settings
+from app.config import settings, CORS_ORIGINS
 from app.routers import analyze, health, automation, webhooks
 from app.agents.orchestrator import AgentOrchestrator
 from app.automation.file_watcher import FileWatcher
@@ -93,7 +93,7 @@ app = FastAPI(
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.CORS_ORIGINS,
+    allow_origins=CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
