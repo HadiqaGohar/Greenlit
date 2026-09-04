@@ -7,8 +7,20 @@ import os
 import json
 import warnings
 from typing import List, Optional
-from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+def _parse_cors_origins() -> List[str]:
+    raw = os.environ.get("CORS_ORIGINS", "")
+    if not raw:
+        return ["http://localhost:3000", "http://127.0.0.1:3000"]
+    try:
+        parsed = json.loads(raw)
+        if isinstance(parsed, list):
+            return parsed
+        return [str(parsed)]
+    except (json.JSONDecodeError, TypeError):
+        return [origin.strip() for origin in raw.split(",") if origin.strip()]
 
 
 class Settings(BaseSettings):
@@ -31,18 +43,8 @@ class Settings(BaseSettings):
     HOST: str = "0.0.0.0"
     PORT: int = 8000
     
-    # CORS Configuration
-    CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]
-    
-    @field_validator("CORS_ORIGINS", mode="before")
-    @classmethod
-    def parse_cors_origins(cls, v):
-        if isinstance(v, str):
-            try:
-                return json.loads(v)
-            except json.JSONDecodeError:
-                return [origin.strip() for origin in v.split(",") if origin.strip()]
-        return v
+    # CORS Configuration - parsed manually to avoid pydantic_settings JSON parsing issues
+    CORS_ORIGINS: List[str] = _parse_cors_origins()
     
     # Security
     SECRET_KEY: str = os.environ.get("SECRET_KEY", "dev-secret-key-change-in-production")
