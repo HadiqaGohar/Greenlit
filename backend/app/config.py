@@ -4,8 +4,10 @@ Loads environment variables and provides application configuration
 """
 
 import os
+import json
 import warnings
 from typing import List, Optional
+from pydantic import field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -31,6 +33,16 @@ class Settings(BaseSettings):
     
     # CORS Configuration
     CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://127.0.0.1:3000"]
+    
+    @field_validator("CORS_ORIGINS", mode="before")
+    @classmethod
+    def parse_cors_origins(cls, v):
+        if isinstance(v, str):
+            try:
+                return json.loads(v)
+            except json.JSONDecodeError:
+                return [origin.strip() for origin in v.split(",") if origin.strip()]
+        return v
     
     # Security
     SECRET_KEY: str = os.environ.get("SECRET_KEY", "dev-secret-key-change-in-production")
