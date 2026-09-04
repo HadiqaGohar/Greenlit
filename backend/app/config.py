@@ -23,16 +23,24 @@ def _parse_cors_origins() -> List[str]:
         return [origin.strip() for origin in raw.split(",") if origin.strip()]
 
 
+CORS_ORIGINS = _parse_cors_origins()
+
+
 class Settings(BaseSettings):
     """Application settings loaded from environment variables"""
-    model_config = SettingsConfigDict(env_file=".env", case_sensitive=True, extra="ignore")
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        case_sensitive=True,
+        extra="ignore",
+        env_ignore={"CORS_ORIGINS"},
+    )
     
     # Gemini Configuration (Google Cloud Gen AI SDK)
     GEMINI_API_KEY: Optional[str] = None
     GEMINI_MODEL: str = "gemini-2.5-flash"
     GOOGLE_CLOUD_PROJECT: Optional[str] = None
     GOOGLE_CLOUD_LOCATION: str = "global"
-    USE_ENTERPRISE_GEMINI: bool = False  # Set True for Agent Platform
+    USE_ENTERPRISE_GEMINI: bool = False
     
     # Parallel API Configuration
     PARALLEL_API_KEY: Optional[str] = None
@@ -42,9 +50,6 @@ class Settings(BaseSettings):
     LOG_LEVEL: str = "INFO"
     HOST: str = "0.0.0.0"
     PORT: int = 8000
-    
-    # CORS Configuration - parsed manually to avoid pydantic_settings JSON parsing issues
-    CORS_ORIGINS: List[str] = _parse_cors_origins()
     
     # Security
     SECRET_KEY: str = os.environ.get("SECRET_KEY", "dev-secret-key-change-in-production")
@@ -73,6 +78,9 @@ class Settings(BaseSettings):
 
 # Create global settings instance
 settings = Settings()
+
+# Inject CORS_ORIGINS parsed manually
+settings.CORS_ORIGINS = CORS_ORIGINS
 
 # Check for default SECRET_KEY and warn
 if settings.SECRET_KEY == "dev-secret-key-change-in-production":
